@@ -5,19 +5,89 @@
  */
 package Proyecto;
 
+import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
+import java.awt.*;
+
 /**
  *
  * @author marko
  */
 public class frmMenu extends javax.swing.JFrame {
 
+    
+    Fondo fondo = new Fondo();
+    
     /**
      * Creates new form frmMenu
      */
     public frmMenu() {
+        
+        this.setContentPane(fondo);
         initComponents();
-    }
+        inicializarComponentes();
+        
+    }//fin constructor frmMenu
 
+    //clase Fondo, sirve para ponerle un fondo al jFrame
+     class Fondo extends JPanel{    
+            private Image img; 
+            @Override
+            public void paint(Graphics g){   
+                img = new ImageIcon(getClass().getResource("/Recursos/aula.jpg")).getImage();
+                g.drawImage(img, 0, 0, getWidth(), getHeight(),this);
+                setOpaque(false);
+                super.paint(g);
+            }//fin paint     
+    }//fin fondo
+     
+     
+       class FondoPanel extends JPanel{    
+            private Image img; 
+            @Override
+            public void paint(Graphics g){   
+                img = new ImageIcon(getClass().getResource("/Recursos/nota.png")).getImage();
+                g.drawImage(img, 0, 0, getWidth(), getHeight(),this);
+                setOpaque(false);
+                super.paint(g);
+            }//fin paint     
+    }//fin fondo
+         
+    public void transparencia(){
+        btnPizarra.setOpaque(false);
+        btnBiblioteca.setOpaque(false);
+        btnPizarra.setBorderPainted(false);
+        btnBiblioteca.setBorderPainted(false);
+        btnPizarra.setContentAreaFilled(false);
+        btnBiblioteca.setContentAreaFilled(false);
+        
+        txtAreaTexto.setOpaque(false);
+        
+        panelPizarra.setOpaque(false);
+        panelBiblioteca.setOpaque(false);
+        
+    }//fin btnTransparencia
+    
+    public void inicializarComponentes(){
+       
+         transparencia();
+        
+        String parrafo =  "Hola, este es el menú de"
+                        + "\ninicio, cada flecha te"
+                        + "\nindica hacia dónde puedes"
+                        + "\nir para moverte por el aula"
+                        + "\npuedes ir hacia el pizarrón"
+                        + "\no puedes ir a la biblioteca"
+                        + "\nmuévete libremente por esta"
+                        + "\nventana y diviértete";
+        txtAreaTexto.setText(parrafo);
+        
+    }//fin initComp
+   
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,22 +97,227 @@ public class frmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBiblioteca = new javax.swing.JButton();
+        btnPizarra = new javax.swing.JButton();
+        panelBiblioteca = new javax.swing.JPanel();
+        panelPizarra = new javax.swing.JPanel();
+        panelNota = new FondoPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtAreaTexto = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menú Principal");
         setResizable(false);
+
+        btnBiblioteca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBiblioteca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/derecha(1).png"))); // NOI18N
+        btnBiblioteca.setText("Biblioteca");
+        btnBiblioteca.setToolTipText("Biblioteca");
+        btnBiblioteca.setContentAreaFilled(false);
+        btnBiblioteca.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBiblioteca.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBiblioteca.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/derecha(1).png"))); // NOI18N
+        btnBiblioteca.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/derecha.png"))); // NOI18N
+        btnBiblioteca.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnBiblioteca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBibliotecaActionPerformed(evt);
+            }
+        });
+
+        btnPizarra.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPizarra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/arriba(1).png"))); // NOI18N
+        btnPizarra.setText("Minijuegos");
+        btnPizarra.setToolTipText("Pizarra");
+        btnPizarra.setContentAreaFilled(false);
+        btnPizarra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPizarra.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/arriba(1).png"))); // NOI18N
+        btnPizarra.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/arriba.png"))); // NOI18N
+        btnPizarra.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnPizarra.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPizarra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPizarraMouseEntered(evt);
+            }
+        });
+        btnPizarra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPizarraActionPerformed(evt);
+            }
+        });
+
+        panelBiblioteca.setBackground(new java.awt.Color(255, 153, 153));
+        panelBiblioteca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelBibliotecaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelBibliotecaMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelBibliotecaLayout = new javax.swing.GroupLayout(panelBiblioteca);
+        panelBiblioteca.setLayout(panelBibliotecaLayout);
+        panelBibliotecaLayout.setHorizontalGroup(
+            panelBibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 163, Short.MAX_VALUE)
+        );
+        panelBibliotecaLayout.setVerticalGroup(
+            panelBibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 347, Short.MAX_VALUE)
+        );
+
+        panelPizarra.setBackground(new java.awt.Color(204, 255, 204));
+        panelPizarra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelPizarraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelPizarraMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelPizarraLayout = new javax.swing.GroupLayout(panelPizarra);
+        panelPizarra.setLayout(panelPizarraLayout);
+        panelPizarraLayout.setHorizontalGroup(
+            panelPizarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 223, Short.MAX_VALUE)
+        );
+        panelPizarraLayout.setVerticalGroup(
+            panelPizarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 135, Short.MAX_VALUE)
+        );
+
+        txtAreaTexto.setEditable(false);
+        txtAreaTexto.setBackground(new java.awt.Color(240, 240, 240));
+        txtAreaTexto.setColumns(20);
+        txtAreaTexto.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        txtAreaTexto.setRows(5);
+        jScrollPane1.setViewportView(txtAreaTexto);
+
+        javax.swing.GroupLayout panelNotaLayout = new javax.swing.GroupLayout(panelNota);
+        panelNota.setLayout(panelNotaLayout);
+        panelNotaLayout.setHorizontalGroup(
+            panelNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNotaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        panelNotaLayout.setVerticalGroup(
+            panelNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNotaLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
+        );
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 807, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnPizarra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelPizarra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 512, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(78, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(panelPizarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPizarra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(panelNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(btnBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addComponent(panelBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBibliotecaActionPerformed
+          
+          frmPizarra formulario = new frmPizarra(); 
+          formulario.setVisible(true); 
+          this.dispose();
+        //  this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            
+          
+    }//GEN-LAST:event_btnBibliotecaActionPerformed
+
+    private void panelPizarraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPizarraMouseEntered
+      
+         String parrafo = "Al hacer clic en el pizarrón"
+                        + "\npuedes jugar minijuegos muy"
+                        + "\ndivertidos que pondrán a "
+                        + "\nprueba tu conocimiento."
+                        + "\n¿Crees estar listo para el"
+                        + "\nreto?";
+        txtAreaTexto.setText(parrafo);
+        
+    }//GEN-LAST:event_panelPizarraMouseEntered
+
+    private void panelPizarraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPizarraMouseExited
+        
+        inicializarComponentes();
+        
+    }//GEN-LAST:event_panelPizarraMouseExited
+
+    private void panelBibliotecaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBibliotecaMouseEntered
+        String parrafo =  "Cuando vas a la biblioteca "
+                        + "\ntienes la oportunidad de"
+                        + "\nreforzar los conocimientos"
+                        + "\nnecesarios para pasarte los"
+                        + "\nminijuegos."
+                        + "\nRepasa tus lecciones y obtén"
+                        + "\nel mejor puntaje.";
+                        
+        txtAreaTexto.setText(parrafo);
+    }//GEN-LAST:event_panelBibliotecaMouseEntered
+
+    private void panelBibliotecaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBibliotecaMouseExited
+        
+        inicializarComponentes();
+        
+    }//GEN-LAST:event_panelBibliotecaMouseExited
+
+    private void btnPizarraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPizarraMouseEntered
+        
+    }//GEN-LAST:event_btnPizarraMouseEntered
+
+    private void btnPizarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPizarraActionPerformed
+       
+          
+    }//GEN-LAST:event_btnPizarraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +355,13 @@ public class frmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBiblioteca;
+    private javax.swing.JButton btnPizarra;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelBiblioteca;
+    private javax.swing.JPanel panelNota;
+    private javax.swing.JPanel panelPizarra;
+    private javax.swing.JTextArea txtAreaTexto;
     // End of variables declaration//GEN-END:variables
 }
