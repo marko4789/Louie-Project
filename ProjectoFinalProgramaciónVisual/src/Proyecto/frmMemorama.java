@@ -56,7 +56,10 @@ public class frmMemorama extends javax.swing.JFrame {
     private ImageIcon im2;
     private JButton[] pbtn = new JButton[2];
     private boolean primerc = false;
-    private int puntaje = 0;
+    private Integer puntaje = 0;
+    int i = 0;
+    
+    Timer timer;
     
     public Timer t;
     public int m, s, cs;
@@ -77,14 +80,20 @@ public class frmMemorama extends javax.swing.JFrame {
             if (m == 1) {
                 tiempo(m);
             }
+            
         }
     };
+    
+    
+    
     /**
      * Creates new form frmMemorama
      */
     public frmMemorama() {
         initComponents();
+        
         t = new Timer(10, acciones);
+        
         iniciar();
     }
 
@@ -118,7 +127,6 @@ public class frmMemorama extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1025, 700));
 
         btnC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
         btnC1.setBorder(null);
@@ -422,9 +430,11 @@ public class frmMemorama extends javax.swing.JFrame {
             caraUp = true;
             primerc = false;
         } else {
-            btn.setEnabled(false);
+            
+            
             im2 = (ImageIcon) btn.getDisabledIcon();
             pbtn[1] = btn;
+            pbtn[1].setEnabled(false);
             primerc = true;
             puntaje += 20;
             pregwin();
@@ -451,9 +461,15 @@ public class frmMemorama extends javax.swing.JFrame {
             if (caraUp && primerc) {
                 
                 if (im1.getDescription().compareTo(im2.getDescription()) != 0) {
-                    
                     pbtn[0].setEnabled(true);
-                    pbtn[1].setEnabled(true);
+                    timer = new Timer( 1000, new ActionListener(){
+                        @Override
+                        public void actionPerformed( ActionEvent e ){
+                            pbtn[1].setEnabled(true);
+                        }
+                    } );
+                    timer.setRepeats(false);
+                    timer.start();  
                     if (puntaje > 10) {
                         puntaje -= 10;
                     }
@@ -463,6 +479,7 @@ public class frmMemorama extends javax.swing.JFrame {
                 caraUp = false;
             }
         }
+        lbPuntaje.setText(puntaje.toString());
     }
 
     public void iniciar() {
@@ -490,6 +507,7 @@ public class frmMemorama extends javax.swing.JFrame {
                 + " cronometro llegue a 01:00:00.", "Pares", 0);
         
         t.start();
+        
     }
 
     public void pregwin() {
@@ -498,6 +516,7 @@ public class frmMemorama extends javax.swing.JFrame {
                 && !btnC7.isEnabled() && !btnC8.isEnabled() && !btnC9.isEnabled() 
                 && !btnC10.isEnabled() && !btnC11.isEnabled() && !btnC12.isEnabled()) {
                 t.stop();
+                lbPuntaje.setText(puntaje.toString());
             JOptionPane.showMessageDialog(this, "¡Felicidades!, ¡Lo has logrado!\n            Puntaje: " + puntaje, "Pares",
                     0);
             
