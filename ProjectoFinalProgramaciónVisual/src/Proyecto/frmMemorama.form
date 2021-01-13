@@ -56,36 +56,36 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="btnC1" max="32767" attributes="0"/>
+                          <Component id="btnCarta1" max="32767" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnC2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCarta2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnC3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCarta3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnC4" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCarta4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="348" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="btnC9" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCarta9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="btnC10" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCarta10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnC11" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCarta11" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="btnC5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCarta5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnC6" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCarta6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnC7" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCarta7" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnC12" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnC8" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCarta12" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCarta8" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -98,24 +98,24 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnC4" max="32767" attributes="0"/>
-                      <Component id="btnC3" max="32767" attributes="0"/>
-                      <Component id="btnC2" max="32767" attributes="0"/>
-                      <Component id="btnC1" max="32767" attributes="0"/>
+                      <Component id="btnCarta4" max="32767" attributes="0"/>
+                      <Component id="btnCarta3" max="32767" attributes="0"/>
+                      <Component id="btnCarta2" max="32767" attributes="0"/>
+                      <Component id="btnCarta1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnC8" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnC7" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnC6" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnC5" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCarta8" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCarta7" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCarta6" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCarta5" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="btnC12" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnC11" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnC10" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnC9" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCarta12" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCarta11" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCarta10" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCarta9" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
@@ -123,7 +123,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnC1">
+        <Component class="javax.swing.JButton" name="btnCarta1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -139,10 +139,10 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnC2">
+        <Component class="javax.swing.JButton" name="btnCarta2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -158,10 +158,10 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnC3">
+        <Component class="javax.swing.JButton" name="btnCarta3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -177,10 +177,10 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta3ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnC4">
+        <Component class="javax.swing.JButton" name="btnCarta4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -196,10 +196,10 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta4ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnC5">
+        <Component class="javax.swing.JButton" name="btnCarta5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -215,10 +215,10 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta5ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnC6">
+        <Component class="javax.swing.JButton" name="btnCarta6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -234,10 +234,10 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta6ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnC7">
+        <Component class="javax.swing.JButton" name="btnCarta7">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -253,10 +253,10 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta7ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnC8">
+        <Component class="javax.swing.JButton" name="btnCarta8">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -272,10 +272,10 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta8ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnC9">
+        <Component class="javax.swing.JButton" name="btnCarta9">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -291,10 +291,10 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC9ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta9ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnC10">
+        <Component class="javax.swing.JButton" name="btnCarta10">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -310,10 +310,10 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC10ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta10ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnC11">
+        <Component class="javax.swing.JButton" name="btnCarta11">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -329,10 +329,10 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC11ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta11ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnC12">
+        <Component class="javax.swing.JButton" name="btnCarta12">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/f00.png"/>
@@ -348,7 +348,7 @@
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnC12ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCarta12ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -418,6 +418,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbPuntaje">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>

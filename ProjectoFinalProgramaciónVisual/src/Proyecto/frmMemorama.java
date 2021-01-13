@@ -8,8 +8,6 @@ package Proyecto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -18,68 +16,32 @@ import javax.swing.*;
  */
 public class frmMemorama extends javax.swing.JFrame {
     
-    
-    class Logica {
-        public int[] getNumeros() {
-
-            int[] numbers = new int[12];
-            int count = 0;
-
-            while(count < 12) {
-                Random r = new Random();
-                int pares = r.nextInt(6) + 1;
-                int nvr = 0;
-
-                for (int i = 0; i < 12; i++) {
-                    if(numbers[i] == pares) {
-                        nvr++;
-                    }
-                }
-                if(nvr < 2) {
-                    numbers[count] = pares;
-                    count++;
-                }//fin
-
-            }
-
-
-            return numbers;
-        }
-    }
-
-    int termina = 0;
-    int tiempo1 = 1, reg = 0;
-    int a = 0, play = 0;
-    private Logica log = new Logica();
-    private boolean caraUp = false;
-    private ImageIcon im1;
-    private ImageIcon im2;
-    private JButton[] pbtn = new JButton[2];
-    private boolean primerc = false;
+    private boolean partidaTerminada = false;
+    private int tiempoLimite = 1;
+    private boolean cartaArriba = false;
+    private ImageIcon imgCarta1;
+    private ImageIcon imgCarta2;
+    private JButton[] btnsCartaSeleccionada = new JButton[2];
+    private boolean primerCartaSeleccionada = false;
     private Integer puntaje = 0;
-    int i = 0;
-    
-    Timer timer;
-    
+    private Timer timer;
     public Timer t;
-    public int m, s, cs;
+    public int minutos, segundos, centisegundos;
     public ActionListener acciones = new ActionListener() {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            ++cs;
-            if (cs == 100) {
-                cs = 0;
-                ++s;
+            ++centisegundos;
+            if (centisegundos == 100) {
+                centisegundos = 0;
+                ++segundos;
             }
-            if (s == 60) {
-                s = 0;
-                ++m;
+            if (segundos == 60) {
+                segundos = 0;
+                ++minutos;
             }
-            actualizarLabel();
-            if (m == 1) {
-                tiempo(m);
-            }
+            actualizarTiempo();
+            verificarTiempoLimite(minutos);
             
         }
     };
@@ -94,7 +56,7 @@ public class frmMemorama extends javax.swing.JFrame {
         
         t = new Timer(10, acciones);
         
-        iniciar();
+        iniciarPartida();
     }
 
     /**
@@ -107,18 +69,18 @@ public class frmMemorama extends javax.swing.JFrame {
     private void initComponents() {
 
         panelCartas = new javax.swing.JPanel();
-        btnC1 = new javax.swing.JButton();
-        btnC2 = new javax.swing.JButton();
-        btnC3 = new javax.swing.JButton();
-        btnC4 = new javax.swing.JButton();
-        btnC5 = new javax.swing.JButton();
-        btnC6 = new javax.swing.JButton();
-        btnC7 = new javax.swing.JButton();
-        btnC8 = new javax.swing.JButton();
-        btnC9 = new javax.swing.JButton();
-        btnC10 = new javax.swing.JButton();
-        btnC11 = new javax.swing.JButton();
-        btnC12 = new javax.swing.JButton();
+        btnCarta1 = new javax.swing.JButton();
+        btnCarta2 = new javax.swing.JButton();
+        btnCarta3 = new javax.swing.JButton();
+        btnCarta4 = new javax.swing.JButton();
+        btnCarta5 = new javax.swing.JButton();
+        btnCarta6 = new javax.swing.JButton();
+        btnCarta7 = new javax.swing.JButton();
+        btnCarta8 = new javax.swing.JButton();
+        btnCarta9 = new javax.swing.JButton();
+        btnCarta10 = new javax.swing.JButton();
+        btnCarta11 = new javax.swing.JButton();
+        btnCarta12 = new javax.swing.JButton();
         panelEncabezado = new javax.swing.JPanel();
         panelLateral = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -128,147 +90,147 @@ public class frmMemorama extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC1.setBorder(null);
-        btnC1.setBorderPainted(false);
-        btnC1.setContentAreaFilled(false);
-        btnC1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC1.setFocusable(false);
-        btnC1.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta1.setBorder(null);
+        btnCarta1.setBorderPainted(false);
+        btnCarta1.setContentAreaFilled(false);
+        btnCarta1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta1.setFocusable(false);
+        btnCarta1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC1ActionPerformed(evt);
+                btnCarta1ActionPerformed(evt);
             }
         });
 
-        btnC2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC2.setBorder(null);
-        btnC2.setBorderPainted(false);
-        btnC2.setContentAreaFilled(false);
-        btnC2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC2.setFocusable(false);
-        btnC2.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta2.setBorder(null);
+        btnCarta2.setBorderPainted(false);
+        btnCarta2.setContentAreaFilled(false);
+        btnCarta2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta2.setFocusable(false);
+        btnCarta2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC2ActionPerformed(evt);
+                btnCarta2ActionPerformed(evt);
             }
         });
 
-        btnC3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC3.setBorder(null);
-        btnC3.setBorderPainted(false);
-        btnC3.setContentAreaFilled(false);
-        btnC3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC3.setFocusable(false);
-        btnC3.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta3.setBorder(null);
+        btnCarta3.setBorderPainted(false);
+        btnCarta3.setContentAreaFilled(false);
+        btnCarta3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta3.setFocusable(false);
+        btnCarta3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC3ActionPerformed(evt);
+                btnCarta3ActionPerformed(evt);
             }
         });
 
-        btnC4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC4.setBorder(null);
-        btnC4.setBorderPainted(false);
-        btnC4.setContentAreaFilled(false);
-        btnC4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC4.setFocusable(false);
-        btnC4.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta4.setBorder(null);
+        btnCarta4.setBorderPainted(false);
+        btnCarta4.setContentAreaFilled(false);
+        btnCarta4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta4.setFocusable(false);
+        btnCarta4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC4ActionPerformed(evt);
+                btnCarta4ActionPerformed(evt);
             }
         });
 
-        btnC5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC5.setBorder(null);
-        btnC5.setBorderPainted(false);
-        btnC5.setContentAreaFilled(false);
-        btnC5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC5.setFocusable(false);
-        btnC5.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta5.setBorder(null);
+        btnCarta5.setBorderPainted(false);
+        btnCarta5.setContentAreaFilled(false);
+        btnCarta5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta5.setFocusable(false);
+        btnCarta5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC5ActionPerformed(evt);
+                btnCarta5ActionPerformed(evt);
             }
         });
 
-        btnC6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC6.setBorder(null);
-        btnC6.setBorderPainted(false);
-        btnC6.setContentAreaFilled(false);
-        btnC6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC6.setFocusable(false);
-        btnC6.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta6.setBorder(null);
+        btnCarta6.setBorderPainted(false);
+        btnCarta6.setContentAreaFilled(false);
+        btnCarta6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta6.setFocusable(false);
+        btnCarta6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC6ActionPerformed(evt);
+                btnCarta6ActionPerformed(evt);
             }
         });
 
-        btnC7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC7.setBorder(null);
-        btnC7.setBorderPainted(false);
-        btnC7.setContentAreaFilled(false);
-        btnC7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC7.setFocusable(false);
-        btnC7.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta7.setBorder(null);
+        btnCarta7.setBorderPainted(false);
+        btnCarta7.setContentAreaFilled(false);
+        btnCarta7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta7.setFocusable(false);
+        btnCarta7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC7ActionPerformed(evt);
+                btnCarta7ActionPerformed(evt);
             }
         });
 
-        btnC8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC8.setBorder(null);
-        btnC8.setBorderPainted(false);
-        btnC8.setContentAreaFilled(false);
-        btnC8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC8.setFocusable(false);
-        btnC8.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta8.setBorder(null);
+        btnCarta8.setBorderPainted(false);
+        btnCarta8.setContentAreaFilled(false);
+        btnCarta8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta8.setFocusable(false);
+        btnCarta8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC8ActionPerformed(evt);
+                btnCarta8ActionPerformed(evt);
             }
         });
 
-        btnC9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC9.setBorder(null);
-        btnC9.setBorderPainted(false);
-        btnC9.setContentAreaFilled(false);
-        btnC9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC9.setFocusable(false);
-        btnC9.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta9.setBorder(null);
+        btnCarta9.setBorderPainted(false);
+        btnCarta9.setContentAreaFilled(false);
+        btnCarta9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta9.setFocusable(false);
+        btnCarta9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC9ActionPerformed(evt);
+                btnCarta9ActionPerformed(evt);
             }
         });
 
-        btnC10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC10.setBorder(null);
-        btnC10.setBorderPainted(false);
-        btnC10.setContentAreaFilled(false);
-        btnC10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC10.setFocusable(false);
-        btnC10.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta10.setBorder(null);
+        btnCarta10.setBorderPainted(false);
+        btnCarta10.setContentAreaFilled(false);
+        btnCarta10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta10.setFocusable(false);
+        btnCarta10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC10ActionPerformed(evt);
+                btnCarta10ActionPerformed(evt);
             }
         });
 
-        btnC11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC11.setBorder(null);
-        btnC11.setBorderPainted(false);
-        btnC11.setContentAreaFilled(false);
-        btnC11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC11.setFocusable(false);
-        btnC11.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta11.setBorder(null);
+        btnCarta11.setBorderPainted(false);
+        btnCarta11.setContentAreaFilled(false);
+        btnCarta11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta11.setFocusable(false);
+        btnCarta11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC11ActionPerformed(evt);
+                btnCarta11ActionPerformed(evt);
             }
         });
 
-        btnC12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
-        btnC12.setBorder(null);
-        btnC12.setBorderPainted(false);
-        btnC12.setContentAreaFilled(false);
-        btnC12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnC12.setFocusable(false);
-        btnC12.addActionListener(new java.awt.event.ActionListener() {
+        btnCarta12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
+        btnCarta12.setBorder(null);
+        btnCarta12.setBorderPainted(false);
+        btnCarta12.setContentAreaFilled(false);
+        btnCarta12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCarta12.setFocusable(false);
+        btnCarta12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnC12ActionPerformed(evt);
+                btnCarta12ActionPerformed(evt);
             }
         });
 
@@ -280,32 +242,32 @@ public class frmMemorama extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCartasLayout.createSequentialGroup()
-                        .addComponent(btnC1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCarta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnC2)
+                        .addComponent(btnCarta2)
                         .addGap(18, 18, 18)
-                        .addComponent(btnC3)
+                        .addComponent(btnCarta3)
                         .addGap(18, 18, 18)
-                        .addComponent(btnC4)
+                        .addComponent(btnCarta4)
                         .addGap(348, 348, 348))
                     .addGroup(panelCartasLayout.createSequentialGroup()
                         .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(panelCartasLayout.createSequentialGroup()
-                                .addComponent(btnC9)
+                                .addComponent(btnCarta9)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnC10)
+                                .addComponent(btnCarta10)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnC11))
+                                .addComponent(btnCarta11))
                             .addGroup(panelCartasLayout.createSequentialGroup()
-                                .addComponent(btnC5)
+                                .addComponent(btnCarta5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnC6)
+                                .addComponent(btnCarta6)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnC7)))
+                                .addComponent(btnCarta7)))
                         .addGap(18, 18, 18)
                         .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnC12)
-                            .addComponent(btnC8))
+                            .addComponent(btnCarta12)
+                            .addComponent(btnCarta8))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         panelCartasLayout.setVerticalGroup(
@@ -313,22 +275,22 @@ public class frmMemorama extends javax.swing.JFrame {
             .addGroup(panelCartasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnC4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnC3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnC2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnC1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnCarta4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCarta3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCarta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCarta1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnC8)
-                    .addComponent(btnC7)
-                    .addComponent(btnC6)
-                    .addComponent(btnC5))
+                    .addComponent(btnCarta8)
+                    .addComponent(btnCarta7)
+                    .addComponent(btnCarta6)
+                    .addComponent(btnCarta5))
                 .addGap(18, 18, 18)
                 .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnC12)
-                    .addComponent(btnC11)
-                    .addComponent(btnC10)
-                    .addComponent(btnC9))
+                    .addComponent(btnCarta12)
+                    .addComponent(btnCarta11)
+                    .addComponent(btnCarta10)
+                    .addComponent(btnCarta9))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -346,6 +308,8 @@ public class frmMemorama extends javax.swing.JFrame {
         jLabel1.setText("Puntaje:");
 
         etiquetaTiempo.setText(" ");
+
+        lbPuntaje.setText("0");
 
         jLabel2.setText("Tiempo:");
 
@@ -402,70 +366,96 @@ public class frmMemorama extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public int[] getNumeros() {
 
+        int[] numbers = new int[12];
+        int count = 0;
+
+        while(count < 12) {
+            Random r = new Random();
+            int pares = r.nextInt(6) + 1;
+            int nvr = 0;
+
+            for (int i = 0; i < 12; i++) {
+                if(numbers[i] == pares) {
+                    nvr++;
+                }
+            }
+            if(nvr < 2) {
+                numbers[count] = pares;
+                count++;
+            }//fin
+
+        }
+
+        return numbers;
+    }
+    
     public void setCards() {
-        int[] numbers = log.getNumeros();
+        int[] numbers = getNumeros();
         
         
-        btnC1.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[0] + ".png")));
-        btnC2.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[1] + ".png")));
-        btnC3.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[2] + ".png")));
-        btnC4.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[3] + ".png")));
-        btnC5.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[4] + ".png")));
-        btnC6.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[5] + ".png")));
-        btnC7.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[6] + ".png")));
-        btnC8.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[7] + ".png")));
-        btnC9.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[8] + ".png")));
-        btnC10.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[9] + ".png")));
-        btnC11.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[10] + ".png")));
-        btnC12.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[11] + ".png")));
+        btnCarta1.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[0] + ".png")));
+        btnCarta2.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[1] + ".png")));
+        btnCarta3.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[2] + ".png")));
+        btnCarta4.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[3] + ".png")));
+        btnCarta5.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[4] + ".png")));
+        btnCarta6.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[5] + ".png")));
+        btnCarta7.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[6] + ".png")));
+        btnCarta8.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[7] + ".png")));
+        btnCarta9.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[8] + ".png")));
+        btnCarta10.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[9] + ".png")));
+        btnCarta11.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[10] + ".png")));
+        btnCarta12.setDisabledIcon(new ImageIcon(getClass().getResource("/Recursos/c" + numbers[11] + ".png")));
     }
 
-    public void btnEnabled(JButton btn) {
+    public void mostrarCarta(JButton btn) {
 
-        if (!caraUp) {
-            btn.setEnabled(false);
-            im1 = (ImageIcon) btn.getDisabledIcon();
-            pbtn[0] = btn;
-            caraUp = true;
-            primerc = false;
+        if (cartaArriba) {
+            
+            imgCarta2 = (ImageIcon) btn.getDisabledIcon();
+            btnsCartaSeleccionada[1] = btn;
+            btnsCartaSeleccionada[1].setEnabled(false);
+            primerCartaSeleccionada = true;
+            puntaje += 20;
+            verificarVictoria();
+            
         } else {
             
+            btn.setEnabled(false);
+            imgCarta1 = (ImageIcon) btn.getDisabledIcon();
+            btnsCartaSeleccionada[0] = btn;
+            cartaArriba = true;
+            primerCartaSeleccionada = false;
             
-            im2 = (ImageIcon) btn.getDisabledIcon();
-            pbtn[1] = btn;
-            pbtn[1].setEnabled(false);
-            primerc = true;
-            puntaje += 20;
-            pregwin();
         }
     }
 
-    public void compare() {
-        if (termina == 1) {
-            if (caraUp && primerc) {
+    public void comparar() {
+        if (partidaTerminada) {
+            if (cartaArriba && primerCartaSeleccionada) {
 
-                if (im1.getDescription().compareTo(im2.getDescription()) != 0) {
+                if (imgCarta1.getDescription().compareTo(imgCarta2.getDescription()) != 0) {
                     
-                    pbtn[0].setEnabled(false);
-                    pbtn[1].setEnabled(false);
+                    btnsCartaSeleccionada[0].setEnabled(false);
+                    btnsCartaSeleccionada[1].setEnabled(false);
                     if (puntaje > 10) {
                         puntaje -= 10;
                     }
                 } else {
                     
                 }
-                caraUp = false;
+                cartaArriba = false;
             }
         } else {
-            if (caraUp && primerc) {
+            if (cartaArriba && primerCartaSeleccionada) {
                 
-                if (im1.getDescription().compareTo(im2.getDescription()) != 0) {
-                    pbtn[0].setEnabled(true);
+                if (imgCarta1.getDescription().compareTo(imgCarta2.getDescription()) != 0) {
+                    btnsCartaSeleccionada[0].setEnabled(true);
                     timer = new Timer( 1000, new ActionListener(){
                         @Override
                         public void actionPerformed( ActionEvent e ){
-                            pbtn[1].setEnabled(true);
+                            btnsCartaSeleccionada[1].setEnabled(true);
                         }
                     } );
                     timer.setRepeats(false);
@@ -476,31 +466,31 @@ public class frmMemorama extends javax.swing.JFrame {
                 } else {
                     
                 }
-                caraUp = false;
+                cartaArriba = false;
             }
         }
         lbPuntaje.setText(puntaje.toString());
     }
 
-    public void iniciar() {
-        termina = 0;
-        btnC1.setEnabled(true);
-        btnC1.setEnabled(true);
-        btnC3.setEnabled(true);
-        btnC4.setEnabled(true);
-        btnC5.setEnabled(true);
-        btnC6.setEnabled(true);
-        btnC7.setEnabled(true);
-        btnC8.setEnabled(true);
-        btnC9.setEnabled(true);
-        btnC10.setEnabled(true);
-        btnC11.setEnabled(true);
-        btnC12.setEnabled(true);
+    public void iniciarPartida() {
+        partidaTerminada = false;
+        btnCarta1.setEnabled(true);
+        btnCarta1.setEnabled(true);
+        btnCarta3.setEnabled(true);
+        btnCarta4.setEnabled(true);
+        btnCarta5.setEnabled(true);
+        btnCarta6.setEnabled(true);
+        btnCarta7.setEnabled(true);
+        btnCarta8.setEnabled(true);
+        btnCarta9.setEnabled(true);
+        btnCarta10.setEnabled(true);
+        btnCarta11.setEnabled(true);
+        btnCarta12.setEnabled(true);
 
         setCards();
         
-        primerc = false;
-        caraUp = false;
+        primerCartaSeleccionada = false;
+        cartaArriba = false;
         puntaje = 0;
         
         JOptionPane.showMessageDialog(null, "Ecuentra todos los pares antes de\nque el"
@@ -510,15 +500,15 @@ public class frmMemorama extends javax.swing.JFrame {
         
     }
 
-    public void pregwin() {
-        if (!btnC1.isEnabled() && !btnC2.isEnabled() && !btnC3.isEnabled() 
-                && !btnC4.isEnabled() && !btnC5.isEnabled() && !btnC6.isEnabled()
-                && !btnC7.isEnabled() && !btnC8.isEnabled() && !btnC9.isEnabled() 
-                && !btnC10.isEnabled() && !btnC11.isEnabled() && !btnC12.isEnabled()) {
-                t.stop();
-                lbPuntaje.setText(puntaje.toString());
-            JOptionPane.showMessageDialog(this, "¡Felicidades!, ¡Lo has logrado!\n            Puntaje: " + puntaje, "Pares",
-                    0);
+    public void verificarVictoria() {
+        
+        if (!btnCarta1.isEnabled() && !btnCarta2.isEnabled() && !btnCarta3.isEnabled() 
+            && !btnCarta4.isEnabled() && !btnCarta5.isEnabled() && !btnCarta6.isEnabled()
+            && !btnCarta7.isEnabled() && !btnCarta8.isEnabled() && !btnCarta9.isEnabled() 
+            && !btnCarta10.isEnabled() && !btnCarta11.isEnabled() && !btnCarta12.isEnabled()) {
+            t.stop();
+            lbPuntaje.setText(puntaje.toString());
+            JOptionPane.showMessageDialog(this, "¡Felicidades!, ¡Lo has logrado!\n            Puntaje: " + puntaje, "Pares", 0);
             
             this.dispose();
             new frmMenu().setVisible(true);
@@ -526,87 +516,87 @@ public class frmMemorama extends javax.swing.JFrame {
         }
     }
     
-    void tiempo(int x) {
-        if (x == tiempo1) {
+    void verificarTiempoLimite(int x) {
+        if (x == tiempoLimite) {
             t.stop();
             
             JOptionPane.showMessageDialog(null, "¡ Tu Tiempo Termino !", "Pares",
                     0);
-            cs = 0;
-            s = 0;
-            m = 0;
+            centisegundos = 0;
+            segundos = 0;
+            minutos = 0;
             String tiempo = ("00:00:00");
             etiquetaTiempo.setText(tiempo);
-            termina = 1;
+            partidaTerminada = true;
             this.dispose();
             new frmMenu().setVisible(true);
         }
     }
     
-    public void actualizarLabel() {
-        String tiempo = ((m <= 9 ? "0" : "") + m + ":" + (s <= 9 ? "0" : "") + s + ":" + (cs <= 9 ? "0" : "") + cs);
+    public void actualizarTiempo() {
+        String tiempo = ((minutos <= 9 ? "0" : "") + minutos + ":" + (segundos <= 9 ? "0" : "") + segundos + ":" + (centisegundos <= 9 ? "0" : "") + centisegundos);
         etiquetaTiempo.setText(tiempo);
     }
     
-    private void btnC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC1ActionPerformed
-        btnEnabled(btnC1);
-        compare();
-    }//GEN-LAST:event_btnC1ActionPerformed
+    private void btnCarta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta1ActionPerformed
+        mostrarCarta(btnCarta1);
+        comparar();
+    }//GEN-LAST:event_btnCarta1ActionPerformed
 
-    private void btnC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC2ActionPerformed
-        btnEnabled(btnC2);
-        compare();
-    }//GEN-LAST:event_btnC2ActionPerformed
+    private void btnCarta2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta2ActionPerformed
+        mostrarCarta(btnCarta2);
+        comparar();
+    }//GEN-LAST:event_btnCarta2ActionPerformed
 
-    private void btnC3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC3ActionPerformed
-        btnEnabled(btnC3);
-        compare();
-    }//GEN-LAST:event_btnC3ActionPerformed
+    private void btnCarta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta3ActionPerformed
+        mostrarCarta(btnCarta3);
+        comparar();
+    }//GEN-LAST:event_btnCarta3ActionPerformed
 
-    private void btnC4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC4ActionPerformed
-        btnEnabled(btnC4);
-        compare();
-    }//GEN-LAST:event_btnC4ActionPerformed
+    private void btnCarta4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta4ActionPerformed
+        mostrarCarta(btnCarta4);
+        comparar();
+    }//GEN-LAST:event_btnCarta4ActionPerformed
 
-    private void btnC5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC5ActionPerformed
-        btnEnabled(btnC5);
-        compare();
-    }//GEN-LAST:event_btnC5ActionPerformed
+    private void btnCarta5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta5ActionPerformed
+        mostrarCarta(btnCarta5);
+        comparar();
+    }//GEN-LAST:event_btnCarta5ActionPerformed
 
-    private void btnC6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC6ActionPerformed
-        btnEnabled(btnC6);
-        compare();
-    }//GEN-LAST:event_btnC6ActionPerformed
+    private void btnCarta6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta6ActionPerformed
+        mostrarCarta(btnCarta6);
+        comparar();
+    }//GEN-LAST:event_btnCarta6ActionPerformed
 
-    private void btnC7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC7ActionPerformed
-        btnEnabled(btnC7);
-        compare();
-    }//GEN-LAST:event_btnC7ActionPerformed
+    private void btnCarta7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta7ActionPerformed
+        mostrarCarta(btnCarta7);
+        comparar();
+    }//GEN-LAST:event_btnCarta7ActionPerformed
 
-    private void btnC8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC8ActionPerformed
-        btnEnabled(btnC8);
-        compare();
-    }//GEN-LAST:event_btnC8ActionPerformed
+    private void btnCarta8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta8ActionPerformed
+        mostrarCarta(btnCarta8);
+        comparar();
+    }//GEN-LAST:event_btnCarta8ActionPerformed
 
-    private void btnC9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC9ActionPerformed
-        btnEnabled(btnC9);
-        compare();
-    }//GEN-LAST:event_btnC9ActionPerformed
+    private void btnCarta9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta9ActionPerformed
+        mostrarCarta(btnCarta9);
+        comparar();
+    }//GEN-LAST:event_btnCarta9ActionPerformed
 
-    private void btnC10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC10ActionPerformed
-        btnEnabled(btnC10);
-        compare();
-    }//GEN-LAST:event_btnC10ActionPerformed
+    private void btnCarta10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta10ActionPerformed
+        mostrarCarta(btnCarta10);
+        comparar();
+    }//GEN-LAST:event_btnCarta10ActionPerformed
 
-    private void btnC11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC11ActionPerformed
-        btnEnabled(btnC11);
-        compare();
-    }//GEN-LAST:event_btnC11ActionPerformed
+    private void btnCarta11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta11ActionPerformed
+        mostrarCarta(btnCarta11);
+        comparar();
+    }//GEN-LAST:event_btnCarta11ActionPerformed
 
-    private void btnC12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC12ActionPerformed
-        btnEnabled(btnC12);
-        compare();
-    }//GEN-LAST:event_btnC12ActionPerformed
+    private void btnCarta12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarta12ActionPerformed
+        mostrarCarta(btnCarta12);
+        comparar();
+    }//GEN-LAST:event_btnCarta12ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -644,18 +634,18 @@ public class frmMemorama extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnC1;
-    private javax.swing.JButton btnC10;
-    private javax.swing.JButton btnC11;
-    private javax.swing.JButton btnC12;
-    private javax.swing.JButton btnC2;
-    private javax.swing.JButton btnC3;
-    private javax.swing.JButton btnC4;
-    private javax.swing.JButton btnC5;
-    private javax.swing.JButton btnC6;
-    private javax.swing.JButton btnC7;
-    private javax.swing.JButton btnC8;
-    private javax.swing.JButton btnC9;
+    private javax.swing.JButton btnCarta1;
+    private javax.swing.JButton btnCarta10;
+    private javax.swing.JButton btnCarta11;
+    private javax.swing.JButton btnCarta12;
+    private javax.swing.JButton btnCarta2;
+    private javax.swing.JButton btnCarta3;
+    private javax.swing.JButton btnCarta4;
+    private javax.swing.JButton btnCarta5;
+    private javax.swing.JButton btnCarta6;
+    private javax.swing.JButton btnCarta7;
+    private javax.swing.JButton btnCarta8;
+    private javax.swing.JButton btnCarta9;
     private javax.swing.JLabel etiquetaTiempo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
