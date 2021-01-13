@@ -67,6 +67,8 @@ public class frmMenu extends javax.swing.JFrame {
         panelPizarra.setOpaque(false);
         panelBiblioteca.setOpaque(false);
         
+        etiMinijuegos.setVisible(false);
+        etiBiblioteca.setVisible(false);
     }//fin btnTransparencia
     
     public void inicializarComponentes(){
@@ -100,7 +102,10 @@ public class frmMenu extends javax.swing.JFrame {
         btnBiblioteca = new javax.swing.JButton();
         btnPizarra = new javax.swing.JButton();
         panelBiblioteca = new javax.swing.JPanel();
+        etiBiblioteca = new javax.swing.JLabel();
         panelPizarra = new javax.swing.JPanel();
+        etiMinijuegos = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         panelNota = new FondoPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaTexto = new javax.swing.JTextArea();
@@ -109,6 +114,7 @@ public class frmMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú Principal");
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBiblioteca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnBiblioteca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/derecha(1).png"))); // NOI18N
@@ -125,6 +131,7 @@ public class frmMenu extends javax.swing.JFrame {
                 btnBibliotecaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(613, 249, 217, 201));
 
         btnPizarra.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnPizarra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/arriba(1).png"))); // NOI18N
@@ -146,9 +153,13 @@ public class frmMenu extends javax.swing.JFrame {
                 btnPizarraActionPerformed(evt);
             }
         });
+        getContentPane().add(btnPizarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 352, 207, 242));
 
         panelBiblioteca.setBackground(new java.awt.Color(255, 153, 153));
         panelBiblioteca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelBibliotecaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelBibliotecaMouseEntered(evt);
             }
@@ -156,20 +167,18 @@ public class frmMenu extends javax.swing.JFrame {
                 panelBibliotecaMouseExited(evt);
             }
         });
+        panelBiblioteca.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelBibliotecaLayout = new javax.swing.GroupLayout(panelBiblioteca);
-        panelBiblioteca.setLayout(panelBibliotecaLayout);
-        panelBibliotecaLayout.setHorizontalGroup(
-            panelBibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 163, Short.MAX_VALUE)
-        );
-        panelBibliotecaLayout.setVerticalGroup(
-            panelBibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
-        );
+        etiBiblioteca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/logo_biblioteca.png"))); // NOI18N
+        panelBiblioteca.add(etiBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, -1));
+
+        getContentPane().add(panelBiblioteca, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, -1, 310));
 
         panelPizarra.setBackground(new java.awt.Color(204, 255, 204));
         panelPizarra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelPizarraMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelPizarraMouseEntered(evt);
             }
@@ -177,17 +186,18 @@ public class frmMenu extends javax.swing.JFrame {
                 panelPizarraMouseExited(evt);
             }
         });
+        panelPizarra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelPizarraLayout = new javax.swing.GroupLayout(panelPizarra);
-        panelPizarra.setLayout(panelPizarraLayout);
-        panelPizarraLayout.setHorizontalGroup(
-            panelPizarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 223, Short.MAX_VALUE)
-        );
-        panelPizarraLayout.setVerticalGroup(
-            panelPizarraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 135, Short.MAX_VALUE)
-        );
+        etiMinijuegos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/logo_minijuego.png"))); // NOI18N
+        panelPizarra.add(etiMinijuegos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 67, -1, -1));
+
+        getContentPane().add(panelPizarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/louie.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, -1, -1));
+
+        panelNota.setBackground(new java.awt.Color(102, 255, 102));
+        panelNota.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAreaTexto.setEditable(false);
         txtAreaTexto.setBackground(new java.awt.Color(240, 240, 240));
@@ -196,77 +206,19 @@ public class frmMenu extends javax.swing.JFrame {
         txtAreaTexto.setRows(5);
         jScrollPane1.setViewportView(txtAreaTexto);
 
-        javax.swing.GroupLayout panelNotaLayout = new javax.swing.GroupLayout(panelNota);
-        panelNota.setLayout(panelNotaLayout);
-        panelNotaLayout.setHorizontalGroup(
-            panelNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelNotaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
-        panelNotaLayout.setVerticalGroup(
-            panelNotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelNotaLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
-        );
+        panelNota.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 237, 212));
+
+        getContentPane().add(panelNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 181, 290, 250));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/logo.png"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnPizarra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelPizarra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(78, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(panelPizarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPizarra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(panelNota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(btnBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(panelBiblioteca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBibliotecaActionPerformed
           
-          frmPizarra formulario = new frmPizarra(); 
+          frmBiblioteca formulario = new frmBiblioteca(); 
           formulario.setVisible(true); 
           this.dispose();
         //  this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -283,6 +235,8 @@ public class frmMenu extends javax.swing.JFrame {
                         + "\n¿Crees estar listo para el"
                         + "\nreto?";
         txtAreaTexto.setText(parrafo);
+        etiMinijuegos.setVisible(true);
+      
         
     }//GEN-LAST:event_panelPizarraMouseEntered
 
@@ -302,6 +256,7 @@ public class frmMenu extends javax.swing.JFrame {
                         + "\nel mejor puntaje.";
                         
         txtAreaTexto.setText(parrafo);
+          etiBiblioteca.setVisible(true);
     }//GEN-LAST:event_panelBibliotecaMouseEntered
 
     private void panelBibliotecaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBibliotecaMouseExited
@@ -316,8 +271,23 @@ public class frmMenu extends javax.swing.JFrame {
 
     private void btnPizarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPizarraActionPerformed
        
-          
+          frmMenuMinijuegos mini = new frmMenuMinijuegos();
+          mini.setVisible(true);
+          this.dispose();
     }//GEN-LAST:event_btnPizarraActionPerformed
+
+    private void panelPizarraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPizarraMouseClicked
+        
+          frmMenuMinijuegos mini = new frmMenuMinijuegos();
+          mini.setVisible(true);
+          this.dispose();
+    }//GEN-LAST:event_panelPizarraMouseClicked
+
+    private void panelBibliotecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBibliotecaMouseClicked
+          frmBiblioteca formulario = new frmBiblioteca(); 
+          formulario.setVisible(true); 
+          this.dispose();
+    }//GEN-LAST:event_panelBibliotecaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -357,7 +327,10 @@ public class frmMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBiblioteca;
     private javax.swing.JButton btnPizarra;
+    private javax.swing.JLabel etiBiblioteca;
+    private javax.swing.JLabel etiMinijuegos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelBiblioteca;
     private javax.swing.JPanel panelNota;

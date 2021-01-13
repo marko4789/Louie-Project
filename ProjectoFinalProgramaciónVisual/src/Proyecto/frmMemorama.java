@@ -5,6 +5,8 @@
  */
 package Proyecto;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -82,11 +84,53 @@ public class frmMemorama extends javax.swing.JFrame {
     /**
      * Creates new form frmMemorama
      */
+    
+    //instancia de fondo
+     Fondo fondo = new Fondo();
+     
     public frmMemorama() {
+        this.setContentPane(fondo);
         initComponents();
         t = new Timer(10, acciones);
         iniciar();
+        transparencia();
+        
     }
+    
+     class Fondo extends JPanel{    
+            private Image img; 
+            @Override
+            public void paint(Graphics g){   
+                img = new ImageIcon(getClass().getResource("/Recursos/pizarra_3.jpg")).getImage();
+                g.drawImage(img, 0, 0, getWidth(), getHeight(),this);
+                setOpaque(false);
+                super.paint(g);
+            }//fin paint     
+    }//fin fondo
+     
+     class FondoPanel extends JPanel{    
+            private Image img; 
+            @Override
+            public void paint(Graphics g){   
+                img = new ImageIcon(getClass().getResource("/Recursos/marco_lineas.png")).getImage();
+                g.drawImage(img, 0, 0, getWidth(), getHeight(),this);
+                setOpaque(false);
+                super.paint(g);
+            }//fin paint     
+    }//fin fondo
+     
+     public void transparencia(){
+        panelCartas.setOpaque(false);
+        panelEncabezado.setOpaque(false);
+        panelLateral.setOpaque(false);
+        btnInfo.setOpaque(false);
+        btnInfo.setBorderPainted(false);
+        btnInfo.setContentAreaFilled(false);
+        
+        etiMensaje.setVisible(false);
+        panelInfo.setVisible(false);
+        
+     }//fin transparencia
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -111,14 +155,21 @@ public class frmMemorama extends javax.swing.JFrame {
         btnC11 = new javax.swing.JButton();
         btnC12 = new javax.swing.JButton();
         panelEncabezado = new javax.swing.JPanel();
-        panelLateral = new javax.swing.JPanel();
+        etiEncabezado = new javax.swing.JLabel();
+        btnInfo = new javax.swing.JButton();
+        panelLateral = new FondoPanel();
         jLabel1 = new javax.swing.JLabel();
         etiquetaTiempo = new javax.swing.JLabel();
         lbPuntaje = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        panelInfo = new javax.swing.JPanel();
+        etiMensaje = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1025, 700));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelCartas.setBackground(new java.awt.Color(255, 102, 255));
 
         btnC1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/f00.png"))); // NOI18N
         btnC1.setBorder(null);
@@ -126,6 +177,11 @@ public class frmMemorama extends javax.swing.JFrame {
         btnC1.setContentAreaFilled(false);
         btnC1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnC1.setFocusable(false);
+        btnC1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnC1MouseExited(evt);
+            }
+        });
         btnC1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnC1ActionPerformed(evt);
@@ -272,73 +328,108 @@ public class frmMemorama extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCartasLayout.createSequentialGroup()
+                        .addComponent(btnC9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnC10)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnC11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnC12)
+                        .addGap(14, 14, 14)
+                        .addComponent(btnC4)
+                        .addGap(18, 18, 18)
                         .addComponent(btnC1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(115, 115, 115))
+                    .addGroup(panelCartasLayout.createSequentialGroup()
+                        .addComponent(btnC5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnC6)
                         .addGap(18, 18, 18)
-                        .addComponent(btnC2)
-                        .addGap(18, 18, 18)
+                        .addComponent(btnC7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnC8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnC3)
                         .addGap(18, 18, 18)
-                        .addComponent(btnC4)
-                        .addGap(348, 348, 348))
-                    .addGroup(panelCartasLayout.createSequentialGroup()
-                        .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(panelCartasLayout.createSequentialGroup()
-                                .addComponent(btnC9)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnC10)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnC11))
-                            .addGroup(panelCartasLayout.createSequentialGroup()
-                                .addComponent(btnC5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnC6)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnC7)))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnC12)
-                            .addComponent(btnC8))
+                        .addComponent(btnC2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         panelCartasLayout.setVerticalGroup(
             panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCartasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnC4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnC3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnC2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnC1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
                 .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnC8)
-                    .addComponent(btnC7)
+                    .addComponent(btnC5)
                     .addComponent(btnC6)
-                    .addComponent(btnC5))
-                .addGap(18, 18, 18)
-                .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnC12)
-                    .addComponent(btnC11)
+                    .addComponent(btnC7)
+                    .addComponent(btnC8)
+                    .addComponent(btnC3)
+                    .addComponent(btnC2))
+                .addGap(35, 35, 35)
+                .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnC10)
-                    .addComponent(btnC9))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(btnC9)
+                    .addComponent(btnC11)
+                    .addComponent(btnC12)
+                    .addComponent(btnC4)
+                    .addComponent(btnC1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getContentPane().add(panelCartas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 983, -1));
+
+        panelEncabezado.setBackground(new java.awt.Color(255, 153, 153));
+
+        etiEncabezado.setFont(new java.awt.Font("Sylfaen", 1, 48)); // NOI18N
+        etiEncabezado.setForeground(new java.awt.Color(255, 255, 255));
+        etiEncabezado.setText("Memorama");
 
         javax.swing.GroupLayout panelEncabezadoLayout = new javax.swing.GroupLayout(panelEncabezado);
         panelEncabezado.setLayout(panelEncabezadoLayout);
         panelEncabezadoLayout.setHorizontalGroup(
             panelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEncabezadoLayout.createSequentialGroup()
+                .addGap(402, 402, 402)
+                .addComponent(etiEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(398, 398, 398))
         );
         panelEncabezadoLayout.setVerticalGroup(
             panelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 42, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEncabezadoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(etiEncabezado)
+                .addContainerGap())
         );
 
+        getContentPane().add(panelEncabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1003, 60));
+
+        btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/info_50.png"))); // NOI18N
+        btnInfo.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/info_50.png"))); // NOI18N
+        btnInfo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/info_50_light.png"))); // NOI18N
+        btnInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 50, 50));
+
+        panelLateral.setBackground(new java.awt.Color(51, 255, 51));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Puntaje:");
 
-        etiquetaTiempo.setText(" ");
+        etiquetaTiempo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        etiquetaTiempo.setForeground(new java.awt.Color(255, 255, 255));
+        etiquetaTiempo.setText("---");
 
+        lbPuntaje.setBackground(new java.awt.Color(255, 255, 255));
+        lbPuntaje.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbPuntaje.setForeground(new java.awt.Color(255, 255, 255));
+        lbPuntaje.setText("---");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tiempo:");
 
         javax.swing.GroupLayout panelLateralLayout = new javax.swing.GroupLayout(panelLateral);
@@ -346,51 +437,58 @@ public class frmMemorama extends javax.swing.JFrame {
         panelLateralLayout.setHorizontalGroup(
             panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLateralLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addGap(93, 93, 93)
                 .addGroup(panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(etiquetaTiempo, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(lbPuntaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(173, 173, 173))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGroup(panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(etiquetaTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLateralLayout.setVerticalGroup(
             panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLateralLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lbPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(etiquetaTiempo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelCartas, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+        getContentPane().add(panelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 350, -1));
+
+        panelInfo.setBackground(new java.awt.Color(232, 245, 159));
+        panelInfo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        etiMensaje.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        etiMensaje.setForeground(new java.awt.Color(102, 102, 102));
+        etiMensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiMensaje.setText("¡Encuentra los pares lo más rápido que puedas!");
+
+        javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
+        panelInfo.setLayout(panelInfoLayout);
+        panelInfoLayout.setHorizontalGroup(
+            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(etiMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(40, 40, 40))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(panelEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelCartas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelLateral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+        panelInfoLayout.setVerticalGroup(
+            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(etiMensaje)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
+
+        getContentPane().add(panelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 510, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -423,6 +521,7 @@ public class frmMemorama extends javax.swing.JFrame {
             primerc = false;
         } else {
             btn.setEnabled(false);
+            
             im2 = (ImageIcon) btn.getDisabledIcon();
             pbtn[1] = btn;
             primerc = true;
@@ -486,10 +585,12 @@ public class frmMemorama extends javax.swing.JFrame {
         caraUp = false;
         puntaje = 0;
         
-        JOptionPane.showMessageDialog(null, "Ecuentra todos los pares antes de\nque el"
-                + " cronometro llegue a 01:00:00.", "Pares", 0);
-        
         t.start();
+      
+     /*   JOptionPane.showMessageDialog(null, "Encuentra todos los pares antes de\nque el"
+                + " cronometro llegue a 01:00.", "Pares", 0);
+       */
+        
     }
 
     public void pregwin() {
@@ -531,7 +632,7 @@ public class frmMemorama extends javax.swing.JFrame {
     
     private void btnC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC1ActionPerformed
         btnEnabled(btnC1);
-        compare();
+        
     }//GEN-LAST:event_btnC1ActionPerformed
 
     private void btnC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnC2ActionPerformed
@@ -589,6 +690,42 @@ public class frmMemorama extends javax.swing.JFrame {
         compare();
     }//GEN-LAST:event_btnC12ActionPerformed
 
+    private void btnC1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnC1MouseExited
+        compare();
+    }//GEN-LAST:event_btnC1MouseExited
+    
+    class Mensaje extends Thread{
+    
+        @Override
+            
+        public void run(){
+            
+            try {
+                etiMensaje.setText("Toca la carta para ver su contenido");
+                Thread.sleep(3000);
+
+                etiMensaje.setText("Encuentra todos los pares y gana");
+                Thread.sleep(3000);
+                etiMensaje.setVisible(false);
+                panelInfo.setVisible(false);
+                
+            } catch (InterruptedException ex) {
+              Logger.getLogger(frmMemorama.class.getName()).log(Level.SEVERE, null, ex);
+        }//fin catch
+            
+        }//fin run
+    }//fin clase
+
+    private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
+      
+       etiMensaje.setVisible(true);
+       panelInfo.setVisible(true);
+       Runnable mensaje = new Mensaje();
+       Thread hiloMensaje = new Thread(mensaje);
+       hiloMensaje.start();
+        
+    }//GEN-LAST:event_btnInfoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -637,12 +774,16 @@ public class frmMemorama extends javax.swing.JFrame {
     private javax.swing.JButton btnC7;
     private javax.swing.JButton btnC8;
     private javax.swing.JButton btnC9;
+    private javax.swing.JButton btnInfo;
+    private javax.swing.JLabel etiEncabezado;
+    private javax.swing.JLabel etiMensaje;
     private javax.swing.JLabel etiquetaTiempo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbPuntaje;
     private javax.swing.JPanel panelCartas;
     private javax.swing.JPanel panelEncabezado;
+    private javax.swing.JPanel panelInfo;
     private javax.swing.JPanel panelLateral;
     // End of variables declaration//GEN-END:variables
 }
