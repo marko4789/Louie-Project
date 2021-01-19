@@ -100,7 +100,6 @@ public class frmInicioSesion extends javax.swing.JFrame {
         try {
             
             if(resultados.getRow() != 0){
-                System.out.println(resultados.getRow());
                 return true;
             }else{
                 return false;

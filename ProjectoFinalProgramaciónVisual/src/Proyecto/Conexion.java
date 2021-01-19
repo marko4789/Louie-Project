@@ -45,6 +45,7 @@ public class Conexion {
                 
         try {
             resultados = stmt.executeQuery("SELECT * FROM " + tabla + " WHERE " + patron + ";");
+            resultados.next();
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
