@@ -114,8 +114,9 @@ public class frmInicioSesion extends javax.swing.JFrame {
     }
     
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        String strUsuario = txtUsuario.getText();
-        String strContrasena = txtContrasena.getText();
+       String strUsuario = txtUsuario.getText().toString();
+       String strContrasena = txtContrasena.getText();
+
         
         if(sonDatosCorrectos(strUsuario, strContrasena)){
             this.dispose();
