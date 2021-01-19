@@ -144,6 +144,11 @@ public class frmMemorama extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Memorama");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelCartas.setBackground(new java.awt.Color(255, 102, 255));
@@ -764,6 +769,18 @@ public class frmMemorama extends javax.swing.JFrame {
         
     }
     
+    public void cerrar(){
+        try{
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            frmMenu menu = new frmMenu();
+            menu.setVisible(true);
+            this.dispose();
+        }
+        catch(Exception e){
+            e.getMessage();
+        }
+        
+    }//fin cerrar
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
       
@@ -775,6 +792,10 @@ public class frmMemorama extends javax.swing.JFrame {
     private void btnComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComenzarActionPerformed
         iniciarPartida();
     }//GEN-LAST:event_btnComenzarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        cerrar();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
