@@ -62,12 +62,9 @@ public class frmMemorama extends javax.swing.JFrame {
     public frmMemorama() {
         this.setContentPane(fondo);
         initComponents();
-        
-        t = new Timer(10, acciones);
         transparencia();
         
-        
-        iniciarPartida();
+        deshabilitarCartas();
     }
     
      class Fondo extends JPanel{    
@@ -133,6 +130,7 @@ public class frmMemorama extends javax.swing.JFrame {
         panelEncabezado = new javax.swing.JPanel();
         etiEncabezado = new javax.swing.JLabel();
         btnInfo = new javax.swing.JButton();
+        btnComenzar = new javax.swing.JButton();
         panelLateral = new FondoPanel();
         jLabel1 = new javax.swing.JLabel();
         etiquetaTiempo = new javax.swing.JLabel();
@@ -145,6 +143,7 @@ public class frmMemorama extends javax.swing.JFrame {
         etiMensaje3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Memorama");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelCartas.setBackground(new java.awt.Color(255, 102, 255));
@@ -370,12 +369,21 @@ public class frmMemorama extends javax.swing.JFrame {
             }
         });
 
+        btnComenzar.setText("Comenzar");
+        btnComenzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComenzarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelEncabezadoLayout = new javax.swing.GroupLayout(panelEncabezado);
         panelEncabezado.setLayout(panelEncabezadoLayout);
         panelEncabezadoLayout.setHorizontalGroup(
             panelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEncabezadoLayout.createSequentialGroup()
-                .addGap(402, 402, 402)
+                .addGap(156, 156, 156)
+                .addComponent(btnComenzar)
+                .addGap(165, 165, 165)
                 .addComponent(etiEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(292, 292, 292)
                 .addComponent(btnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -387,7 +395,10 @@ public class frmMemorama extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etiEncabezado))
+                    .addComponent(etiEncabezado)
+                    .addGroup(panelEncabezadoLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(btnComenzar)))
                 .addContainerGap())
         );
 
@@ -523,8 +534,6 @@ public class frmMemorama extends javax.swing.JFrame {
             btnsCartaSeleccionada[1] = btn;
             btnsCartaSeleccionada[1].setEnabled(false);
             primerCartaSeleccionada = true;
-            puntaje += 20;
-            verificarVictoria();
             
         } else {
             
@@ -545,7 +554,7 @@ public class frmMemorama extends javax.swing.JFrame {
                     
                     btnsCartaSeleccionada[0].setEnabled(false);
                     btnsCartaSeleccionada[1].setEnabled(false);
-                    if (puntaje > 10) {
+                    if (puntaje >= 10) {
                         puntaje -= 10;
                     }
                 } else {
@@ -570,18 +579,19 @@ public class frmMemorama extends javax.swing.JFrame {
                         puntaje -= 10;
                     }
                 } else {
-                    
+                    puntaje += 20;
                 }
                 cartaArriba = false;
             }
         }
         lbPuntaje.setText(puntaje.toString());
+        verificarVictoria();
     }
 
     public void iniciarPartida() {
         partidaTerminada = false;
         btnCarta1.setEnabled(true);
-        btnCarta1.setEnabled(true);
+        btnCarta2.setEnabled(true);
         btnCarta3.setEnabled(true);
         btnCarta4.setEnabled(true);
         btnCarta5.setEnabled(true);
@@ -598,7 +608,12 @@ public class frmMemorama extends javax.swing.JFrame {
         primerCartaSeleccionada = false;
         cartaArriba = false;
         puntaje = 0;
-        
+        lbPuntaje.setText("--");
+        centisegundos = 0;
+        segundos = 0;
+        minutos = 0;
+            
+        t = new Timer(10, acciones);
         t.start();
         
     }
@@ -613,9 +628,6 @@ public class frmMemorama extends javax.swing.JFrame {
             lbPuntaje.setText(puntaje.toString());
             JOptionPane.showMessageDialog(this, "¡Felicidades!, ¡Lo has logrado!\n            Puntaje: " + puntaje, "Pares", 0);
             
-            this.dispose();
-            new frmMenu().setVisible(true);
-           
         }
     }
     
@@ -631,8 +643,8 @@ public class frmMemorama extends javax.swing.JFrame {
             String tiempo = ("00:00:00");
             etiquetaTiempo.setText(tiempo);
             partidaTerminada = true;
-            this.dispose();
-            new frmMenu().setVisible(true);
+            deshabilitarCartas();
+            
         }
     }
     
@@ -735,6 +747,23 @@ public class frmMemorama extends javax.swing.JFrame {
         
     }//fin clase
     
+    public void deshabilitarCartas(){
+        
+        btnCarta1.setEnabled(false);
+        btnCarta2.setEnabled(false);
+        btnCarta3.setEnabled(false);
+        btnCarta4.setEnabled(false);
+        btnCarta5.setEnabled(false);
+        btnCarta6.setEnabled(false);
+        btnCarta7.setEnabled(false);
+        btnCarta8.setEnabled(false);
+        btnCarta9.setEnabled(false);
+        btnCarta10.setEnabled(false);
+        btnCarta11.setEnabled(false);
+        btnCarta12.setEnabled(false);
+        
+    }
+    
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
       
@@ -742,6 +771,10 @@ public class frmMemorama extends javax.swing.JFrame {
       mes.start();
         
     }//GEN-LAST:event_btnInfoActionPerformed
+
+    private void btnComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComenzarActionPerformed
+        iniciarPartida();
+    }//GEN-LAST:event_btnComenzarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -791,6 +824,7 @@ public class frmMemorama extends javax.swing.JFrame {
     private javax.swing.JButton btnCarta7;
     private javax.swing.JButton btnCarta8;
     private javax.swing.JButton btnCarta9;
+    private javax.swing.JButton btnComenzar;
     private javax.swing.JButton btnInfo;
     private javax.swing.JLabel etiEncabezado;
     private javax.swing.JLabel etiMensaje;
