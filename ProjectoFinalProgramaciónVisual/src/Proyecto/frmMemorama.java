@@ -101,6 +101,9 @@ public class frmMemorama extends javax.swing.JFrame {
         btnInfo.setContentAreaFilled(false);
         
         etiMensaje.setVisible(false);
+        etiMensaje1.setVisible(false);
+        etiMensaje2.setVisible(false);
+        etiMensaje3.setVisible(false);
         panelInfo.setVisible(false);
         
      }//fin transparencia
@@ -137,9 +140,11 @@ public class frmMemorama extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         panelInfo = new javax.swing.JPanel();
         etiMensaje = new javax.swing.JLabel();
+        etiMensaje1 = new javax.swing.JLabel();
+        etiMensaje2 = new javax.swing.JLabel();
+        etiMensaje3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1025, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelCartas.setBackground(new java.awt.Color(255, 102, 255));
@@ -303,7 +308,7 @@ public class frmMemorama extends javax.swing.JFrame {
                         .addComponent(btnCarta3)
                         .addGap(18, 18, 18)
                         .addComponent(btnCarta4)
-                        .addGap(348, 348, 348))
+                        .addGap(377, 377, 377))
                     .addGroup(panelCartasLayout.createSequentialGroup()
                         .addGroup(panelCartasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(panelCartasLayout.createSequentialGroup()
@@ -345,35 +350,16 @@ public class frmMemorama extends javax.swing.JFrame {
                     .addComponent(btnCarta11)
                     .addComponent(btnCarta10)
                     .addComponent(btnCarta9))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(panelCartas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 983, -1));
+        getContentPane().add(panelCartas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 680, 610));
 
         panelEncabezado.setBackground(new java.awt.Color(255, 153, 153));
 
         etiEncabezado.setFont(new java.awt.Font("Sylfaen", 1, 48)); // NOI18N
         etiEncabezado.setForeground(new java.awt.Color(255, 255, 255));
         etiEncabezado.setText("Memorama");
-
-        javax.swing.GroupLayout panelEncabezadoLayout = new javax.swing.GroupLayout(panelEncabezado);
-        panelEncabezado.setLayout(panelEncabezadoLayout);
-        panelEncabezadoLayout.setHorizontalGroup(
-            panelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEncabezadoLayout.createSequentialGroup()
-                .addGap(402, 402, 402)
-                .addComponent(etiEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(398, 398, 398))
-        );
-        panelEncabezadoLayout.setVerticalGroup(
-            panelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEncabezadoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(etiEncabezado)
-                .addContainerGap())
-        );
-
-        getContentPane().add(panelEncabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1003, 60));
 
         btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/info_50.png"))); // NOI18N
         btnInfo.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/info_50.png"))); // NOI18N
@@ -383,7 +369,29 @@ public class frmMemorama extends javax.swing.JFrame {
                 btnInfoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 70, 50, 50));
+
+        javax.swing.GroupLayout panelEncabezadoLayout = new javax.swing.GroupLayout(panelEncabezado);
+        panelEncabezado.setLayout(panelEncabezadoLayout);
+        panelEncabezadoLayout.setHorizontalGroup(
+            panelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEncabezadoLayout.createSequentialGroup()
+                .addGap(402, 402, 402)
+                .addComponent(etiEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(292, 292, 292)
+                .addComponent(btnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
+        );
+        panelEncabezadoLayout.setVerticalGroup(
+            panelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEncabezadoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(etiEncabezado))
+                .addContainerGap())
+        );
+
+        getContentPane().add(panelEncabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1003, 60));
 
         panelLateral.setBackground(new java.awt.Color(51, 255, 51));
 
@@ -395,15 +403,10 @@ public class frmMemorama extends javax.swing.JFrame {
         etiquetaTiempo.setForeground(new java.awt.Color(255, 255, 255));
         etiquetaTiempo.setText("---");
 
-        lbPuntaje.setBackground(new java.awt.Color(255, 255, 255));
-        lbPuntaje.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbPuntaje.setForeground(new java.awt.Color(255, 255, 255));
-        lbPuntaje.setText("---");
+        lbPuntaje.setText("0");
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        lbPuntaje.setText("0");
-
         jLabel2.setText("Tiempo:");
 
         javax.swing.GroupLayout panelLateralLayout = new javax.swing.GroupLayout(panelLateral);
@@ -415,7 +418,7 @@ public class frmMemorama extends javax.swing.JFrame {
                 .addGroup(panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(panelLateralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(etiquetaTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbPuntaje, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -435,34 +438,37 @@ public class frmMemorama extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
-        getContentPane().add(panelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 350, -1));
+        getContentPane().add(panelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 70, 290, -1));
 
         panelInfo.setBackground(new java.awt.Color(232, 245, 159));
         panelInfo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         etiMensaje.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         etiMensaje.setForeground(new java.awt.Color(102, 102, 102));
         etiMensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiMensaje.setText("¡Encuentra los pares lo más rápido que puedas!");
+        etiMensaje.setText("¡Encuentra los pares lo más ");
+        panelInfo.add(etiMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 260, -1));
 
-        javax.swing.GroupLayout panelInfoLayout = new javax.swing.GroupLayout(panelInfo);
-        panelInfo.setLayout(panelInfoLayout);
-        panelInfoLayout.setHorizontalGroup(
-            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelInfoLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(etiMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
-        );
-        panelInfoLayout.setVerticalGroup(
-            panelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelInfoLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(etiMensaje)
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
+        etiMensaje1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        etiMensaje1.setForeground(new java.awt.Color(102, 102, 102));
+        etiMensaje1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiMensaje1.setText("contenido.");
+        panelInfo.add(etiMensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
-        getContentPane().add(panelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 510, 80));
+        etiMensaje2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        etiMensaje2.setForeground(new java.awt.Color(102, 102, 102));
+        etiMensaje2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiMensaje2.setText(" rápido que puedas!");
+        panelInfo.add(etiMensaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+
+        etiMensaje3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        etiMensaje3.setForeground(new java.awt.Color(102, 102, 102));
+        etiMensaje3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiMensaje3.setText("Toca las cartas para ver su");
+        panelInfo.add(etiMensaje3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        getContentPane().add(panelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 290, 230));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -706,13 +712,20 @@ public class frmMemorama extends javax.swing.JFrame {
         public void run(){
             
             try {
-                etiMensaje.setText("Toca la carta para ver su contenido");
-                Thread.sleep(3000);
-
-                etiMensaje.setText("Encuentra todos los pares y gana");
-                Thread.sleep(3000);
+                
+                etiMensaje.setVisible(true);
+                etiMensaje1.setVisible(true);
+                etiMensaje2.setVisible(true);
+                etiMensaje3.setVisible(true);
+                panelInfo.setVisible(true);
+                
+                Thread.sleep(6000);
                 etiMensaje.setVisible(false);
                 panelInfo.setVisible(false);
+                etiMensaje1.setVisible(false);
+                etiMensaje2.setVisible(false);
+                etiMensaje3.setVisible(false);
+                
             } 
             catch (InterruptedException ex) {
                 Logger.getLogger(frmMemorama.class.getName()).log(Level.SEVERE, null, ex);
@@ -721,14 +734,12 @@ public class frmMemorama extends javax.swing.JFrame {
         }//fin run
         
     }//fin clase
+    
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
       
-       etiMensaje.setVisible(true);
-       panelInfo.setVisible(true);
-       Runnable mensaje = new Mensaje();
-       Thread hiloMensaje = new Thread(mensaje);
-       hiloMensaje.start();
+      Thread mes = new Mensaje();
+      mes.start();
         
     }//GEN-LAST:event_btnInfoActionPerformed
 
@@ -780,6 +791,12 @@ public class frmMemorama extends javax.swing.JFrame {
     private javax.swing.JButton btnCarta7;
     private javax.swing.JButton btnCarta8;
     private javax.swing.JButton btnCarta9;
+    private javax.swing.JButton btnInfo;
+    private javax.swing.JLabel etiEncabezado;
+    private javax.swing.JLabel etiMensaje;
+    private javax.swing.JLabel etiMensaje1;
+    private javax.swing.JLabel etiMensaje2;
+    private javax.swing.JLabel etiMensaje3;
     private javax.swing.JLabel etiquetaTiempo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -788,8 +805,5 @@ public class frmMemorama extends javax.swing.JFrame {
     private javax.swing.JPanel panelEncabezado;
     private javax.swing.JPanel panelInfo;
     private javax.swing.JPanel panelLateral;
-    private javax.swing.JButton btnInfo;
-    private javax.swing.JLabel etiEncabezado;
-    private javax.swing.JLabel etiMensaje;
     // End of variables declaration//GEN-END:variables
 }
