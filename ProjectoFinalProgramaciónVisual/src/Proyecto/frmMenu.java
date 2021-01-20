@@ -110,6 +110,7 @@ public class frmMenu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaTexto = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú Principal");
@@ -213,6 +214,14 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/logo.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
+        jButton1.setText("Cerrar Sesión");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 530, 170, 50));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -289,6 +298,14 @@ public class frmMenu extends javax.swing.JFrame {
           this.dispose();
     }//GEN-LAST:event_panelBibliotecaMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+         frmInicioSesion formulario = new frmInicioSesion(); 
+          formulario.setVisible(true); 
+          this.dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -329,6 +346,7 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnPizarra;
     private javax.swing.JLabel etiBiblioteca;
     private javax.swing.JLabel etiMinijuegos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
