@@ -218,6 +218,11 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 btnGeografiaMouseExited(evt);
             }
         });
+        btnGeografia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGeografiaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnGeografia, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 172, 278, 72));
 
         btnHistoria.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -235,6 +240,11 @@ public class frmBiblioteca extends javax.swing.JFrame {
                 btnHistoriaMouseExited(evt);
             }
         });
+        btnHistoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoriaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 297, 278, 72));
 
         btnEspanol.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -250,6 +260,11 @@ public class frmBiblioteca extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnEspanolMouseExited(evt);
+            }
+        });
+        btnEspanol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEspanolActionPerformed(evt);
             }
         });
         getContentPane().add(btnEspanol, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 49, 278, 72));
@@ -295,6 +310,11 @@ public class frmBiblioteca extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnCienciasMouseExited(evt);
+            }
+        });
+        btnCiencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCienciasActionPerformed(evt);
             }
         });
         getContentPane().add(btnCiencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 422, 278, 72));
@@ -483,6 +503,38 @@ public class frmBiblioteca extends javax.swing.JFrame {
     private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
         btnVolver.setBounds(btnVolver.getX(), 520, 320, 100);
     }//GEN-LAST:event_btnVolverMouseExited
+
+    private void btnEspanolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEspanolActionPerformed
+        
+        /*llamar a la ventana frmLecciones, mandarle como parámetro un identificador de la
+          la materia que se eligió*/
+        frmLecciones leccion = new frmLecciones(0, "Español");
+        leccion.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnEspanolActionPerformed
+
+    private void btnGeografiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeografiaActionPerformed
+        
+        frmLecciones leccion = new frmLecciones(1, "Geografía");
+        leccion.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnGeografiaActionPerformed
+
+    private void btnHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoriaActionPerformed
+        
+        frmLecciones leccion = new frmLecciones(2, "Historia");
+        leccion.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnHistoriaActionPerformed
+
+    private void btnCienciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCienciasActionPerformed
+       
+        frmLecciones leccion = new frmLecciones(3, "Ciencias Naturales");
+        leccion.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCienciasActionPerformed
 
     /**
      * @param args the command line arguments

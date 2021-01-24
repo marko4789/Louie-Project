@@ -103,6 +103,9 @@ public class frmMemorama extends javax.swing.JFrame {
         etiMensaje3.setVisible(false);
         panelInfo.setVisible(false);
         
+        btnComenzar.setBorderPainted(false);
+        btnComenzar.setOpaque(false);
+        btnComenzar.setContentAreaFilled(false);
      }//fin transparencia
 
     /**
@@ -130,7 +133,6 @@ public class frmMemorama extends javax.swing.JFrame {
         panelEncabezado = new javax.swing.JPanel();
         etiEncabezado = new javax.swing.JLabel();
         btnInfo = new javax.swing.JButton();
-        btnComenzar = new javax.swing.JButton();
         panelLateral = new FondoPanel();
         jLabel1 = new javax.swing.JLabel();
         etiquetaTiempo = new javax.swing.JLabel();
@@ -141,6 +143,7 @@ public class frmMemorama extends javax.swing.JFrame {
         etiMensaje1 = new javax.swing.JLabel();
         etiMensaje2 = new javax.swing.JLabel();
         etiMensaje3 = new javax.swing.JLabel();
+        btnComenzar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Memorama");
@@ -374,21 +377,12 @@ public class frmMemorama extends javax.swing.JFrame {
             }
         });
 
-        btnComenzar.setText("Comenzar");
-        btnComenzar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnComenzarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelEncabezadoLayout = new javax.swing.GroupLayout(panelEncabezado);
         panelEncabezado.setLayout(panelEncabezadoLayout);
         panelEncabezadoLayout.setHorizontalGroup(
             panelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEncabezadoLayout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(btnComenzar)
-                .addGap(165, 165, 165)
+                .addGap(402, 402, 402)
                 .addComponent(etiEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(292, 292, 292)
                 .addComponent(btnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,10 +394,7 @@ public class frmMemorama extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etiEncabezado)
-                    .addGroup(panelEncabezadoLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(btnComenzar)))
+                    .addComponent(etiEncabezado))
                 .addContainerGap())
         );
 
@@ -485,6 +476,17 @@ public class frmMemorama extends javax.swing.JFrame {
         panelInfo.add(etiMensaje3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         getContentPane().add(panelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 290, 230));
+
+        btnComenzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/boton_comienza_el_juego.png"))); // NOI18N
+        btnComenzar.setToolTipText("Comenzar");
+        btnComenzar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/boton_comienza_el_juego.png"))); // NOI18N
+        btnComenzar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/boton_comienza_el_juego_light.png"))); // NOI18N
+        btnComenzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComenzarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(741, 570, 240, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
