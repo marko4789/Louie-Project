@@ -200,16 +200,39 @@ public class frmInicioSesion extends javax.swing.JFrame {
             return false;
         }
         
-    }
+    }//fin sonDatosCorrectos
+    
+     public boolean verificarAdmin(String usuario){
+        
+        Conexion conexion = new Conexion();
+        ResultSet resultados = conexion.consultarTabla("tabla_usuarios", "tipo = 'Admin' AND nombre = '"+ usuario +"' ");
+        
+        try {
+            
+            if(resultados.getRow() != 0){
+                return true;
+            }else{
+                return false;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(frmInicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+    }//fin verificarAdmin
     
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-       String strUsuario = txtUsuario.getText().toString();
+      
+        
+        String strUsuario = txtUsuario.getText().toString();
        String strContrasena = txtContrasena.getText();
-
+       
+        boolean tipo = verificarAdmin(strUsuario);
         
         if(sonDatosCorrectos(strUsuario, strContrasena)){
             this.dispose();
-            new frmMenu().setVisible(true);
+            new frmMenu(tipo).setVisible(true);
         }else{
             
             if(strUsuario.isBlank() && strContrasena.isBlank()){
