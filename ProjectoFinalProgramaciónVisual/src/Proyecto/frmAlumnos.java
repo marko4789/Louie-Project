@@ -31,52 +31,52 @@ public class frmAlumnos extends javax.swing.JFrame {
 
         dialogoAltasAlumnos = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellidoPaterno = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtApellidoMaterno = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        spnEdad = new javax.swing.JSpinner();
+        cmbSalon = new javax.swing.JComboBox<>();
+        cmbStatus = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lbID = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         dialogoConsultaAlumnos = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        txtcNombre = new javax.swing.JTextField();
+        txtcApellidoPaterno = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtcApellidoMaterno = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jSpinner2 = new javax.swing.JSpinner();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        cmbcSalon = new javax.swing.JComboBox<>();
+        cmbcStatus = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lbcID = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jTextField7 = new javax.swing.JTextField();
+        btncRegresar = new javax.swing.JButton();
+        btncLimpiar = new javax.swing.JButton();
+        txtBusqueda = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        btncActualizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        dgvInformacionAlumno = new javax.swing.JTable();
+        rdbActivo = new javax.swing.JRadioButton();
+        rdbInactivo = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuAlumnos = new javax.swing.JMenu();
         menuItemAltasAlumnos = new javax.swing.JMenuItem();
@@ -89,9 +89,9 @@ public class frmAlumnos extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        jTextField1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtApellidoPaterno.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel1.setText("Nombre(s)");
@@ -102,7 +102,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel3.setText("Apellido Materno");
 
-        jTextField3.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtApellidoMaterno.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,9 +116,9 @@ public class frmAlumnos extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField3))
+                    .addComponent(txtApellidoPaterno, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(txtNombre)
+                    .addComponent(txtApellidoMaterno))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -126,16 +126,16 @@ public class frmAlumnos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
@@ -150,20 +150,20 @@ public class frmAlumnos extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel6.setText("Status");
 
-        jSpinner1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(9, 8, 100, 1));
+        spnEdad.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        spnEdad.setModel(new javax.swing.SpinnerNumberModel(9, 8, 100, 1));
 
-        jComboBox1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A", "3B", "3C", "4A", "4B", "4C" }));
+        cmbSalon.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        cmbSalon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A", "3B", "3C", "4A", "4B", "4C" }));
 
-        jComboBox2.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        cmbStatus.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
 
         jLabel7.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel7.setText("Id_alumno");
 
-        jLabel8.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jLabel8.setText("numero");
+        lbID.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        lbID.setText("numero");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -175,22 +175,22 @@ public class frmAlumnos extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jSpinner1))
+                        .addComponent(spnEdad))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cmbStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8)))
+                        .addComponent(lbID)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -199,32 +199,32 @@ public class frmAlumnos extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(lbID))
                 .addGap(66, 66, 66)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbSalon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel9.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         jLabel9.setText("ALTA DE ALUMNOS");
 
-        jButton1.setBackground(new java.awt.Color(244, 186, 186));
-        jButton1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jButton1.setText("Regresar");
+        btnRegresar.setBackground(new java.awt.Color(244, 186, 186));
+        btnRegresar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        btnRegresar.setText("Regresar");
 
-        jButton2.setBackground(new java.awt.Color(186, 244, 185));
-        jButton2.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jButton2.setText("Agregar");
+        btnAgregar.setBackground(new java.awt.Color(186, 244, 185));
+        btnAgregar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        btnAgregar.setText("Agregar");
 
-        jButton3.setBackground(new java.awt.Color(181, 226, 255));
-        jButton3.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jButton3.setText("Limpiar");
+        btnLimpiar.setBackground(new java.awt.Color(181, 226, 255));
+        btnLimpiar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        btnLimpiar.setText("Limpiar");
 
         javax.swing.GroupLayout dialogoAltasAlumnosLayout = new javax.swing.GroupLayout(dialogoAltasAlumnos.getContentPane());
         dialogoAltasAlumnos.getContentPane().setLayout(dialogoAltasAlumnosLayout);
@@ -242,11 +242,11 @@ public class frmAlumnos extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(dialogoAltasAlumnosLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         dialogoAltasAlumnosLayout.setVerticalGroup(
@@ -260,9 +260,9 @@ public class frmAlumnos extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(dialogoAltasAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -270,9 +270,9 @@ public class frmAlumnos extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
 
-        jTextField4.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtcNombre.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
 
-        jTextField5.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtcApellidoPaterno.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel10.setText("Nombre(s)");
@@ -283,7 +283,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel12.setText("Apellido Materno");
 
-        jTextField6.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtcApellidoMaterno.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -297,9 +297,9 @@ public class frmAlumnos extends javax.swing.JFrame {
                     .addComponent(jLabel12))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField6))
+                    .addComponent(txtcApellidoPaterno, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(txtcNombre)
+                    .addComponent(txtcApellidoMaterno))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -307,16 +307,16 @@ public class frmAlumnos extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcApellidoPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtcApellidoMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
         );
 
@@ -334,17 +334,17 @@ public class frmAlumnos extends javax.swing.JFrame {
         jSpinner2.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jSpinner2.setModel(new javax.swing.SpinnerNumberModel(9, 8, 100, 1));
 
-        jComboBox3.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A", "3B", "3C", "4A", "4B", "4C" }));
+        cmbcSalon.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        cmbcSalon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A", "3B", "3C", "4A", "4B", "4C" }));
 
-        jComboBox4.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        cmbcStatus.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        cmbcStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
 
         jLabel16.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel16.setText("Id_alumno");
 
-        jLabel17.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jLabel17.setText("numero");
+        lbcID.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        lbcID.setText("numero");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -360,17 +360,17 @@ public class frmAlumnos extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cmbcSalon, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox4, 0, 108, Short.MAX_VALUE))
+                        .addComponent(cmbcStatus, 0, 108, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel17)
+                        .addComponent(lbcID)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(5, 5, 5))
         );
@@ -382,38 +382,38 @@ public class frmAlumnos extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
-                    .addComponent(jLabel17))
+                    .addComponent(lbcID))
                 .addGap(66, 66, 66)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbcSalon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jLabel18.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         jLabel18.setText("CONSULTA DE ALUMNOS");
 
-        jButton4.setBackground(new java.awt.Color(244, 186, 186));
-        jButton4.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jButton4.setText("Regresar");
+        btncRegresar.setBackground(new java.awt.Color(244, 186, 186));
+        btncRegresar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        btncRegresar.setText("Regresar");
 
-        jButton6.setBackground(new java.awt.Color(181, 226, 255));
-        jButton6.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jButton6.setText("Limpiar");
+        btncLimpiar.setBackground(new java.awt.Color(181, 226, 255));
+        btncLimpiar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        btncLimpiar.setText("Limpiar");
 
-        jTextField7.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtBusqueda.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel19.setText("Busqueda de alumnos:");
 
-        jButton7.setBackground(new java.awt.Color(186, 244, 185));
-        jButton7.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jButton7.setText("Actualizar datos");
+        btncActualizar.setBackground(new java.awt.Color(186, 244, 185));
+        btncActualizar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        btncActualizar.setText("Actualizar datos");
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        dgvInformacionAlumno.setBackground(new java.awt.Color(255, 255, 204));
+        dgvInformacionAlumno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -424,17 +424,17 @@ public class frmAlumnos extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(dgvInformacionAlumno);
 
-        jRadioButton1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Activo");
+        rdbActivo.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        rdbActivo.setSelected(true);
+        rdbActivo.setText("Activo");
 
-        jRadioButton2.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jRadioButton2.setText("Inactivo");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        rdbInactivo.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        rdbInactivo.setText("Inactivo");
+        rdbInactivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                rdbInactivoActionPerformed(evt);
             }
         });
 
@@ -457,21 +457,21 @@ public class frmAlumnos extends javax.swing.JFrame {
                             .addGap(20, 20, 20)
                             .addComponent(jLabel19)
                             .addGap(17, 17, 17)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(50, 50, 50)
-                            .addComponent(jRadioButton1)
+                            .addComponent(rdbActivo)
                             .addGap(47, 47, 47)
-                            .addComponent(jRadioButton2))
+                            .addComponent(rdbInactivo))
                         .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
                             .addGap(20, 20, 20)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
                             .addGap(20, 20, 20)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btncRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(350, 350, 350)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btncLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(10, 10, 10)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btncActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dialogoConsultaAlumnosLayout.setVerticalGroup(
@@ -482,9 +482,9 @@ public class frmAlumnos extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addGroup(dialogoConsultaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rdbActivo)
+                    .addComponent(rdbInactivo))
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
@@ -493,9 +493,9 @@ public class frmAlumnos extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(dialogoConsultaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btncRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btncLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btncActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -552,9 +552,9 @@ public class frmAlumnos extends javax.swing.JFrame {
         dialogoAltasAlumnos.setVisible(true);
     }//GEN-LAST:event_menuItemAltasAlumnosActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void rdbInactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbInactivoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_rdbInactivoActionPerformed
 
     private void menuItemConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaActionPerformed
         dialogoConsultaAlumnos.getContentPane().setBackground(Color.white);
@@ -598,18 +598,19 @@ public class frmAlumnos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnRegresar;
+    private javax.swing.JButton btncActualizar;
+    private javax.swing.JButton btncLimpiar;
+    private javax.swing.JButton btncRegresar;
+    private javax.swing.JComboBox<String> cmbSalon;
+    private javax.swing.JComboBox<String> cmbStatus;
+    private javax.swing.JComboBox<String> cmbcSalon;
+    private javax.swing.JComboBox<String> cmbcStatus;
+    private javax.swing.JTable dgvInformacionAlumno;
     private javax.swing.JDialog dialogoAltasAlumnos;
     private javax.swing.JDialog dialogoConsultaAlumnos;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -618,7 +619,6 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -627,31 +627,31 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel lbID;
+    private javax.swing.JLabel lbcID;
     private javax.swing.JMenu menuAlumnos;
     private javax.swing.JMenuItem menuItemAltaUsuarios;
     private javax.swing.JMenuItem menuItemAltasAlumnos;
     private javax.swing.JMenuItem menuItemConsulta;
     private javax.swing.JMenuItem menuItemConsultaUsuarios;
     private javax.swing.JMenu menuUsuarios;
+    private javax.swing.JRadioButton rdbActivo;
+    private javax.swing.JRadioButton rdbInactivo;
+    private javax.swing.JSpinner spnEdad;
+    private javax.swing.JTextField txtApellidoMaterno;
+    private javax.swing.JTextField txtApellidoPaterno;
+    private javax.swing.JTextField txtBusqueda;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtcApellidoMaterno;
+    private javax.swing.JTextField txtcApellidoPaterno;
+    private javax.swing.JTextField txtcNombre;
     // End of variables declaration//GEN-END:variables
 }
