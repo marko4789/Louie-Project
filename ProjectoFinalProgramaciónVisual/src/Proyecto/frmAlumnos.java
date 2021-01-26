@@ -6,6 +6,7 @@
 package Proyecto;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,6 +14,7 @@ import java.awt.Color;
  */
 public class frmAlumnos extends javax.swing.JFrame {
 
+    Conexion conexion = new Conexion();
     /**
      * Creates new form frmAlumnos
      */
@@ -221,6 +223,11 @@ public class frmAlumnos extends javax.swing.JFrame {
         btnAgregar.setBackground(new java.awt.Color(186, 244, 185));
         btnAgregar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setBackground(new java.awt.Color(181, 226, 255));
         btnLimpiar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
@@ -561,6 +568,22 @@ public class frmAlumnos extends javax.swing.JFrame {
         dialogoConsultaAlumnos.setSize(795,590);
         dialogoConsultaAlumnos.setVisible(true);
     }//GEN-LAST:event_menuItemConsultaActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        String nombres = txtNombre.getText();
+        String apellidoPaterno = txtApellidoPaterno.getText();
+        String apellidoMaterno = txtApellidoMaterno.getText();
+        String edad = spnEdad.getValue().toString();
+        String salon = cmbSalon.getItemAt(cmbSalon.getSelectedIndex());
+        
+        boolean registroExitoso = conexion.registrarAlumno(nombres, apellidoPaterno, apellidoMaterno, edad, salon);
+        
+        if (registroExitoso){
+            JOptionPane.showMessageDialog(this, "El Alumno ha sido registrado satisfactorimente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error\nEl Alumno no ha sido registrado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments

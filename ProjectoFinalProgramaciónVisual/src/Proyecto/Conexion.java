@@ -40,17 +40,28 @@ public class Conexion {
         }
     }
     
-    public ResultSet consultarTabla(String tabla, String patron){
+    public ResultSet consultarTabla(String tabla, String regla){
         ResultSet resultados = null; 
                 
         try {
-            resultados = stmt.executeQuery("SELECT * FROM " + tabla + " WHERE " + patron + ";");
+            resultados = stmt.executeQuery("SELECT * FROM " + tabla + " WHERE " + regla + ";");
             resultados.next();
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return resultados;
+    }
+    
+    public boolean registrarAlumno(String nombres, String apellidoPaterno, String apellidoMaterno, String edad, String salon){
+        String consulta = "INSERT INTO `tabla_alumnos`(`nombre`, `apellido_paterno`, `apellido_materno`, `edad`, `salon`, `status`) VALUES ('"+ nombres +"', '"+ apellidoPaterno +"', '"+ apellidoMaterno +"', "+ edad +", '"+ salon +"', 'Activo');";
+        
+        try {
+            stmt.executeUpdate(consulta);
+            return true;
+        } catch (SQLException ex) {
+            return false;
+        }
     }
     
 }
