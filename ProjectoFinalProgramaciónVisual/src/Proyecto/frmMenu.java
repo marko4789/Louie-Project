@@ -18,11 +18,22 @@ public class frmMenu extends javax.swing.JFrame {
 
     
     Fondo fondo = new Fondo();
+    boolean tipoUsuario;
     
     /**
      * Creates new form frmMenu
      */
     public frmMenu() {
+        
+        this.setContentPane(fondo);
+        initComponents();
+        inicializarComponentes();
+        
+    }//fin constructor frmMenu
+    
+    public frmMenu(boolean tipoUsuario) {
+       
+        this.tipoUsuario = tipoUsuario;
         
         this.setContentPane(fondo);
         initComponents();
@@ -69,11 +80,15 @@ public class frmMenu extends javax.swing.JFrame {
         
         etiMinijuegos.setVisible(false);
         etiBiblioteca.setVisible(false);
+        
+         btnLogout.setBackground(Color.getHSBColor(43, 41, 100));
     }//fin btnTransparencia
     
     public void inicializarComponentes(){
-       
-         transparencia();
+         
+        btnConfigAlumnos.setVisible(tipoUsuario);
+   
+        transparencia();
         
         String parrafo =  "Hola, este es el menú de"
                         + "\ninicio, cada flecha te"
@@ -110,6 +125,8 @@ public class frmMenu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaTexto = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        btnLogout = new javax.swing.JButton();
+        btnConfigAlumnos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú Principal");
@@ -194,6 +211,7 @@ public class frmMenu extends javax.swing.JFrame {
         getContentPane().add(panelPizarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/louie.png"))); // NOI18N
+        jLabel2.setToolTipText("Louie");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, -1, -1));
 
         panelNota.setBackground(new java.awt.Color(102, 255, 102));
@@ -212,6 +230,39 @@ public class frmMenu extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/logo.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+
+        btnLogout.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/logout.png"))); // NOI18N
+        btnLogout.setText("Cerrar Sesión");
+        btnLogout.setToolTipText("Cerra la sesión actual");
+        btnLogout.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLogoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLogoutMouseExited(evt);
+            }
+        });
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 530, 270, 70));
+
+        btnConfigAlumnos.setBackground(new java.awt.Color(255, 255, 204));
+        btnConfigAlumnos.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        btnConfigAlumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/config.png"))); // NOI18N
+        btnConfigAlumnos.setText("Alumnos");
+        btnConfigAlumnos.setToolTipText("Gestionar Alumnos");
+        btnConfigAlumnos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnConfigAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfigAlumnosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnConfigAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -289,6 +340,30 @@ public class frmMenu extends javax.swing.JFrame {
           this.dispose();
     }//GEN-LAST:event_panelBibliotecaMouseClicked
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        
+         frmInicioSesion formulario = new frmInicioSesion(); 
+          formulario.setVisible(true); 
+          this.dispose();
+        
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnLogoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseEntered
+        btnLogout.setBackground(Color.orange);
+    }//GEN-LAST:event_btnLogoutMouseEntered
+
+    private void btnLogoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogoutMouseExited
+          btnLogout.setBackground(Color.getHSBColor(43, 41, 100));
+    }//GEN-LAST:event_btnLogoutMouseExited
+
+    private void btnConfigAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigAlumnosActionPerformed
+        
+         frmAlumnos formulario = new frmAlumnos(); 
+         formulario.setVisible(true); 
+         this.dispose();
+        
+    }//GEN-LAST:event_btnConfigAlumnosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -326,6 +401,8 @@ public class frmMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBiblioteca;
+    private javax.swing.JButton btnConfigAlumnos;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnPizarra;
     private javax.swing.JLabel etiBiblioteca;
     private javax.swing.JLabel etiMinijuegos;
