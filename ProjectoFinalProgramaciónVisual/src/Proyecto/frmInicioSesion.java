@@ -188,7 +188,7 @@ public class frmInicioSesion extends javax.swing.JFrame {
         ResultSet resultados = conexion.consultarTabla("tabla_usuarios", "nombre = '" + usuario + "' AND contraseña = '" + contrasena + "'");
         
         try {
-            
+            resultados.next();
             if(resultados.getRow() != 0){
                 return true;
             }else{

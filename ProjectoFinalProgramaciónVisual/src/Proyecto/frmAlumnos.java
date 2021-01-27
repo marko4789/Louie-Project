@@ -6,13 +6,20 @@
 package Proyecto;
 
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author matri
  */
 public class frmAlumnos extends javax.swing.JFrame {
+    
+    String status = "Activo"; 
 
     Conexion conexion = new Conexion();
     /**
@@ -20,6 +27,8 @@ public class frmAlumnos extends javax.swing.JFrame {
      */
     public frmAlumnos() {
         initComponents();
+        limpiarAlta();
+        limpiarModificar();
     }
 
     /**
@@ -64,7 +73,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
+        spncEdad = new javax.swing.JSpinner();
         cmbcSalon = new javax.swing.JComboBox<>();
         cmbcStatus = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
@@ -92,8 +101,18 @@ public class frmAlumnos extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         txtNombre.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         txtApellidoPaterno.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtApellidoPaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoPaternoKeyTyped(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel1.setText("Nombre(s)");
@@ -105,6 +124,11 @@ public class frmAlumnos extends javax.swing.JFrame {
         jLabel3.setText("Apellido Materno");
 
         txtApellidoMaterno.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtApellidoMaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoMaternoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,12 +184,13 @@ public class frmAlumnos extends javax.swing.JFrame {
 
         cmbStatus.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        cmbStatus.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel7.setText("Id_alumno");
 
         lbID.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        lbID.setText("numero");
+        lbID.setText("0");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -187,12 +212,12 @@ public class frmAlumnos extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
-                        .addComponent(cmbStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cmbStatus, 0, 109, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbID)))
+                        .addGap(18, 18, 18)
+                        .addComponent(lbID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -219,6 +244,11 @@ public class frmAlumnos extends javax.swing.JFrame {
         btnRegresar.setBackground(new java.awt.Color(244, 186, 186));
         btnRegresar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setBackground(new java.awt.Color(186, 244, 185));
         btnAgregar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
@@ -232,6 +262,11 @@ public class frmAlumnos extends javax.swing.JFrame {
         btnLimpiar.setBackground(new java.awt.Color(181, 226, 255));
         btnLimpiar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout dialogoAltasAlumnosLayout = new javax.swing.GroupLayout(dialogoAltasAlumnos.getContentPane());
         dialogoAltasAlumnos.getContentPane().setLayout(dialogoAltasAlumnosLayout);
@@ -278,8 +313,10 @@ public class frmAlumnos extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
 
         txtcNombre.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtcNombre.setEnabled(false);
 
         txtcApellidoPaterno.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtcApellidoPaterno.setEnabled(false);
 
         jLabel10.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel10.setText("Nombre(s)");
@@ -291,6 +328,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         jLabel12.setText("Apellido Materno");
 
         txtcApellidoMaterno.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtcApellidoMaterno.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -338,14 +376,17 @@ public class frmAlumnos extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel15.setText("Status");
 
-        jSpinner2.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(9, 8, 100, 1));
+        spncEdad.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        spncEdad.setModel(new javax.swing.SpinnerNumberModel(9, 8, 100, 1));
+        spncEdad.setEnabled(false);
 
         cmbcSalon.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         cmbcSalon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3A", "3B", "3C", "4A", "4B", "4C" }));
+        cmbcSalon.setEnabled(false);
 
         cmbcStatus.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         cmbcStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        cmbcStatus.setEnabled(false);
 
         jLabel16.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel16.setText("Id_alumno");
@@ -363,7 +404,7 @@ public class frmAlumnos extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addGap(18, 18, 18)
-                        .addComponent(jSpinner2))
+                        .addComponent(spncEdad))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addGap(18, 18, 18)
@@ -387,7 +428,7 @@ public class frmAlumnos extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spncEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
                     .addComponent(lbcID))
                 .addGap(66, 66, 66)
@@ -405,12 +446,27 @@ public class frmAlumnos extends javax.swing.JFrame {
         btncRegresar.setBackground(new java.awt.Color(244, 186, 186));
         btncRegresar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         btncRegresar.setText("Regresar");
+        btncRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncRegresarActionPerformed(evt);
+            }
+        });
 
         btncLimpiar.setBackground(new java.awt.Color(181, 226, 255));
         btncLimpiar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         btncLimpiar.setText("Limpiar");
+        btncLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncLimpiarActionPerformed(evt);
+            }
+        });
 
         txtBusqueda.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBusquedaKeyTyped(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel19.setText("Busqueda de alumnos:");
@@ -418,24 +474,46 @@ public class frmAlumnos extends javax.swing.JFrame {
         btncActualizar.setBackground(new java.awt.Color(186, 244, 185));
         btncActualizar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         btncActualizar.setText("Actualizar datos");
+        btncActualizar.setEnabled(false);
+        btncActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncActualizarActionPerformed(evt);
+            }
+        });
 
         dgvInformacionAlumno.setBackground(new java.awt.Color(255, 255, 204));
         dgvInformacionAlumno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "nombre", "Apellido Paterno", "Apellido Materno", "Edad", "Salón", "status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        dgvInformacionAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dgvInformacionAlumnoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(dgvInformacionAlumno);
 
         rdbActivo.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         rdbActivo.setSelected(true);
         rdbActivo.setText("Activo");
+        rdbActivo.setEnabled(false);
+        rdbActivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbActivoActionPerformed(evt);
+            }
+        });
 
         rdbInactivo.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         rdbInactivo.setText("Inactivo");
@@ -502,7 +580,8 @@ public class frmAlumnos extends javax.swing.JFrame {
                 .addGroup(dialogoConsultaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btncRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btncLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btncActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btncActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -560,7 +639,11 @@ public class frmAlumnos extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemAltasAlumnosActionPerformed
 
     private void rdbInactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbInactivoActionPerformed
-        // TODO add your handling code here:
+        this.status = "Inactivo";
+        rdbActivo.setSelected(false);
+        rdbActivo.setEnabled(true);
+        rdbInactivo.setEnabled(false);
+        llenarTabla();
     }//GEN-LAST:event_rdbInactivoActionPerformed
 
     private void menuItemConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaActionPerformed
@@ -576,15 +659,204 @@ public class frmAlumnos extends javax.swing.JFrame {
         String edad = spnEdad.getValue().toString();
         String salon = cmbSalon.getItemAt(cmbSalon.getSelectedIndex());
         
-        boolean registroExitoso = conexion.registrarAlumno(nombres, apellidoPaterno, apellidoMaterno, edad, salon);
+        if(!nombres.equals("") && !apellidoPaterno.equals("") && !apellidoMaterno.equals("")
+            && !edad.equals("") && !salon.equals("")){
+            boolean registroExitoso = conexion.registrarAlumno(nombres, apellidoPaterno, apellidoMaterno, edad, salon);
         
-        if (registroExitoso){
-            JOptionPane.showMessageDialog(this, "El Alumno ha sido registrado satisfactorimente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            if (registroExitoso){
+                JOptionPane.showMessageDialog(this, "El Alumno ha sido registrado satisfactorimente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                limpiarAlta();
+            }else{
+                JOptionPane.showMessageDialog(this, "Ha ocurrido un error\nEl Alumno no ha sido registrado", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }else{
-            JOptionPane.showMessageDialog(this, "Ha ocurrido un error\nEl Alumno no ha sido registrado", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error\nDebe de llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        Character caracter = evt.getKeyChar();
+
+        if(caracter.toString().matches("[^A-za-z á-ñÑ]|_") || (caracter == '\b')){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoPaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoPaternoKeyTyped
+        Character caracter = evt.getKeyChar();
+
+        if(caracter.toString().matches("[^A-za-z á-ñÑ]|_") || (caracter == '\b')){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtApellidoPaternoKeyTyped
+
+    private void txtApellidoMaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoMaternoKeyTyped
+        Character caracter = evt.getKeyChar();
+
+        if(caracter.toString().matches("[^A-za-z á-ñÑ]|_") || (caracter == '\b')){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtApellidoMaternoKeyTyped
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiarAlta();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        dialogoAltasAlumnos.dispose();
+        limpiarAlta();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void rdbActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbActivoActionPerformed
+        this.status = "Activo";
+        rdbInactivo.setSelected(false);
+        rdbInactivo.setEnabled(true);
+        rdbActivo.setEnabled(false);
+        llenarTabla();
+    }//GEN-LAST:event_rdbActivoActionPerformed
+
+    private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
+        llenarTabla();
+    }//GEN-LAST:event_txtBusquedaKeyTyped
+
+    private void dgvInformacionAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dgvInformacionAlumnoMouseClicked
+        if (dgvInformacionAlumno.getSelectedRow() != -1) {
+            Integer ID = (Integer) dgvInformacionAlumno.getModel().getValueAt(dgvInformacionAlumno.getSelectedRow(), 0);
+            String nombre = (String) dgvInformacionAlumno.getModel().getValueAt(dgvInformacionAlumno.getSelectedRow(), 1);
+            String apellido_paterno = (String) dgvInformacionAlumno.getModel().getValueAt(dgvInformacionAlumno.getSelectedRow(), 2);
+            String apellido_materno = (String) dgvInformacionAlumno.getModel().getValueAt(dgvInformacionAlumno.getSelectedRow(), 3);
+            int edad = (int) dgvInformacionAlumno.getModel().getValueAt(dgvInformacionAlumno.getSelectedRow(), 4);
+            String salon = (String) dgvInformacionAlumno.getModel().getValueAt(dgvInformacionAlumno.getSelectedRow(), 5);
+            String status = (String) dgvInformacionAlumno.getModel().getValueAt(dgvInformacionAlumno.getSelectedRow(), 6);
+            
+            
+            txtcNombre.setText(nombre);
+            txtcApellidoPaterno.setText(apellido_paterno);
+            txtcApellidoMaterno.setText(apellido_materno);
+            spncEdad.setValue(edad);
+            cmbcSalon.setSelectedItem(salon);
+            cmbcStatus.setSelectedItem(status);
+            lbcID.setText(ID.toString());
+            
+            txtcNombre.setEnabled(true);
+            txtcApellidoPaterno.setEnabled(true);
+            txtcApellidoMaterno.setEnabled(true);
+            spncEdad.setEnabled(true);
+            cmbcSalon.setEnabled(true);
+            cmbcStatus.setEnabled(true);
+            btncActualizar.setEnabled(true);
+            
+        }
+    }//GEN-LAST:event_dgvInformacionAlumnoMouseClicked
+
+    private void btncActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncActualizarActionPerformed
+        String ID = lbcID.getText();
+        String nombres = txtcNombre.getText();
+        String apellidoPaterno = txtcApellidoPaterno.getText();
+        String apellidoMaterno = txtcApellidoMaterno.getText();
+        String edad = spncEdad.getValue().toString();
+        String salon = cmbcSalon.getItemAt(cmbcSalon.getSelectedIndex());
+        String status = cmbcStatus.getItemAt(cmbcStatus.getSelectedIndex());
+        
+        if(!nombres.equals("") && !apellidoPaterno.equals("") && !apellidoMaterno.equals("")
+            && !edad.equals("") && !salon.equals("")){
+            boolean registroExitoso = conexion.actualizarAlumno(ID, nombres, apellidoPaterno, apellidoMaterno, edad, salon, status);
+        
+            if (registroExitoso){
+                JOptionPane.showMessageDialog(this, "El Alumno ha sido modificadodo satisfactorimente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                llenarTabla();
+                limpiarModificar();
+                txtcNombre.setEnabled(false);
+                txtcApellidoPaterno.setEnabled(false);
+                txtcApellidoMaterno.setEnabled(false);
+                spncEdad.setEnabled(false);
+                cmbcSalon.setEnabled(false);
+                cmbcStatus.setEnabled(false);
+                btncActualizar.setEnabled(false);
+            }else{
+                JOptionPane.showMessageDialog(this, "Ha ocurrido un error\nEl Alumno no ha sido modificadodo", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error\nDebe de llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btncActualizarActionPerformed
+
+    private void btncLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncLimpiarActionPerformed
+        limpiarModificar();
+    }//GEN-LAST:event_btncLimpiarActionPerformed
+
+    private void btncRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncRegresarActionPerformed
+        dialogoConsultaAlumnos.dispose();
+        limpiarModificar();
+    }//GEN-LAST:event_btncRegresarActionPerformed
+    
+    public void limpiarAlta(){
+        
+        txtNombre.setText("");
+        txtApellidoPaterno.setText("");
+        txtApellidoMaterno.setText("");
+        spnEdad.setValue(9);
+        cmbSalon.setSelectedIndex(0);
+        
+        ResultSet resultados = conexion.consultarBD("SELECT MAX(id_alumno) AS id FROM tabla_alumnos");
+        try {
+            Integer ID = resultados.getInt("id")+1;
+            lbID.setText(ID.toString());
+        } catch (SQLException ex) {
+            Logger.getLogger(frmAlumnos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public void limpiarModificar(){
+        txtBusqueda.setText("");
+        rdbActivo.setEnabled(false);
+        rdbActivo.setSelected(true);
+        rdbInactivo.setEnabled(true);
+        rdbInactivo.setSelected(false);
+        txtcNombre.setText("");
+        txtcApellidoPaterno.setText("");
+        txtcApellidoMaterno.setText("");
+        spncEdad.setValue(9);
+        cmbcSalon.setSelectedIndex(0);
+        cmbcStatus.setSelectedIndex(0);
+        lbcID.setText("número");
+        
+        btncActualizar.setEnabled(false);
+    }
+    
+    public void llenarTabla(){
+        String buscar = "CONCAT(salon, nombre, apellido_paterno, apellido_materno)like '%" + txtBusqueda.getText() + "%' AND status = '"+this.status+"'";
+
+        ResultSet resultados = conexion.consultarTabla("tabla_alumnos", buscar);
+
+        dgvInformacionAlumno.repaint();
+
+        try {
+            DefaultTableModel modelo = (DefaultTableModel)dgvInformacionAlumno.getModel();
+            modelo.setRowCount(0);
+            
+            while(resultados.next() == true) {
+
+                int id_alumno = resultados.getInt("id_alumno");
+                String nombre = resultados.getString("nombre");
+                String apellido_paterno = resultados.getString("apellido_paterno");
+                String apellido_materno = resultados.getString("apellido_materno");
+                int edad = resultados.getInt("edad");
+                String salon = resultados.getString("salon");
+                String status = resultados.getString("status");
+
+                modelo.addRow( new Object[] {id_alumno, nombre, apellido_paterno, apellido_materno, edad, salon, status} );
+                
+            }
+
+            modelo.fireTableDataChanged();
+        } catch (SQLException ex) {
+            Logger.getLogger(frmAlumnos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -657,7 +929,6 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JLabel lbID;
     private javax.swing.JLabel lbcID;
     private javax.swing.JMenu menuAlumnos;
@@ -669,6 +940,7 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdbActivo;
     private javax.swing.JRadioButton rdbInactivo;
     private javax.swing.JSpinner spnEdad;
+    private javax.swing.JSpinner spncEdad;
     private javax.swing.JTextField txtApellidoMaterno;
     private javax.swing.JTextField txtApellidoPaterno;
     private javax.swing.JTextField txtBusqueda;
