@@ -88,6 +88,8 @@ public class frmAlumnos extends javax.swing.JFrame {
         dgvInformacionAlumno = new javax.swing.JTable();
         rdbActivo = new javax.swing.JRadioButton();
         rdbInactivo = new javax.swing.JRadioButton();
+        dialogoAltasUsuarios = new javax.swing.JDialog();
+        dialogoConsultaUsuarios = new javax.swing.JDialog();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuAlumnos = new javax.swing.JMenu();
         menuItemAltasAlumnos = new javax.swing.JMenuItem();
@@ -584,6 +586,28 @@ public class frmAlumnos extends javax.swing.JFrame {
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout dialogoAltasUsuariosLayout = new javax.swing.GroupLayout(dialogoAltasUsuarios.getContentPane());
+        dialogoAltasUsuarios.getContentPane().setLayout(dialogoAltasUsuariosLayout);
+        dialogoAltasUsuariosLayout.setHorizontalGroup(
+            dialogoAltasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        dialogoAltasUsuariosLayout.setVerticalGroup(
+            dialogoAltasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout dialogoConsultaUsuariosLayout = new javax.swing.GroupLayout(dialogoConsultaUsuarios.getContentPane());
+        dialogoConsultaUsuarios.getContentPane().setLayout(dialogoConsultaUsuariosLayout);
+        dialogoConsultaUsuariosLayout.setHorizontalGroup(
+            dialogoConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        dialogoConsultaUsuariosLayout.setVerticalGroup(
+            dialogoConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         menuAlumnos.setText("Alumnos");
@@ -905,7 +929,9 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbcStatus;
     private javax.swing.JTable dgvInformacionAlumno;
     private javax.swing.JDialog dialogoAltasAlumnos;
+    private javax.swing.JDialog dialogoAltasUsuarios;
     private javax.swing.JDialog dialogoConsultaAlumnos;
+    private javax.swing.JDialog dialogoConsultaUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
