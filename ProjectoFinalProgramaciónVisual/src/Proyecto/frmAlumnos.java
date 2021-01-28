@@ -316,9 +316,19 @@ public class frmAlumnos extends javax.swing.JFrame {
 
         txtcNombre.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         txtcNombre.setEnabled(false);
+        txtcNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcNombreKeyTyped(evt);
+            }
+        });
 
         txtcApellidoPaterno.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         txtcApellidoPaterno.setEnabled(false);
+        txtcApellidoPaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcApellidoPaternoKeyTyped(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         jLabel10.setText("Nombre(s)");
@@ -331,6 +341,11 @@ public class frmAlumnos extends javax.swing.JFrame {
 
         txtcApellidoMaterno.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
         txtcApellidoMaterno.setEnabled(false);
+        txtcApellidoMaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtcApellidoMaternoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -814,6 +829,30 @@ public class frmAlumnos extends javax.swing.JFrame {
         dialogoConsultaAlumnos.dispose();
         limpiarModificar();
     }//GEN-LAST:event_btncRegresarActionPerformed
+
+    private void txtcNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcNombreKeyTyped
+        Character caracter = evt.getKeyChar();
+
+        if(caracter.toString().matches("[^A-za-z á-ñÑ]|_") || (caracter == '\b')){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtcNombreKeyTyped
+
+    private void txtcApellidoPaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcApellidoPaternoKeyTyped
+        Character caracter = evt.getKeyChar();
+
+        if(caracter.toString().matches("[^A-za-z á-ñÑ]|_") || (caracter == '\b')){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtcApellidoPaternoKeyTyped
+
+    private void txtcApellidoMaternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcApellidoMaternoKeyTyped
+        Character caracter = evt.getKeyChar();
+
+        if(caracter.toString().matches("[^A-za-z á-ñÑ]|_") || (caracter == '\b')){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtcApellidoMaternoKeyTyped
     
     public void limpiarAlta(){
         
