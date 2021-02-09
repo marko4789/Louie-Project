@@ -2,6 +2,9 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+
+<a href='https://www.freepik.es/vectores/fondo'>Vector de Fondo 
+creado por pikisuperstar - www.freepik.es</a>
  */
 package Proyecto;
 
@@ -9,7 +12,10 @@ import javax.swing.*;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import java.awt.*;
-
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author marko
@@ -18,8 +24,7 @@ public class frmMenu extends javax.swing.JFrame {
 
     
     Fondo fondo = new Fondo();
-    boolean tipoUsuario;
-    
+    int id_usuario;
     /**
      * Creates new form frmMenu
      */
@@ -31,9 +36,8 @@ public class frmMenu extends javax.swing.JFrame {
         
     }//fin constructor frmMenu
     
-    public frmMenu(boolean tipoUsuario) {
-       
-        this.tipoUsuario = tipoUsuario;
+    public frmMenu(int id_usuario) {
+       this.id_usuario = id_usuario;
         
         this.setContentPane(fondo);
         initComponents();
@@ -85,8 +89,9 @@ public class frmMenu extends javax.swing.JFrame {
     }//fin btnTransparencia
     
     public void inicializarComponentes(){
-         
-        btnConfigAlumnos.setVisible(tipoUsuario);
+         //le puse true hasta que funcione el deste otro
+        //btnConfigAlumnos.setVisible(this.tipoUsuario);
+         btnConfigAlumnos.setVisible(verificarAdmin());
    
         transparencia();
         
@@ -99,9 +104,24 @@ public class frmMenu extends javax.swing.JFrame {
                         + "\nmuévete libremente por esta"
                         + "\nventana y diviértete";
         txtAreaTexto.setText(parrafo);
+        etiUsuario.setText(Integer.toString(id_usuario));
         
     }//fin initComp
    
+    public boolean verificarAdmin(){      
+        
+        boolean bandera = false;
+        Conexion conexion = new Conexion();
+        ResultSet resultados = conexion.consultarTabla("tabla_usuarios", "tipo = 'Administrador' AND id_usuario = "+id_usuario+" ");
+        try {         
+            if(resultados.next())
+                bandera = true;
+          
+        } catch (SQLException ex) {
+            Logger.getLogger(frmInicioSesion.class.getName()).log(Level.SEVERE, null, ex);  
+        }
+        return bandera;
+    }//fin verificarAdmin
     
     
     
@@ -127,6 +147,7 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         btnConfigAlumnos = new javax.swing.JButton();
+        etiUsuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú Principal");
@@ -264,12 +285,16 @@ public class frmMenu extends javax.swing.JFrame {
         });
         getContentPane().add(btnConfigAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 80));
 
+        etiUsuario.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        etiUsuario.setText("id_usuario");
+        getContentPane().add(etiUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBibliotecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBibliotecaActionPerformed
           
-          frmBiblioteca formulario = new frmBiblioteca(); 
+          frmBiblioteca formulario = new frmBiblioteca(id_usuario); 
           formulario.setVisible(true); 
           this.dispose();
         //  this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -322,20 +347,20 @@ public class frmMenu extends javax.swing.JFrame {
 
     private void btnPizarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPizarraActionPerformed
        
-          frmMenuMinijuegos mini = new frmMenuMinijuegos();
+          frmMenuMinijuegos mini = new frmMenuMinijuegos(id_usuario);
           mini.setVisible(true);
           this.dispose();
     }//GEN-LAST:event_btnPizarraActionPerformed
 
     private void panelPizarraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPizarraMouseClicked
         
-          frmMenuMinijuegos mini = new frmMenuMinijuegos();
+          frmMenuMinijuegos mini = new frmMenuMinijuegos(id_usuario);
           mini.setVisible(true);
           this.dispose();
     }//GEN-LAST:event_panelPizarraMouseClicked
 
     private void panelBibliotecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBibliotecaMouseClicked
-          frmBiblioteca formulario = new frmBiblioteca(); 
+          frmBiblioteca formulario = new frmBiblioteca(id_usuario); 
           formulario.setVisible(true); 
           this.dispose();
     }//GEN-LAST:event_panelBibliotecaMouseClicked
@@ -358,7 +383,7 @@ public class frmMenu extends javax.swing.JFrame {
 
     private void btnConfigAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigAlumnosActionPerformed
         
-         frmAlumnos formulario = new frmAlumnos(); 
+         frmAlumnos formulario = new frmAlumnos(id_usuario); 
          formulario.setVisible(true); 
          this.dispose();
         
@@ -406,6 +431,7 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnPizarra;
     private javax.swing.JLabel etiBiblioteca;
     private javax.swing.JLabel etiMinijuegos;
+    private javax.swing.JLabel etiUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

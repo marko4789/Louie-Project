@@ -22,10 +22,19 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
      * Creates new form frmMenuMinijuegos
      */
     Fondo fondo = new Fondo();
-    
+    int id_usuario;
     
     public frmMenuMinijuegos() {
        
+        this.setContentPane(fondo);
+        initComponents();
+        transparencia();
+        componentes();
+        
+    }
+    
+    public frmMenuMinijuegos(int id) {
+       id_usuario = id;
         this.setContentPane(fondo);
         initComponents();
         transparencia();
@@ -104,7 +113,7 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
     public void cerrar(){
         try{
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            frmMenu menu = new frmMenu();
+            frmMenu menu = new frmMenu(id_usuario);
             menu.setVisible(true);
             this.dispose();
         }
@@ -187,6 +196,11 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
 
         btnStartEs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/comenzar.png"))); // NOI18N
         btnStartEs.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/comenzar_light.png"))); // NOI18N
+        btnStartEs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartEsActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
         jPanel1.setForeground(new java.awt.Color(0, 204, 204));
@@ -243,6 +257,11 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
 
         btnStartGeo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/comenzar.png"))); // NOI18N
         btnStartGeo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/comenzar_light.png"))); // NOI18N
+        btnStartGeo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartGeoActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
         jPanel2.setForeground(new java.awt.Color(0, 204, 204));
@@ -299,6 +318,11 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
 
         btnStartHistoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/comenzar.png"))); // NOI18N
         btnStartHistoria.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/comenzar_light.png"))); // NOI18N
+        btnStartHistoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartHistoriaActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(0, 204, 204));
         jPanel3.setForeground(new java.awt.Color(0, 204, 204));
@@ -355,6 +379,11 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
 
         btnStartCiencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/comenzar.png"))); // NOI18N
         btnStartCiencias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/comenzar_light.png"))); // NOI18N
+        btnStartCiencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartCienciasActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(0, 204, 204));
         jPanel4.setForeground(new java.awt.Color(0, 204, 204));
@@ -446,6 +475,34 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
         //img = new ImageIcon(getClass().getResource("/Recursos/pizarra_2.jpg")).getImage();
         
     }//GEN-LAST:event_btnMemoramaEspActionPerformed
+
+    private void btnStartEsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartEsActionPerformed
+        frmTrivia form = new frmTrivia(1, "Español",id_usuario);
+        form.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnStartEsActionPerformed
+
+    private void btnStartGeoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGeoActionPerformed
+     
+        frmTrivia form = new frmTrivia(2, "Geografía",id_usuario);
+        form.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnStartGeoActionPerformed
+
+    private void btnStartHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartHistoriaActionPerformed
+        
+        frmTrivia form = new frmTrivia(3, "Historia",id_usuario);
+        form.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnStartHistoriaActionPerformed
+
+    private void btnStartCienciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartCienciasActionPerformed
+
+        frmTrivia form = new frmTrivia(4, "Ciencias Naturales",id_usuario);
+        form.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnStartCienciasActionPerformed
 
     /**
      * @param args the command line arguments

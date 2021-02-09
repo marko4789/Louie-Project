@@ -6,11 +6,16 @@
 package Proyecto;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,17 +25,55 @@ import javax.swing.table.DefaultTableModel;
 public class frmAlumnos extends javax.swing.JFrame {
     
     String status = "Activo"; 
+    int id_usuario;
+    Fondo fondo = new Fondo();
 
     Conexion conexion = new Conexion();
     /**
      * Creates new form frmAlumnos
      */
     public frmAlumnos() {
+        this.setContentPane(fondo);
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
+        limpiarAlta();
+        limpiarModificar();
+    }
+    
+      public frmAlumnos(int id_usuario) {
+          this.id_usuario = id_usuario;
+        this.setContentPane(fondo);
+        initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         limpiarAlta();
         limpiarModificar();
     }
 
+     //clase Fondo, sirve para ponerle un fondo al jFrame
+     class Fondo extends JPanel{    
+            private Image img; 
+            @Override
+            public void paint(Graphics g){   
+                img = new ImageIcon(getClass().getResource("/Recursos/oficina.jpg")).getImage();
+                g.drawImage(img, 0, 0, getWidth(), getHeight(),this);
+                setOpaque(false);
+                super.paint(g);
+            }//fin paint     
+    }//fin fondo
+     
+     
+      public void cerrar(){
+        try{
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            frmMenu menu = new frmMenu(id_usuario);
+            menu.setVisible(true);
+            this.dispose();
+        }
+        catch(Exception e){
+            e.getMessage();
+        }
+        
+    }//fin cerrar
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,7 +132,46 @@ public class frmAlumnos extends javax.swing.JFrame {
         rdbActivo = new javax.swing.JRadioButton();
         rdbInactivo = new javax.swing.JRadioButton();
         dialogoAltasUsuarios = new javax.swing.JDialog();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel21 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
+        jPasswordField2 = new javax.swing.JPasswordField();
+        jLabel22 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         dialogoConsultaUsuarios = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel26 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jTextField3 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel27 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jTextField4 = new javax.swing.JTextField();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jLabel28 = new javax.swing.JLabel();
+        menuEmergente = new javax.swing.JPopupMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuAlumnos = new javax.swing.JMenu();
         menuItemAltasAlumnos = new javax.swing.JMenuItem();
@@ -99,6 +181,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         menuItemConsultaUsuarios = new javax.swing.JMenuItem();
 
         dialogoAltasAlumnos.setTitle("Alta de alumnos");
+        dialogoAltasAlumnos.setModal(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -311,6 +394,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         );
 
         dialogoConsultaAlumnos.setTitle("Consulta de alumnos");
+        dialogoConsultaAlumnos.setModal(true);
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -471,7 +555,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         });
 
         jLabel19.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        jLabel19.setText("Busqueda de alumnos:");
+        jLabel19.setText("Búsqueda de alumnos:");
 
         btncActualizar.setBackground(new java.awt.Color(186, 244, 185));
         btncActualizar.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
@@ -530,85 +614,395 @@ public class frmAlumnos extends javax.swing.JFrame {
         dialogoConsultaAlumnosLayout.setHorizontalGroup(
             dialogoConsultaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
-                .addGroup(dialogoConsultaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dialogoConsultaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
-                            .addGap(236, 236, 236)
-                            .addComponent(jLabel18))
-                        .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jLabel19)
-                            .addGap(17, 17, 17)
-                            .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(50, 50, 50)
-                            .addComponent(rdbActivo)
-                            .addGap(47, 47, 47)
-                            .addComponent(rdbInactivo))
-                        .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(btncRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(350, 350, 350)
-                            .addComponent(btncLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(10, 10, 10)
-                            .addComponent(btncActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(236, 236, 236)
+                .addComponent(jLabel18))
+            .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel19)
+                .addGap(18, 18, 18)
+                .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(rdbActivo)
+                .addGap(34, 34, 34)
+                .addComponent(rdbInactivo))
+            .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(btncRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(330, 330, 330)
+                .addComponent(btncLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btncActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         dialogoConsultaAlumnosLayout.setVerticalGroup(
             dialogoConsultaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel18)
-                .addGap(52, 52, 52)
+                .addGap(17, 17, 17)
                 .addGroup(dialogoConsultaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19)
-                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel19))
+                    .addGroup(dialogoConsultaAlumnosLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(rdbActivo)
                     .addComponent(rdbInactivo))
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addGroup(dialogoConsultaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(dialogoConsultaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(dialogoConsultaAlumnosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btncRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btncLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btncActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                    .addComponent(btncActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
+
+        dialogoAltasUsuarios.setModal(true);
+
+        jPanel5.setBackground(new java.awt.Color(142, 216, 253));
+
+        jLabel8.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jLabel8.setText("Nombre de usuario");
+
+        jLabel17.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jLabel17.setText("Contraseña");
+
+        jLabel20.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jLabel20.setText("Tipo de usuario");
+
+        jComboBox1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+
+        jLabel21.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jLabel21.setText("Alumno asociado");
+
+        jComboBox2.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Administrador" }));
+
+        jTextField1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+
+        jPasswordField2.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField1)
+                    .addComponent(jPasswordField2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel20)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21)
+                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        jLabel22.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        jLabel22.setText("ALTA DE USUARIOS");
+
+        jButton1.setBackground(new java.awt.Color(204, 255, 204));
+        jButton1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jButton1.setText("Agregar");
+
+        jButton2.setBackground(new java.awt.Color(153, 204, 255));
+        jButton2.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jButton2.setText("Limpiar");
+
+        jButton3.setBackground(new java.awt.Color(255, 204, 204));
+        jButton3.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jButton3.setText("Regresar");
 
         javax.swing.GroupLayout dialogoAltasUsuariosLayout = new javax.swing.GroupLayout(dialogoAltasUsuarios.getContentPane());
         dialogoAltasUsuarios.getContentPane().setLayout(dialogoAltasUsuariosLayout);
         dialogoAltasUsuariosLayout.setHorizontalGroup(
             dialogoAltasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(dialogoAltasUsuariosLayout.createSequentialGroup()
+                .addGroup(dialogoAltasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dialogoAltasUsuariosLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogoAltasUsuariosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dialogoAltasUsuariosLayout.createSequentialGroup()
+                .addGap(211, 211, 211)
+                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(205, 205, 205))
         );
         dialogoAltasUsuariosLayout.setVerticalGroup(
             dialogoAltasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(dialogoAltasUsuariosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel22)
+                .addGap(28, 28, 28)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addGroup(dialogoAltasUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
+
+        dialogoConsultaUsuarios.setModal(true);
+
+        jPanel6.setBackground(new java.awt.Color(142, 216, 253));
+
+        jLabel23.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jLabel23.setText("Nombre de usuario");
+
+        jLabel24.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jLabel24.setText("Contraseña");
+
+        jLabel25.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jLabel25.setText("Tipo de usuario");
+
+        jComboBox3.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+
+        jLabel26.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jLabel26.setText("Alumno asociado");
+
+        jComboBox4.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumno", "Administrador" }));
+
+        jTextField3.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+
+        jPasswordField1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(jPasswordField1))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel25)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        jLabel27.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        jLabel27.setText("CONSULTA DE USUARIOS");
+
+        jButton4.setBackground(new java.awt.Color(204, 255, 204));
+        jButton4.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jButton4.setText("Actualizar datos");
+        jButton4.setEnabled(false);
+
+        jButton5.setBackground(new java.awt.Color(153, 204, 255));
+        jButton5.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jButton5.setText("Limpiar");
+
+        jButton6.setBackground(new java.awt.Color(255, 204, 204));
+        jButton6.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jButton6.setText("Regresar");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jTextField4.setFont(new java.awt.Font("Century Schoolbook", 1, 12)); // NOI18N
+
+        jRadioButton1.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("Activo");
+
+        jRadioButton2.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jRadioButton2.setText("Inactivo");
+
+        jLabel28.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        jLabel28.setText("Búsqueda de usuarios");
 
         javax.swing.GroupLayout dialogoConsultaUsuariosLayout = new javax.swing.GroupLayout(dialogoConsultaUsuarios.getContentPane());
         dialogoConsultaUsuarios.getContentPane().setLayout(dialogoConsultaUsuariosLayout);
         dialogoConsultaUsuariosLayout.setHorizontalGroup(
             dialogoConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(dialogoConsultaUsuariosLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(dialogoConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dialogoConsultaUsuariosLayout.createSequentialGroup()
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(240, 240, 240)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dialogoConsultaUsuariosLayout.createSequentialGroup()
+                        .addGroup(dialogoConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(dialogoConsultaUsuariosLayout.createSequentialGroup()
+                                .addGap(153, 153, 153)
+                                .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(dialogoConsultaUsuariosLayout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addGap(10, 10, 10)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20)
+                                .addComponent(jRadioButton1)))
+                        .addGap(27, 27, 27)
+                        .addComponent(jRadioButton2)
+                        .addGap(33, 33, 33)))
+                .addGap(20, 20, 20))
         );
         dialogoConsultaUsuariosLayout.setVerticalGroup(
             dialogoConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(dialogoConsultaUsuariosLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel27)
+                .addGap(30, 30, 30)
+                .addGroup(dialogoConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel28)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addGroup(dialogoConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        menuEmergente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jMenu1.setText("Alumnos");
+
+        jMenuItem1.setText("Alta de alumnos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem3.setText("Consulta de alumnos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        menuEmergente.add(jMenu1);
+
+        jMenu2.setText("Usuarios");
+
+        jMenuItem2.setText("Alta de usuarios");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenuItem4.setText("Consulta de usuarios");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        menuEmergente.add(jMenu2);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Administrar Alumnos y Usuarios");
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         menuAlumnos.setText("Alumnos");
 
@@ -633,9 +1027,19 @@ public class frmAlumnos extends javax.swing.JFrame {
         menuUsuarios.setText("Usuarios");
 
         menuItemAltaUsuarios.setText("Alta de usuarios");
+        menuItemAltaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAltaUsuariosActionPerformed(evt);
+            }
+        });
         menuUsuarios.add(menuItemAltaUsuarios);
 
         menuItemConsultaUsuarios.setText("Consulta de usuarios");
+        menuItemConsultaUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemConsultaUsuariosActionPerformed(evt);
+            }
+        });
         menuUsuarios.add(menuItemConsultaUsuarios);
 
         jMenuBar1.add(menuUsuarios);
@@ -646,11 +1050,11 @@ public class frmAlumnos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 775, Short.MAX_VALUE)
+            .addGap(0, 332, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 261, Short.MAX_VALUE)
         );
 
         pack();
@@ -672,7 +1076,7 @@ public class frmAlumnos extends javax.swing.JFrame {
 
     private void menuItemConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaActionPerformed
         dialogoConsultaAlumnos.getContentPane().setBackground(Color.white);
-        dialogoConsultaAlumnos.setSize(795,590);
+        dialogoConsultaAlumnos.setSize(795,630);
         dialogoConsultaAlumnos.setVisible(true);
     }//GEN-LAST:event_menuItemConsultaActionPerformed
 
@@ -686,7 +1090,11 @@ public class frmAlumnos extends javax.swing.JFrame {
         if(!nombres.equals("") && !apellidoPaterno.equals("") && !apellidoMaterno.equals("")
             && !edad.equals("") && !salon.equals("")){
             boolean registroExitoso = conexion.registrarAlumno(nombres, apellidoPaterno, apellidoMaterno, edad, salon);
-        
+           
+       /*     //lo que está en comentarios debería estar al registrar un usuario no un alumno un saludo
+            boolean puntaje = conexion.actualizarBD("INSERT INTO tabla_puntajes (memorama, id_usuario) Values (0, "+id_usuario+")");
+            boolean trivia = conexion.actualizarBD("INSERT INTO puntaje_trivia (puntaje, id_materia, id_puntajes) VALUES (0, 1,"+id_usuario+"), (0, 2,"+id_usuario+"), (0, 3,"+id_usuario+"), (0, 4,"+id_usuario+")");
+        */
             if (registroExitoso){
                 JOptionPane.showMessageDialog(this, "El Alumno ha sido registrado satisfactorimente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 limpiarAlta();
@@ -814,6 +1222,53 @@ public class frmAlumnos extends javax.swing.JFrame {
         dialogoConsultaAlumnos.dispose();
         limpiarModificar();
     }//GEN-LAST:event_btncRegresarActionPerformed
+
+    private void menuItemAltaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAltaUsuariosActionPerformed
+        
+        dialogoAltasUsuarios.getContentPane().setBackground(Color.white);
+        dialogoAltasUsuarios.setSize(700,410);
+        dialogoAltasUsuarios.setVisible(true);
+        
+    }//GEN-LAST:event_menuItemAltaUsuariosActionPerformed
+
+    private void menuItemConsultaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaUsuariosActionPerformed
+        
+        dialogoConsultaUsuarios.getContentPane().setBackground(Color.white);
+        dialogoConsultaUsuarios.setSize(700,550);
+        dialogoConsultaUsuarios.setVisible(true);
+        
+    }//GEN-LAST:event_menuItemConsultaUsuariosActionPerformed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        
+          menuEmergente.show(this , evt.getX(), evt.getY());  
+        
+    }//GEN-LAST:event_formMousePressed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+      //Alta de alumnos
+      menuItemAltasAlumnosActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+     //Consulta de alumnos
+     menuItemConsultaActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        //Alta de usuarios
+        menuItemAltaUsuariosActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // Consulta de usuarios
+        menuItemConsultaUsuariosActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+       
+        cerrar();
+    }//GEN-LAST:event_formWindowClosing
     
     public void limpiarAlta(){
         
@@ -932,6 +1387,16 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JDialog dialogoAltasUsuarios;
     private javax.swing.JDialog dialogoConsultaAlumnos;
     private javax.swing.JDialog dialogoConsultaUsuarios;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -940,24 +1405,53 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lbID;
     private javax.swing.JLabel lbcID;
     private javax.swing.JMenu menuAlumnos;
+    private javax.swing.JPopupMenu menuEmergente;
     private javax.swing.JMenuItem menuItemAltaUsuarios;
     private javax.swing.JMenuItem menuItemAltasAlumnos;
     private javax.swing.JMenuItem menuItemConsulta;

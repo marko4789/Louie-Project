@@ -17,11 +17,21 @@ import java.awt.*;
 public class frmBiblioteca extends javax.swing.JFrame {
 
     Fondo fondo = new Fondo();
+    int id_usuario;
     /**
      * Creates new form frmPizarra
      */
     public frmBiblioteca() {
         
+        this.setContentPane(fondo);
+        initComponents();
+        inicializarComponentes();
+       
+        
+    }//fin constructor
+    
+     public frmBiblioteca(int id) {
+        id_usuario = id;
         this.setContentPane(fondo);
         initComponents();
         inicializarComponentes();
@@ -70,7 +80,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
     public void cerrar(){
         try{
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            frmMenu menu = new frmMenu();
+            frmMenu menu = new frmMenu(id_usuario);
             menu.setVisible(true);
             this.dispose();
         }
@@ -508,14 +518,14 @@ public class frmBiblioteca extends javax.swing.JFrame {
         
         /*llamar a la ventana frmLecciones, mandarle como parámetro un identificador de la
           la materia que se eligió*/
-        frmLecciones leccion = new frmLecciones(0, "Español");
+        frmLecciones leccion = new frmLecciones(0, "Español", id_usuario);
         leccion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEspanolActionPerformed
 
     private void btnGeografiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeografiaActionPerformed
         
-        frmLecciones leccion = new frmLecciones(1, "Geografía");
+        frmLecciones leccion = new frmLecciones(1, "Geografía", id_usuario);
         leccion.setVisible(true);
         this.dispose();
         
@@ -523,7 +533,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
     private void btnHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoriaActionPerformed
         
-        frmLecciones leccion = new frmLecciones(2, "Historia");
+        frmLecciones leccion = new frmLecciones(2, "Historia", id_usuario);
         leccion.setVisible(true);
         this.dispose();
         
@@ -531,7 +541,7 @@ public class frmBiblioteca extends javax.swing.JFrame {
 
     private void btnCienciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCienciasActionPerformed
        
-        frmLecciones leccion = new frmLecciones(3, "Ciencias Naturales");
+        frmLecciones leccion = new frmLecciones(3, "Ciencias Naturales", id_usuario);
         leccion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCienciasActionPerformed

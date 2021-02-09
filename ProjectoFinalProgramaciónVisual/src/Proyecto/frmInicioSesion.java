@@ -202,25 +202,38 @@ public class frmInicioSesion extends javax.swing.JFrame {
         
     }//fin sonDatosCorrectos
     
-     public boolean verificarAdmin(String usuario){
-        
+  /*   public boolean verificarAdmin(String usuario){      
         Conexion conexion = new Conexion();
-        ResultSet resultados = conexion.consultarTabla("tabla_usuarios", "tipo = 'Admin' AND nombre = '"+ usuario +"' ");
-        
-        try {
-            
+        ResultSet resultados = conexion.consultarTabla("tabla_usuarios", "tipo = 'Administrador' AND nombre = '"+ usuario +"' ");
+        try {         
             if(resultados.getRow() != 0){
                 return true;
             }else{
                 return false;
-            }
-            
+            }           
         } catch (SQLException ex) {
             Logger.getLogger(frmInicioSesion.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        
     }//fin verificarAdmin
+   */  
+     //se obtiene el id de un usuario que encontró
+     public int obtenerUsuario(String nombre){
+          int id = -1;
+        Conexion conexion = new Conexion();
+        ResultSet resultados = conexion.consultarTabla("tabla_usuarios", "nombre = '"+ nombre +"' ");
+          try {
+              while(resultados.next() == true){
+               
+                  id = resultados.getInt("id_usuario");
+               
+              }//fin while
+ 
+          } catch (SQLException ex) {
+              Logger.getLogger(frmInicioSesion.class.getName()).log(Level.SEVERE, null, ex);
+          }
+         return id;
+     }//fin obtenerUsuario
     
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
       
@@ -228,11 +241,13 @@ public class frmInicioSesion extends javax.swing.JFrame {
         String strUsuario = txtUsuario.getText().toString();
        String strContrasena = txtContrasena.getText();
        
-        boolean tipo = verificarAdmin(strUsuario);
         
         if(sonDatosCorrectos(strUsuario, strContrasena)){
+            
+           // System.out.println("El id del usuario es:"+ obtenerUsuario(strUsuario));
             this.dispose();
-            new frmMenu(tipo).setVisible(true);
+            new frmMenu(obtenerUsuario(strUsuario)).setVisible(true);
+            
         }else{
             
             if(strUsuario.isBlank() && strContrasena.isBlank()){

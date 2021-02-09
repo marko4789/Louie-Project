@@ -24,10 +24,12 @@ public class frmLecciones extends javax.swing.JFrame {
      */
     
     Fondo fondo = new Fondo();
-    
+    int id_usuario;
     int materia;
     String titulo;
-    public frmLecciones(int subject, String title) {
+    
+    public frmLecciones(int subject, String title, int id_usuario) {
+        this.id_usuario = id_usuario;
         materia = subject;
         titulo = title;
         this.setContentPane(fondo);
@@ -100,7 +102,7 @@ public class frmLecciones extends javax.swing.JFrame {
      public void cerrar(){
         try{
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            frmBiblioteca biblioteca = new frmBiblioteca();
+            frmBiblioteca biblioteca = new frmBiblioteca(id_usuario);
             biblioteca.setVisible(true);
             this.dispose();
         }

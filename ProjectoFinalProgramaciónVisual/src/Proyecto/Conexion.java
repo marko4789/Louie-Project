@@ -78,6 +78,7 @@ public class Conexion {
         }
     }
     
+    
     public boolean actualizarAlumno(String ID, String nombres, String apellidoPaterno, String apellidoMaterno, String edad, String salon, String status){
         String consulta = "UPDATE `tabla_alumnos` SET `nombre`='"+nombres+"',`apellido_paterno`='"+apellidoPaterno+"',`apellido_materno`='"+apellidoMaterno+"',`edad`="+edad+",`salon`='"+salon+"',`status`='"+status+"' WHERE id_alumno = "+ID+";";
         
