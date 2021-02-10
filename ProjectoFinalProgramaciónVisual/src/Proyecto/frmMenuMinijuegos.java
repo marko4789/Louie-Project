@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -106,8 +107,29 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
         grupoEsp.add(btnMemoramaEsp);
         grupoEsp.add(btnTriviaEsp);
         
+         ButtonGroup grupoHistoria = new ButtonGroup();       
+        grupoHistoria.add(btnMemoramaHistoria);
+        grupoHistoria.add(btnTriviaHistoria);
+        
+         ButtonGroup grupoGeo = new ButtonGroup();       
+        grupoGeo.add(btnMemoramaGeo);
+        grupoGeo.add(btnTriviaGeo);
+        
+         ButtonGroup grupoCiencias = new ButtonGroup();       
+        grupoCiencias.add(btnMemoramaCiencias);
+        grupoCiencias.add(btnTriviaCiencias);
+        
         btnMemoramaEsp.setBackground(java.awt.Color.getHSBColor(30, 39, 100));
         btnTriviaEsp.setBackground(java.awt.Color.orange);
+        
+        btnMemoramaGeo.setBackground(java.awt.Color.getHSBColor(30, 39, 100));
+        btnTriviaGeo.setBackground(java.awt.Color.orange);
+        
+        btnMemoramaHistoria.setBackground(java.awt.Color.getHSBColor(30, 39, 100));
+        btnTriviaHistoria.setBackground(java.awt.Color.orange);
+        
+        btnMemoramaCiencias.setBackground(java.awt.Color.getHSBColor(30, 39, 100));
+        btnTriviaCiencias.setBackground(java.awt.Color.orange);
     }//fin Componentes
     
     public void cerrar(){
@@ -145,17 +167,26 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
         panelGeoInfo = new FondoE();
         btnStartGeo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        etiTextoEsp1 = new javax.swing.JLabel();
+        etiTextoGeo = new javax.swing.JLabel();
+        btnMemoramaGeo = new javax.swing.JToggleButton();
+        btnTriviaGeo = new javax.swing.JToggleButton();
         panelHistoria = new javax.swing.JPanel();
         panelHistoriaInfo = new FondoE();
         btnStartHistoria = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        etiTextoEsp2 = new javax.swing.JLabel();
+        etiTextoHistoria = new javax.swing.JLabel();
+        btnTriviaHistoria = new javax.swing.JToggleButton();
+        btnMemoramaHistoria = new javax.swing.JToggleButton();
         panelCiencias = new javax.swing.JPanel();
         panelCienciasInfo = new FondoE();
         btnStartCiencias = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        etiTextoEsp3 = new javax.swing.JLabel();
+        etiTextoCiencias = new javax.swing.JLabel();
+        btnTriviaCiencias = new javax.swing.JToggleButton();
+        btnMemoramaCiencias = new javax.swing.JToggleButton();
+        btnInfo = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -267,7 +298,7 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(0, 204, 204));
         jPanel2.setOpaque(false);
 
-        etiTextoEsp1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/triviaE.png"))); // NOI18N
+        etiTextoGeo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/triviaE.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -275,14 +306,14 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addComponent(etiTextoEsp1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addComponent(etiTextoGeo, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                 .addGap(35, 35, 35))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(etiTextoEsp1)
+                .addComponent(etiTextoGeo)
                 .addContainerGap())
         );
 
@@ -311,6 +342,29 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
 
         panelGeografia.add(panelGeoInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 440, 410));
 
+        btnMemoramaGeo.setBackground(new java.awt.Color(255, 204, 153));
+        btnMemoramaGeo.setFont(new java.awt.Font("Sylfaen", 1, 24)); // NOI18N
+        btnMemoramaGeo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cartas_100.png"))); // NOI18N
+        btnMemoramaGeo.setText("Memorama");
+        btnMemoramaGeo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMemoramaGeoActionPerformed(evt);
+            }
+        });
+        panelGeografia.add(btnMemoramaGeo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 260, 120));
+
+        btnTriviaGeo.setBackground(new java.awt.Color(255, 255, 255));
+        btnTriviaGeo.setFont(new java.awt.Font("Sylfaen", 1, 24)); // NOI18N
+        btnTriviaGeo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/question_mark_1.png"))); // NOI18N
+        btnTriviaGeo.setSelected(true);
+        btnTriviaGeo.setText("Trivia");
+        btnTriviaGeo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTriviaGeoActionPerformed(evt);
+            }
+        });
+        panelGeografia.add(btnTriviaGeo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 260, 120));
+
         jTabbedPane1.addTab("Geografía", panelGeografia);
 
         panelHistoria.setBackground(new java.awt.Color(102, 204, 0));
@@ -328,7 +382,7 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
         jPanel3.setForeground(new java.awt.Color(0, 204, 204));
         jPanel3.setOpaque(false);
 
-        etiTextoEsp2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/triviaE.png"))); // NOI18N
+        etiTextoHistoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/triviaE.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -336,14 +390,14 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addComponent(etiTextoEsp2, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addComponent(etiTextoHistoria, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                 .addGap(35, 35, 35))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(etiTextoEsp2)
+                .addComponent(etiTextoHistoria)
                 .addContainerGap())
         );
 
@@ -372,6 +426,29 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
 
         panelHistoria.add(panelHistoriaInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 440, 410));
 
+        btnTriviaHistoria.setBackground(new java.awt.Color(255, 255, 255));
+        btnTriviaHistoria.setFont(new java.awt.Font("Sylfaen", 1, 24)); // NOI18N
+        btnTriviaHistoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/question_mark_1.png"))); // NOI18N
+        btnTriviaHistoria.setSelected(true);
+        btnTriviaHistoria.setText("Trivia");
+        btnTriviaHistoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTriviaHistoriaActionPerformed(evt);
+            }
+        });
+        panelHistoria.add(btnTriviaHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 260, 120));
+
+        btnMemoramaHistoria.setBackground(new java.awt.Color(255, 204, 153));
+        btnMemoramaHistoria.setFont(new java.awt.Font("Sylfaen", 1, 24)); // NOI18N
+        btnMemoramaHistoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cartas_100.png"))); // NOI18N
+        btnMemoramaHistoria.setText("Memorama");
+        btnMemoramaHistoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMemoramaHistoriaActionPerformed(evt);
+            }
+        });
+        panelHistoria.add(btnMemoramaHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 260, 120));
+
         jTabbedPane1.addTab("Historia", panelHistoria);
 
         panelCiencias.setBackground(new java.awt.Color(204, 255, 0));
@@ -389,7 +466,7 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
         jPanel4.setForeground(new java.awt.Color(0, 204, 204));
         jPanel4.setOpaque(false);
 
-        etiTextoEsp3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/triviaE.png"))); // NOI18N
+        etiTextoCiencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/triviaE.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -397,14 +474,14 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addComponent(etiTextoEsp3, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addComponent(etiTextoCiencias, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                 .addGap(35, 35, 35))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
-                .addComponent(etiTextoEsp3)
+                .addComponent(etiTextoCiencias)
                 .addContainerGap())
         );
 
@@ -433,23 +510,91 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
 
         panelCiencias.add(panelCienciasInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 440, 410));
 
+        btnTriviaCiencias.setBackground(new java.awt.Color(255, 255, 255));
+        btnTriviaCiencias.setFont(new java.awt.Font("Sylfaen", 1, 24)); // NOI18N
+        btnTriviaCiencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/question_mark_1.png"))); // NOI18N
+        btnTriviaCiencias.setSelected(true);
+        btnTriviaCiencias.setText("Trivia");
+        btnTriviaCiencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTriviaCienciasActionPerformed(evt);
+            }
+        });
+        panelCiencias.add(btnTriviaCiencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 260, 120));
+
+        btnMemoramaCiencias.setBackground(new java.awt.Color(255, 204, 153));
+        btnMemoramaCiencias.setFont(new java.awt.Font("Sylfaen", 1, 24)); // NOI18N
+        btnMemoramaCiencias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cartas_100.png"))); // NOI18N
+        btnMemoramaCiencias.setText("Memorama");
+        btnMemoramaCiencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMemoramaCienciasActionPerformed(evt);
+            }
+        });
+        panelCiencias.add(btnMemoramaCiencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 260, 120));
+
         jTabbedPane1.addTab("Ciencias Naturales", panelCiencias);
+
+        btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/info_50.png"))); // NOI18N
+        btnInfo.setToolTipText("Ayuda");
+        btnInfo.setBorderPainted(false);
+        btnInfo.setContentAreaFilled(false);
+        btnInfo.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/info_50.png"))); // NOI18N
+        btnInfo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/info_50_light.png"))); // NOI18N
+        btnInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoActionPerformed(evt);
+            }
+        });
+
+        btnCerrar.setBackground(new java.awt.Color(255, 255, 204));
+        btnCerrar.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Lecciones/volver.png"))); // NOI18N
+        btnCerrar.setText("Regresar");
+        btnCerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Lecciones/volver.png"))); // NOI18N
+        btnCerrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Lecciones/volver_light.png"))); // NOI18N
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Century Schoolbook", 1, 28)); // NOI18N
+        jLabel1.setText("P  I  Z  A  R  R  A");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122))
+                .addGap(114, 114, 114)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 773, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(275, 275, 275)))
+                .addComponent(btnInfo)
+                .addGap(21, 21, 21))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnInfo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -477,32 +622,98 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMemoramaEspActionPerformed
 
     private void btnStartEsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartEsActionPerformed
+        
+        if(btnTriviaEsp.isSelected()){
         frmTrivia form = new frmTrivia(1, "Español",id_usuario);
         form.setVisible(true);
         this.dispose();
+        }
+        else{
+        
+        }
     }//GEN-LAST:event_btnStartEsActionPerformed
 
     private void btnStartGeoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGeoActionPerformed
-     
+      if(btnTriviaGeo.isSelected()){
         frmTrivia form = new frmTrivia(2, "Geografía",id_usuario);
         form.setVisible(true);
         this.dispose();
-        
+      }else{
+      
+      }
     }//GEN-LAST:event_btnStartGeoActionPerformed
 
     private void btnStartHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartHistoriaActionPerformed
-        
+         if(btnTriviaHistoria.isSelected()){
         frmTrivia form = new frmTrivia(3, "Historia",id_usuario);
         form.setVisible(true);
         this.dispose();
+         }else{
+         
+         }
     }//GEN-LAST:event_btnStartHistoriaActionPerformed
 
     private void btnStartCienciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartCienciasActionPerformed
-
+         if(btnTriviaCiencias.isSelected()){
         frmTrivia form = new frmTrivia(4, "Ciencias Naturales",id_usuario);
         form.setVisible(true);
         this.dispose();
+         }else{
+         
+         }
     }//GEN-LAST:event_btnStartCienciasActionPerformed
+
+    private void btnMemoramaGeoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMemoramaGeoActionPerformed
+        btnTriviaGeo.setBackground(java.awt.Color.getHSBColor(30, 39, 100));
+        btnMemoramaGeo.setBackground(java.awt.Color.orange);
+        ImageIcon img = new ImageIcon(getClass().getResource("/Recursos/memoramaE.png")); 
+        etiTextoGeo.setIcon(img);
+    }//GEN-LAST:event_btnMemoramaGeoActionPerformed
+
+    private void btnTriviaGeoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriviaGeoActionPerformed
+          btnMemoramaGeo.setBackground(java.awt.Color.getHSBColor(30, 39, 100));
+        btnTriviaGeo.setBackground(java.awt.Color.orange);
+        ImageIcon img = new ImageIcon(getClass().getResource("/Recursos/triviaE.png")); 
+        etiTextoGeo.setIcon(img);
+    }//GEN-LAST:event_btnTriviaGeoActionPerformed
+
+    private void btnTriviaHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriviaHistoriaActionPerformed
+        btnMemoramaHistoria.setBackground(java.awt.Color.getHSBColor(30, 39, 100));
+        btnTriviaHistoria.setBackground(java.awt.Color.orange);
+        ImageIcon img = new ImageIcon(getClass().getResource("/Recursos/triviaE.png")); 
+        etiTextoHistoria.setIcon(img);
+    }//GEN-LAST:event_btnTriviaHistoriaActionPerformed
+
+    private void btnTriviaCienciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriviaCienciasActionPerformed
+         btnMemoramaCiencias.setBackground(java.awt.Color.getHSBColor(30, 39, 100));
+        btnTriviaCiencias.setBackground(java.awt.Color.orange);
+        ImageIcon img = new ImageIcon(getClass().getResource("/Recursos/triviaE.png")); 
+        etiTextoCiencias.setIcon(img);
+    }//GEN-LAST:event_btnTriviaCienciasActionPerformed
+
+    private void btnMemoramaHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMemoramaHistoriaActionPerformed
+          btnTriviaHistoria.setBackground(java.awt.Color.getHSBColor(30, 39, 100));
+        btnMemoramaHistoria.setBackground(java.awt.Color.orange);
+        ImageIcon img = new ImageIcon(getClass().getResource("/Recursos/memoramaE.png")); 
+        etiTextoHistoria.setIcon(img);
+    }//GEN-LAST:event_btnMemoramaHistoriaActionPerformed
+
+    private void btnMemoramaCienciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMemoramaCienciasActionPerformed
+          btnTriviaCiencias.setBackground(java.awt.Color.getHSBColor(30, 39, 100));
+        btnMemoramaCiencias.setBackground(java.awt.Color.orange);
+        ImageIcon img = new ImageIcon(getClass().getResource("/Recursos/memoramaE.png")); 
+        etiTextoCiencias.setIcon(img);
+    }//GEN-LAST:event_btnMemoramaCienciasActionPerformed
+
+    private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
+       
+        JOptionPane.showMessageDialog(this, "Selecciona la materia en la que quieras hacer trivia o memorama,\n dentro de ellas selecciona qué opción quieres realizar\n e inmediatamente clic en el botón 'Comenzar'", "Información", JOptionPane.INFORMATION_MESSAGE);
+        
+    }//GEN-LAST:event_btnInfoActionPerformed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        cerrar();
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -540,16 +751,25 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JButton btnInfo;
+    private javax.swing.JToggleButton btnMemoramaCiencias;
     private javax.swing.JToggleButton btnMemoramaEsp;
+    private javax.swing.JToggleButton btnMemoramaGeo;
+    private javax.swing.JToggleButton btnMemoramaHistoria;
     private javax.swing.JButton btnStartCiencias;
     private javax.swing.JButton btnStartEs;
     private javax.swing.JButton btnStartGeo;
     private javax.swing.JButton btnStartHistoria;
+    private javax.swing.JToggleButton btnTriviaCiencias;
     private javax.swing.JToggleButton btnTriviaEsp;
+    private javax.swing.JToggleButton btnTriviaGeo;
+    private javax.swing.JToggleButton btnTriviaHistoria;
+    private javax.swing.JLabel etiTextoCiencias;
     private javax.swing.JLabel etiTextoEsp;
-    private javax.swing.JLabel etiTextoEsp1;
-    private javax.swing.JLabel etiTextoEsp2;
-    private javax.swing.JLabel etiTextoEsp3;
+    private javax.swing.JLabel etiTextoGeo;
+    private javax.swing.JLabel etiTextoHistoria;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
