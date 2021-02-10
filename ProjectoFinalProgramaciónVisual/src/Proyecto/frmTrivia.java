@@ -233,7 +233,6 @@ public class frmTrivia extends javax.swing.JFrame {
         btnCalificar.setBorderPainted(false);
         btnCalificar.setContentAreaFilled(false);
         btnCalificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCalificar.setOpaque(false);
         btnCalificar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/button_115_1.png"))); // NOI18N
         btnCalificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/button_115_light.png"))); // NOI18N
         btnCalificar.addActionListener(new java.awt.event.ActionListener() {
@@ -302,9 +301,9 @@ public class frmTrivia extends javax.swing.JFrame {
         );
 
         btnInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/info_50.png"))); // NOI18N
+        btnInfo.setToolTipText("Ayuda");
         btnInfo.setBorderPainted(false);
         btnInfo.setContentAreaFilled(false);
-        btnInfo.setOpaque(false);
         btnInfo.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/info_50.png"))); // NOI18N
         btnInfo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/info_50_light.png"))); // NOI18N
         btnInfo.addActionListener(new java.awt.event.ActionListener() {

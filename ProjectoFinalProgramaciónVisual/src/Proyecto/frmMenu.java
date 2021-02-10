@@ -104,7 +104,8 @@ public class frmMenu extends javax.swing.JFrame {
                         + "\nmuévete libremente por esta"
                         + "\nventana y diviértete";
         txtAreaTexto.setText(parrafo);
-        etiUsuario.setText(Integer.toString(id_usuario));
+        etiUsuario.setText(getUsuario());
+        
         
     }//fin initComp
    
@@ -123,6 +124,27 @@ public class frmMenu extends javax.swing.JFrame {
         return bandera;
     }//fin verificarAdmin
     
+    public String getUsuario(){
+        String nombre = "";
+       
+        //SELECT tabla_alumnos.nombre, apellido_paterno FROM tabla_alumnos INNER JOIN tabla_usuarios ON tabla_alumnos.`id_alumno` =  tabla_usuarios.id_alumno  AND id_usuario= 2
+        Conexion conexion = new Conexion();
+        ResultSet resultados = conexion.consultarBD("SELECT tabla_alumnos.nombre, apellido_paterno FROM tabla_alumnos"
+                + " INNER JOIN tabla_usuarios ON tabla_alumnos.`id_alumno` =  tabla_usuarios.id_alumno"
+                + "  AND id_usuario= "+ id_usuario+"");
+        //ResultSet resul = conexion.consultarBD("Select * from tabla_alumnos inner join tabla_usuarios on tabla_alumnos.id_alumno = tabla_usuarios.id_alumno and id_usuario = "+id_usuario+"");
+        try {
+            while(resultados.next()){
+               nombre = resultados.getString("nombre");
+               nombre = nombre.concat(" "+ resultados.getString("apellido_paterno"));
+                //System.out.println(resul.getString("tabla_alumnos.nombre")+ resul.getString("tabla_alumnos.apellido_paterno"));
+            }//fin si
+        } catch (SQLException ex) {
+            Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return nombre;
+    }//fin getUsuario
     
     
     /**
@@ -286,8 +308,9 @@ public class frmMenu extends javax.swing.JFrame {
         getContentPane().add(btnConfigAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 80));
 
         etiUsuario.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        etiUsuario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         etiUsuario.setText("id_usuario");
-        getContentPane().add(etiUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, -1, -1));
+        getContentPane().add(etiUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(667, 10, 330, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
