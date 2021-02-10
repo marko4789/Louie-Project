@@ -25,11 +25,11 @@
                           <Component id="jPanel2" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="btnRegresar" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="btnRegresarAlumnos_A" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnLimpiar" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="btnLimpiarAlumnos_A" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="btnAgregar" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="btnAgregarAlumnos_A" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -48,9 +48,9 @@
                   </Group>
                   <EmptySpace pref="48" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnRegresar" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="btnAgregar" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="btnLimpiar" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnRegresarAlumnos_A" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnAgregarAlumnos_A" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnLimpiarAlumnos_A" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
@@ -327,7 +327,7 @@
             <Property name="text" type="java.lang.String" value="ALTA DE ALUMNOS"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnRegresar">
+        <Component class="javax.swing.JButton" name="btnRegresarAlumnos_A">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ba" green="ba" red="f4" type="rgb"/>
@@ -338,10 +338,10 @@
             <Property name="text" type="java.lang.String" value="Regresar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegresarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegresarAlumnos_AActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAgregar">
+        <Component class="javax.swing.JButton" name="btnAgregarAlumnos_A">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b9" green="f4" red="ba" type="rgb"/>
@@ -352,10 +352,10 @@
             <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarAlumnos_AActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnLimpiar">
+        <Component class="javax.swing.JButton" name="btnLimpiarAlumnos_A">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="e2" red="b5" type="rgb"/>
@@ -366,7 +366,7 @@
             <Property name="text" type="java.lang.String" value="Limpiar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarAlumnos_AActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -406,11 +406,11 @@
               </Group>
               <Group type="102" attributes="0">
                   <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                  <Component id="btncRegresar" min="-2" pref="110" max="-2" attributes="0"/>
+                  <Component id="btnRegresarAlumnos_C" min="-2" pref="110" max="-2" attributes="0"/>
                   <EmptySpace min="330" pref="330" max="-2" attributes="0"/>
-                  <Component id="btncLimpiar" min="-2" pref="110" max="-2" attributes="0"/>
+                  <Component id="btnLimpiarAlumnos_C" min="-2" pref="110" max="-2" attributes="0"/>
                   <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                  <Component id="btncActualizar" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="btnActualizarAlumnos_C" min="-2" pref="160" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -441,9 +441,9 @@
                   </Group>
                   <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btncRegresar" min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="btncLimpiar" min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="btncActualizar" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnRegresarAlumnos_C" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnLimpiarAlumnos_C" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnActualizarAlumnos_C" min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -724,7 +724,7 @@
             <Property name="text" type="java.lang.String" value="CONSULTA DE ALUMNOS"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btncRegresar">
+        <Component class="javax.swing.JButton" name="btnRegresarAlumnos_C">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ba" green="ba" red="f4" type="rgb"/>
@@ -735,10 +735,10 @@
             <Property name="text" type="java.lang.String" value="Regresar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncRegresarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegresarAlumnos_CActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btncLimpiar">
+        <Component class="javax.swing.JButton" name="btnLimpiarAlumnos_C">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="e2" red="b5" type="rgb"/>
@@ -749,7 +749,7 @@
             <Property name="text" type="java.lang.String" value="Limpiar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncLimpiarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarAlumnos_CActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtBusqueda">
@@ -770,7 +770,7 @@
             <Property name="text" type="java.lang.String" value="B&#xfa;squeda de alumnos:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btncActualizar">
+        <Component class="javax.swing.JButton" name="btnActualizarAlumnos_C">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="b9" green="f4" red="ba" type="rgb"/>
@@ -782,7 +782,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btncActualizarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarAlumnos_CActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -858,11 +858,11 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="btnRegresarUsuarios_C" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="btnLimpiarUsuarios_A" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="btnAgregarUsuarios_A" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -883,9 +883,9 @@
                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="jButton3" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnAgregarUsuarios_A" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnLimpiarUsuarios_A" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnRegresarUsuarios_C" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -911,8 +911,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextField1" max="32767" attributes="0"/>
-                          <Component id="jPasswordField2" pref="150" max="32767" attributes="0"/>
+                          <Component id="txtNombreUsuario_A" max="32767" attributes="0"/>
+                          <Component id="txtContrasena_A" pref="150" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -921,8 +921,8 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jComboBox1" max="32767" attributes="0"/>
-                          <Component id="jComboBox2" max="32767" attributes="0"/>
+                          <Component id="cmbAlumno_A" max="32767" attributes="0"/>
+                          <Component id="cmbTipo_A" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="28" max="32767" attributes="0"/>
                   </Group>
@@ -935,15 +935,15 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNombreUsuario_A" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbTipo_A" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbAlumno_A" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPasswordField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtContrasena_A" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="52" max="32767" attributes="0"/>
                   </Group>
@@ -975,7 +975,7 @@
                 <Property name="text" type="java.lang.String" value="Tipo de usuario"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="cmbAlumno_A">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Century Schoolbook" size="14" style="1"/>
@@ -996,7 +996,7 @@
                 <Property name="text" type="java.lang.String" value="Alumno asociado"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox2">
+            <Component class="javax.swing.JComboBox" name="cmbTipo_A">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Century Schoolbook" size="14" style="1"/>
@@ -1012,14 +1012,14 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="txtNombreUsuario_A">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Century Schoolbook" size="14" style="1"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="jPasswordField2">
+            <Component class="javax.swing.JPasswordField" name="txtContrasena_A">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Century Schoolbook" size="14" style="1"/>
@@ -1036,7 +1036,7 @@
             <Property name="text" type="java.lang.String" value="ALTA DE USUARIOS"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnAgregarUsuarios_A">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="ff" red="cc" type="rgb"/>
@@ -1047,7 +1047,7 @@
             <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnLimpiarUsuarios_A">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="99" type="rgb"/>
@@ -1057,8 +1057,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarUsuarios_AActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnRegresarUsuarios_C">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -1082,15 +1085,6 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane2" min="-2" pref="640" max="-2" attributes="0"/>
-                      <Component id="jPanel6" min="-2" pref="640" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="jButton6" min="-2" pref="110" max="-2" attributes="0"/>
-                          <EmptySpace min="240" pref="240" max="-2" attributes="0"/>
-                          <Component id="jButton5" min="-2" pref="110" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="jButton4" min="-2" pref="170" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
@@ -1100,17 +1094,31 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jTextField4" min="-2" pref="230" max="-2" attributes="0"/>
-                                  <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtBusquedaUsuarios" min="-2" pref="230" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="rdbActivoUsuarios" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
+                          <Component id="rdbInactivoUsuarios" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane2" min="-2" pref="640" max="-2" attributes="0"/>
+                              <Component id="jPanel6" min="-2" pref="640" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jButton6" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <EmptySpace min="240" pref="240" max="-2" attributes="0"/>
+                                  <Component id="btnLimpiarUsuarios_C" min="-2" pref="110" max="-2" attributes="0"/>
+                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                  <Component id="jButton4" min="-2" pref="170" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1122,9 +1130,11 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField4" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButton2" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="txtBusquedaUsuarios" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rdbInactivoUsuarios" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="rdbActivoUsuarios" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="110" max="-2" attributes="0"/>
@@ -1133,7 +1143,7 @@
                   <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jButton6" min="-2" pref="60" max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnLimpiarUsuarios_C" min="-2" pref="60" max="-2" attributes="0"/>
                       <Component id="jButton4" min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="17" max="32767" attributes="0"/>
@@ -1160,8 +1170,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextField3" pref="150" max="32767" attributes="0"/>
-                          <Component id="jPasswordField1" max="32767" attributes="0"/>
+                          <Component id="txtNombreUsuario_C" pref="150" max="32767" attributes="0"/>
+                          <Component id="txtContrasena_C" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1170,8 +1180,8 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jComboBox4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cmbTipo_C" min="-2" pref="116" max="-2" attributes="0"/>
+                          <Component id="cmbAlumno_C" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -1184,15 +1194,15 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNombreUsuario_C" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbTipo_C" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbAlumno_C" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPasswordField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtContrasena_C" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
@@ -1224,7 +1234,7 @@
                 <Property name="text" type="java.lang.String" value="Tipo de usuario"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox3">
+            <Component class="javax.swing.JComboBox" name="cmbAlumno_C">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Century Schoolbook" size="14" style="1"/>
@@ -1245,7 +1255,7 @@
                 <Property name="text" type="java.lang.String" value="Alumno asociado"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox4">
+            <Component class="javax.swing.JComboBox" name="cmbTipo_C">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Century Schoolbook" size="14" style="1"/>
@@ -1261,14 +1271,14 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="txtNombreUsuario_C">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Century Schoolbook" size="14" style="1"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+            <Component class="javax.swing.JPasswordField" name="txtContrasena_C">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Century Schoolbook" size="14" style="1"/>
@@ -1297,7 +1307,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="btnLimpiarUsuarios_C">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="99" type="rgb"/>
@@ -1326,7 +1336,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="dgvInformacionUsuarios">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
@@ -1340,14 +1350,14 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="txtBusquedaUsuarios">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Schoolbook" size="12" style="1"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+        <Component class="javax.swing.JRadioButton" name="rdbActivoUsuarios">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Schoolbook" size="14" style="1"/>
@@ -1356,7 +1366,7 @@
             <Property name="text" type="java.lang.String" value="Activo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+        <Component class="javax.swing.JRadioButton" name="rdbInactivoUsuarios">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Schoolbook" size="14" style="1"/>
