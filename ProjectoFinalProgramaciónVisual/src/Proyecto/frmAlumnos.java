@@ -40,6 +40,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         limpiarAltaAlumnos();
         limpiarModificarAlumnos();
         limpiarAltaUsuarios();
+        llenarTablaAlumnos_Puntaje();
     }
     
       public frmAlumnos(int id_usuario) {
@@ -50,6 +51,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         limpiarAltaAlumnos();
         limpiarModificarAlumnos();
         limpiarAltaUsuarios();
+        llenarTablaAlumnos_Puntaje();
     }
 
      //clase Fondo, sirve para ponerle un fondo al jFrame
@@ -185,9 +187,9 @@ public class frmAlumnos extends javax.swing.JFrame {
         dialogoPuntajes = new javax.swing.JDialog();
         jLabel21 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        dgvAlumnosPuntaje = new javax.swing.JTable();
+        cmbMaterias = new javax.swing.JComboBox<>();
+        txtBusquedaAlumno = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuAlumnos = new javax.swing.JMenu();
@@ -1196,12 +1198,14 @@ public class frmAlumnos extends javax.swing.JFrame {
 
         menuEmergente.add(jMenu3);
 
+        dialogoPuntajes.setTitle("Consulta de puntajes");
+
         jLabel21.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
         jLabel21.setText("CONSULTA GENERAL DE PUNTAJES");
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 204));
-        jTable1.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        dgvAlumnosPuntaje.setBackground(new java.awt.Color(255, 255, 204));
+        dgvAlumnosPuntaje.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
+        dgvAlumnosPuntaje.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1209,20 +1213,50 @@ public class frmAlumnos extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Salón", "Puntaje memorama", "Puntaje trivia"
             }
-        ));
-        jScrollPane4.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        jComboBox1.setBackground(new java.awt.Color(153, 255, 153));
-        jComboBox1.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Geografía", "Historia", "Ciencias Naturales" }));
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-        jTextField1.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(dgvAlumnosPuntaje);
+
+        cmbMaterias.setBackground(new java.awt.Color(153, 255, 153));
+        cmbMaterias.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        cmbMaterias.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Geografía", "Historia", "Ciencias Naturales" }));
+        cmbMaterias.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbMateriasItemStateChanged(evt);
+            }
+        });
+
+        txtBusquedaAlumno.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        txtBusquedaAlumno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBusquedaAlumnoKeyTyped(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 153, 153));
         jButton1.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
         jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout dialogoPuntajesLayout = new javax.swing.GroupLayout(dialogoPuntajes.getContentPane());
         dialogoPuntajes.getContentPane().setLayout(dialogoPuntajesLayout);
@@ -1238,9 +1272,9 @@ public class frmAlumnos extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addGroup(dialogoPuntajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialogoPuntajesLayout.createSequentialGroup()
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBusquedaAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1251,8 +1285,8 @@ public class frmAlumnos extends javax.swing.JFrame {
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(dialogoPuntajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbMaterias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBusquedaAlumno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1783,6 +1817,19 @@ public class frmAlumnos extends javax.swing.JFrame {
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
          menuItemPuntajesActionPerformed(evt);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dialogoPuntajes.dispose();
+        txtBusquedaAlumno.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtBusquedaAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaAlumnoKeyTyped
+        llenarTablaAlumnos_Puntaje();
+    }//GEN-LAST:event_txtBusquedaAlumnoKeyTyped
+
+    private void cmbMateriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMateriasItemStateChanged
+        llenarTablaAlumnos_Puntaje();
+    }//GEN-LAST:event_cmbMateriasItemStateChanged
     
     public void limpiarAltaAlumnos(){
         
@@ -1905,6 +1952,38 @@ public class frmAlumnos extends javax.swing.JFrame {
         }
     }
     
+    public void llenarTablaAlumnos_Puntaje(){
+        String buscar = "";
+        if(txtBusquedaAlumno.getText().equals("")){
+            buscar = "tabla_alumnos.status = 'Activo'";
+        }else{
+            buscar = "CONCAT(tabla_alumnos.salon, tabla_alumnos.nombre, tabla_alumnos.apellido_paterno, tabla_alumnos.apellido_materno)like '%" + txtBusquedaAlumno.getText() + "%' AND tabla_alumnos.status = 'Activo'";
+        }
+        ResultSet datosAlumno = conexion.consultarBD("SELECT tabla_alumnos.id_alumno, tabla_alumnos.nombre, tabla_alumnos.apellido_paterno, tabla_alumnos.apellido_materno, tabla_alumnos.salon FROM tabla_alumnos INNER JOIN tabla_usuarios on tabla_usuarios.id_alumno = tabla_alumnos.id_alumno AND tabla_usuarios.tipo = 'Alumno' WHERE "+buscar);
+
+        dgvAlumnosPuntaje.repaint();
+
+        try {
+            DefaultTableModel modelo_U = (DefaultTableModel)dgvAlumnosPuntaje.getModel();
+            modelo_U.setRowCount(0);
+            
+            while(datosAlumno.next()) {
+
+                int id_alumno = datosAlumno.getInt("id_alumno");
+                String nombre = datosAlumno.getString("nombre") + " " + datosAlumno.getString("apellido_paterno") + " " + datosAlumno.getString("apellido_materno");
+                String salon = datosAlumno.getString("salon");
+                int[] puntajes = obtenerPuntajes(id_alumno, cmbMaterias.getSelectedIndex()+1);
+
+                modelo_U.addRow( new Object[] {nombre, salon, puntajes[0], puntajes[1]} );
+                
+            }
+
+            modelo_U.fireTableDataChanged();
+        } catch (SQLException ex) {
+            Logger.getLogger(frmAlumnos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void llenarTablaUsuarios(){
         String buscar = "CONCAT(nombre, tipo, id_alumno)like '%" + txtBusquedaUsuarios.getText() + "%' AND status = '"+ this.statusUsuario + "'";
 
@@ -1955,6 +2034,59 @@ public class frmAlumnos extends javax.swing.JFrame {
         return nombre;
     }
     
+    public int[] obtenerPuntajes(int id_alumno, int id_materia){
+        Conexion conexion = new Conexion();
+        ResultSet resultados = null;
+        int id_puntaje = 0;
+        int id_usuario = 0;
+        
+        try {
+            resultados = conexion.consultarBD("SELECT id_usuario FROM tabla_usuarios WHERE id_alumno = "+id_alumno+" AND status = 'Activo';");
+            resultados.next();
+            id_usuario = resultados.getInt("id_usuario");
+            resultados = null;
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+        try {
+            resultados = conexion.consultarBD("SELECT id_puntajes FROM tabla_puntajes WHERE id_usuario = "+id_usuario+";");
+            resultados.next();
+            id_puntaje = resultados.getInt("id_puntajes");
+            resultados = null;
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        String buscar = "id_puntajes = " + id_puntaje + " AND id_materia = " + id_materia;
+
+        int puntajes[];
+        puntajes = new int[2];
+        
+        resultados = conexion.consultarTabla("puntaje_memorama", buscar);
+        
+        try {
+            resultados.next();
+            puntajes[0] = resultados.getInt("puntaje");
+            resultados = null;
+        } catch (SQLException ex) {
+            puntajes[0] = 0;
+        }
+        
+        resultados = conexion.consultarTabla("puntaje_trivia", buscar);
+        
+        try {
+            resultados.next();
+            puntajes[1] = resultados.getInt("puntaje");
+            resultados = null;
+        } catch (SQLException ex) {
+            puntajes[1] = 0;
+        }
+        
+        return puntajes;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -2003,6 +2135,7 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresarAlumnos_C;
     private javax.swing.JButton btnRegresarUsuario;
     private javax.swing.JButton btnRegresarUsuarios_C;
+    private javax.swing.JComboBox<String> cmbMaterias;
     private javax.swing.JComboBox<String> cmbSalon;
     private javax.swing.JComboBox<String> cmbStatus;
     private javax.swing.JComboBox<String> cmbStatus_C;
@@ -2010,6 +2143,7 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbTipo_C;
     private javax.swing.JComboBox<String> cmbcSalon;
     private javax.swing.JComboBox<String> cmbcStatus;
+    private javax.swing.JTable dgvAlumnosPuntaje;
     private javax.swing.JTable dgvInformacionAlumno_A;
     private javax.swing.JTable dgvInformacionAlumno_U;
     private javax.swing.JTable dgvInformacionUsuarios;
@@ -2019,7 +2153,6 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JDialog dialogoConsultaUsuarios;
     private javax.swing.JDialog dialogoPuntajes;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2070,8 +2203,6 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbID;
     private javax.swing.JLabel lbcID;
     private javax.swing.JMenu menuAlumnos;
@@ -2092,6 +2223,7 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JTextField txtAlumno;
     private javax.swing.JTextField txtApellidoMaterno;
     private javax.swing.JTextField txtApellidoPaterno;
+    private javax.swing.JTextField txtBusquedaAlumno;
     private javax.swing.JTextField txtBusquedaUsuarios;
     private javax.swing.JTextField txtBusquedaUsuarios_A;
     private javax.swing.JTextField txtBusqueda_A;
