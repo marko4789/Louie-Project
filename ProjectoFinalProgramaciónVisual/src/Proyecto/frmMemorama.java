@@ -670,7 +670,7 @@ public class frmMemorama extends javax.swing.JFrame {
             && !btnCarta10.isEnabled() && !btnCarta11.isEnabled() && !btnCarta12.isEnabled()) {
             t.stop();
             lbPuntaje.setText(puntaje.toString());
-            conexion.actualizarPuntajeMemorama(this.id_usuario, puntaje.toString());
+            conexion.actualizarPuntajeMemorama(this.id_usuario, this.id_materia, puntaje.toString());
             JOptionPane.showMessageDialog(this, "¡Felicidades!, ¡Lo has logrado!\n            Puntaje: " + puntaje, "Pares", 0);
             
         }
@@ -694,14 +694,27 @@ public class frmMemorama extends javax.swing.JFrame {
     }
     
     public String obtenerPuntajeAnterior(){
-        String buscar = "id_usuario = " + this.id_usuario;
+        ResultSet resultados = null;
+        int id_puntaje = 0;
+                
+        try {
+            resultados = conexion.consultarBD("SELECT id_puntajes FROM tabla_puntajes WHERE id_usuario = "+id_usuario+";");
+            resultados.next();
+            id_puntaje = resultados.getInt("id_puntajes");
+            resultados = null;
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        String buscar = "id_puntajes = " + id_puntaje + " AND id_materia = " + this.id_materia;
 
-        ResultSet resultados = conexion.consultarTabla("tabla_puntajes", buscar);
+        resultados = conexion.consultarTabla("puntaje_memorama", buscar);
         String resultado = "";
         
         try {
             resultados.next();
-            Integer puntaje = resultados.getInt("memorama");
+            Integer puntaje = resultados.getInt("puntaje");
             resultado = puntaje.toString();
         } catch (SQLException ex) {
             resultado = "0";
