@@ -112,4 +112,15 @@ public class Conexion {
         }
     }
     
+    public boolean actualizarPuntajeMemorama(int ID, String puntaje){
+        String consulta = "UPDATE `tabla_puntajes` SET `memorama`= "+puntaje+" WHERE id_usuario = "+ID+";";
+        
+        try {
+            stmt.executeUpdate(consulta);
+            return true;
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+    
 }

@@ -624,12 +624,15 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
     private void btnStartEsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartEsActionPerformed
         
         if(btnTriviaEsp.isSelected()){
-        frmTrivia form = new frmTrivia(1, "Español",id_usuario);
-        form.setVisible(true);
-        this.dispose();
+            frmTrivia form = new frmTrivia(1, "Español",id_usuario);
+            form.setVisible(true);
+            this.dispose();
         }
-        else{
         
+        if(btnMemoramaEsp.isSelected()){
+            frmMemorama form = new frmMemorama(this.id_usuario, 1);
+            form.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_btnStartEsActionPerformed
 
@@ -638,29 +641,41 @@ public class frmMenuMinijuegos extends javax.swing.JFrame {
         frmTrivia form = new frmTrivia(2, "Geografía",id_usuario);
         form.setVisible(true);
         this.dispose();
-      }else{
-      
       }
+      
+      if(btnMemoramaGeo.isSelected()){
+            frmMemorama form = new frmMemorama(this.id_usuario, 2);
+            form.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnStartGeoActionPerformed
 
     private void btnStartHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartHistoriaActionPerformed
-         if(btnTriviaHistoria.isSelected()){
-        frmTrivia form = new frmTrivia(3, "Historia",id_usuario);
-        form.setVisible(true);
-        this.dispose();
-         }else{
-         
-         }
+        if(btnTriviaHistoria.isSelected()){
+            frmTrivia form = new frmTrivia(3, "Historia",id_usuario);
+            form.setVisible(true);
+            this.dispose();
+        }
+        
+        if(btnMemoramaHistoria.isSelected()){
+            frmMemorama form = new frmMemorama(this.id_usuario, 3);
+            form.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnStartHistoriaActionPerformed
 
     private void btnStartCienciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartCienciasActionPerformed
-         if(btnTriviaCiencias.isSelected()){
-        frmTrivia form = new frmTrivia(4, "Ciencias Naturales",id_usuario);
-        form.setVisible(true);
-        this.dispose();
-         }else{
-         
-         }
+        if(btnTriviaCiencias.isSelected()){
+            frmTrivia form = new frmTrivia(4, "Ciencias Naturales",id_usuario);
+            form.setVisible(true);
+            this.dispose();
+        }
+        
+         if(btnMemoramaCiencias.isSelected()){
+            frmMemorama form = new frmMemorama(this.id_usuario, 4);
+            form.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnStartCienciasActionPerformed
 
     private void btnMemoramaGeoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMemoramaGeoActionPerformed
