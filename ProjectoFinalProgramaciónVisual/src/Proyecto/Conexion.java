@@ -33,7 +33,7 @@ public class Conexion {
     public boolean actualizarBD(String consulta){
         try {
             stmt.executeUpdate(consulta);
-            con.close();
+           // con.close();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);

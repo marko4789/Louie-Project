@@ -180,6 +180,15 @@ public class frmAlumnos extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        dialogoPuntajes = new javax.swing.JDialog();
+        jLabel21 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuAlumnos = new javax.swing.JMenu();
         menuItemAltasAlumnos = new javax.swing.JMenuItem();
@@ -187,6 +196,8 @@ public class frmAlumnos extends javax.swing.JFrame {
         menuUsuarios = new javax.swing.JMenu();
         menuItemAltaUsuarios = new javax.swing.JMenuItem();
         menuItemConsultaUsuarios = new javax.swing.JMenuItem();
+        menuPuntajes = new javax.swing.JMenu();
+        menuItemPuntajes = new javax.swing.JMenuItem();
 
         dialogoAltasAlumnos.setTitle("Alta de alumnos");
         dialogoAltasAlumnos.setModal(true);
@@ -789,7 +800,7 @@ public class frmAlumnos extends javax.swing.JFrame {
                         .addComponent(jLabel29)
                         .addGap(18, 18, 18)
                         .addComponent(txtBusquedaUsuarios_A, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                         .addComponent(jLabel30)
                         .addGap(96, 96, 96)))
                 .addContainerGap())
@@ -1168,6 +1179,87 @@ public class frmAlumnos extends javax.swing.JFrame {
 
         menuEmergente.add(jMenu2);
 
+        jMenu3.setText("Puntajes");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem5.setText("Consultar Puntajes");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem5);
+
+        menuEmergente.add(jMenu3);
+
+        jLabel21.setFont(new java.awt.Font("Century Schoolbook", 1, 24)); // NOI18N
+        jLabel21.setText("CONSULTA GENERAL DE PUNTAJES");
+
+        jTable1.setBackground(new java.awt.Color(255, 255, 204));
+        jTable1.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable1);
+
+        jComboBox1.setBackground(new java.awt.Color(153, 255, 153));
+        jComboBox1.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Español", "Geografía", "Historia", "Ciencias Naturales" }));
+
+        jTextField1.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+
+        jButton1.setBackground(new java.awt.Color(0, 153, 153));
+        jButton1.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
+        jButton1.setText("Regresar");
+
+        javax.swing.GroupLayout dialogoPuntajesLayout = new javax.swing.GroupLayout(dialogoPuntajes.getContentPane());
+        dialogoPuntajes.getContentPane().setLayout(dialogoPuntajesLayout);
+        dialogoPuntajesLayout.setHorizontalGroup(
+            dialogoPuntajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogoPuntajesLayout.createSequentialGroup()
+                .addGap(209, 209, 209)
+                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(216, 216, 216))
+            .addGroup(dialogoPuntajesLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(dialogoPuntajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addGroup(dialogoPuntajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dialogoPuntajesLayout.createSequentialGroup()
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 825, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        dialogoPuntajesLayout.setVerticalGroup(
+            dialogoPuntajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogoPuntajesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(dialogoPuntajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Administrar Alumnos y Usuarios");
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1221,17 +1313,34 @@ public class frmAlumnos extends javax.swing.JFrame {
 
         jMenuBar1.add(menuUsuarios);
 
+        menuPuntajes.setText("Puntajes");
+        menuPuntajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPuntajesActionPerformed(evt);
+            }
+        });
+
+        menuItemPuntajes.setText("Consulta de puntajes");
+        menuItemPuntajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemPuntajesActionPerformed(evt);
+            }
+        });
+        menuPuntajes.add(menuItemPuntajes);
+
+        jMenuBar1.add(menuPuntajes);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+            .addGap(0, 671, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 261, Short.MAX_VALUE)
+            .addGap(0, 442, Short.MAX_VALUE)
         );
 
         pack();
@@ -1503,24 +1612,55 @@ public class frmAlumnos extends javax.swing.JFrame {
         String contrasena = txtContrasena_A.getText();
         String tipo = cmbTipo_A.getItemAt(cmbTipo_A.getSelectedIndex());
         
+         boolean puntaje = false;
+         boolean trivia = false;
+         boolean registroExitoso = false;
+         boolean memorama = false;
+        
         if(dgvInformacionAlumno_U.getSelectedRow() != -1){
             Integer id_alumnoI = (Integer) dgvInformacionAlumno_U.getModel().getValueAt(dgvInformacionAlumno_U.getSelectedRow(), 0);
             String id_alumno = id_alumnoI.toString();
 
             if(!nombre.equals("") && !contrasena.equals("") && !tipo.equals("")
                 && !id_alumno.equals("")){
-                boolean registroExitoso = conexion.registrarUsuario(nombre, contrasena, tipo, id_alumno);
-
-           /*     //lo que está en comentarios debería estar al registrar un usuario no un alumno un saludo
-                boolean puntaje = conexion.actualizarBD("INSERT INTO tabla_puntajes (memorama, id_usuario) Values (0, "+id_usuario+")");
-                boolean trivia = conexion.actualizarBD("INSERT INTO puntaje_trivia (puntaje, id_materia, id_puntajes) VALUES (0, 1,"+id_usuario+"), (0, 2,"+id_usuario+"), (0, 3,"+id_usuario+"), (0, 4,"+id_usuario+")");
-            */
-                if (registroExitoso){
-                    JOptionPane.showMessageDialog(this, "El Usuario ha sido registrado satisfactorimente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    limpiarAltaUsuarios();
-                }else{
-                    JOptionPane.showMessageDialog(this, "Ha ocurrido un error\nEl Usuario no ha sido registrado", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+                try {
+                    registroExitoso = conexion.registrarUsuario(nombre, contrasena, tipo, id_alumno);
+                    
+                      //Debería insertar un registro en las tablas de puntajes y puntaje_trivia
+                    
+                    ResultSet idUsuario = conexion.consultarBD("Select id_usuario from tabla_usuarios where id_alumno = "+id_alumno+"");
+                   int usuario = 0;
+                    while( idUsuario.next()){
+                     usuario = idUsuario.getInt("id_usuario");
+                   }
+                    
+                   
+                   puntaje = conexion.actualizarBD("INSERT INTO tabla_puntajes (id_usuario) Values ("+usuario+") ");
+                  
+                    if(puntaje){
+                       ResultSet id_puntaje = conexion.consultarBD("Select id_puntajes from tabla_puntajes where id_usuario = "+usuario +"");
+                       int idPuntaje = 0;
+                       while(id_puntaje.next()){
+                        idPuntaje = id_puntaje.getInt("id_puntajes");
+                       }
+                         trivia = conexion.actualizarBD("INSERT INTO puntaje_trivia (puntaje, id_materia, id_puntajes) "
+                          + "VALUES (0, 1,"+idPuntaje+"), (0, 2,"+idPuntaje+"), (0, 3,"+idPuntaje+"), (0, 4,"+idPuntaje+")"); 
+                        
+                         memorama = conexion.actualizarBD("INSERT INTO puntaje_memorama (puntaje, id_materia, id_puntajes) "
+                        + "VALUES (0, 1,"+idPuntaje+"), (0, 2,"+idPuntaje+"), (0, 3,"+idPuntaje+"), (0, 4,"+idPuntaje+")"); 
+                     
+                     }//fin si puntaje
+                   
+                    
+                    if (registroExitoso && puntaje && trivia && memorama){
+                        JOptionPane.showMessageDialog(this, "El Usuario ha sido registrado satisfactorimente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        limpiarAltaUsuarios();
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Ha ocurrido un error\nEl Usuario no ha sido registrado", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(frmAlumnos.class.getName()).log(Level.SEVERE, null, ex);
+                }//fin trycatch
             }else{
                 JOptionPane.showMessageDialog(this, "Ha ocurrido un error\nDebe de llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -1625,6 +1765,24 @@ public class frmAlumnos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ha ocurrido un error\nDebe de llenar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnActualizarUsuarioActionPerformed
+
+    private void menuPuntajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPuntajesActionPerformed
+       
+    }//GEN-LAST:event_menuPuntajesActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+      
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void menuItemPuntajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPuntajesActionPerformed
+        dialogoPuntajes.getContentPane().setBackground(Color.white);
+        dialogoPuntajes.setSize(910, 540);
+        dialogoPuntajes.setVisible(true);
+    }//GEN-LAST:event_menuItemPuntajesActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+         menuItemPuntajesActionPerformed(evt);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
     
     public void limpiarAltaAlumnos(){
         
@@ -1636,6 +1794,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         
         ResultSet resultados = conexion.consultarBD("SELECT MAX(id_alumno) AS id FROM tabla_alumnos");
         try {
+            resultados.next();
             Integer ID = resultados.getInt("id")+1;
             lbID.setText(ID.toString());
         } catch (SQLException ex) {
@@ -1858,6 +2017,9 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JDialog dialogoAltasUsuarios;
     private javax.swing.JDialog dialogoConsultaAlumnos;
     private javax.swing.JDialog dialogoConsultaUsuarios;
+    private javax.swing.JDialog dialogoPuntajes;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1871,6 +2033,7 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -1890,11 +2053,13 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1904,6 +2069,9 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbID;
     private javax.swing.JLabel lbcID;
     private javax.swing.JMenu menuAlumnos;
@@ -1912,6 +2080,8 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemAltasAlumnos;
     private javax.swing.JMenuItem menuItemConsulta;
     private javax.swing.JMenuItem menuItemConsultaUsuarios;
+    private javax.swing.JMenuItem menuItemPuntajes;
+    private javax.swing.JMenu menuPuntajes;
     private javax.swing.JMenu menuUsuarios;
     private javax.swing.JRadioButton rdbActivoAlumnos;
     private javax.swing.JRadioButton rdbActivoUsuarios;
