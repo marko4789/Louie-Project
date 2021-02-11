@@ -90,4 +90,26 @@ public class Conexion {
         }
     }
     
+    public boolean registrarUsuario(String nombre, String contrasena, String tipo, String id_alumno){
+        String consulta = "INSERT INTO `tabla_usuarios`(`nombre`, `contraseña`, `status`, `tipo`, `id_alumno`) VALUES ('"+ nombre +"', '"+ contrasena +"', 'Activo', '"+ tipo +"', "+ id_alumno +");";
+        
+        try {
+            stmt.executeUpdate(consulta);
+            return true;
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+    
+    public boolean actualizarUsuario(String ID, String nombre, String contrasena, String status, String tipo){
+        String consulta = "UPDATE `tabla_usuarios` SET `nombre`='"+nombre+"',`contraseña`='"+contrasena+"',`status`='"+status+"', `tipo`='"+tipo+"' WHERE id_usuario = "+ID+";";
+        
+        try {
+            stmt.executeUpdate(consulta);
+            return true;
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+    
 }
