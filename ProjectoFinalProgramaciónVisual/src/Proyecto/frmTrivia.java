@@ -514,37 +514,51 @@ public class frmTrivia extends javax.swing.JFrame {
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
        
     btnAnterior.setEnabled(true);    
-        if(tb1.isSelected())
+        if(tb1.isSelected() && tb2.isEnabled())
             tb2ActionPerformed(evt);
         else
-            if(tb2.isSelected())
+            if(tb2.isSelected() && tb3.isEnabled())
                tb3ActionPerformed(evt);
             else
-                if(tb4.isSelected())
+                if(tb4.isSelected() && tb5.isEnabled())
                      tb5ActionPerformed(evt);
                 else
-                    if(tb3.isSelected())
+                    if(tb3.isSelected() && tb4.isEnabled())
                          tb4ActionPerformed(evt);
                     else
-                        if(tb5.isSelected())
-                         btnSiguiente.setEnabled(false);
+                        if(tb1.isEnabled())
+                            tb1ActionPerformed(evt);
+                        else
+                            if(tb2.isEnabled())
+                                tb2ActionPerformed(evt);
+                            else
+                                if(tb3.isEnabled())
+                                    tb3ActionPerformed(evt);
+                                else
+                                    if(tb4.isEnabled())
+                                        tb4ActionPerformed(evt);
+                                    else
+                                        if(tb5.isEnabled())
+                                            tb5ActionPerformed(evt);
+                                        else
+                                            btnRespondida.setEnabled(false);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnteriorActionPerformed
-         btnSiguiente.setEnabled(true);    
-        if(tb1.isSelected())
-            btnAnterior.setEnabled(false);
-        else
-            if(tb2.isSelected())
+         //btnSiguiente.setEnabled(true);    
+        //if(tb1.isSelected())
+            //btnAnterior.setEnabled(false);
+        //else
+            if(tb2.isSelected() && tb1.isEnabled())
                tb1ActionPerformed(evt);
             else
-                if(tb3.isSelected())
+                if(tb3.isSelected() && tb2.isEnabled())
                      tb2ActionPerformed(evt);
                 else
-                    if(tb4.isSelected())
+                    if(tb4.isSelected() && tb3.isEnabled())
                          tb3ActionPerformed(evt);
                     else
-                        if(tb5.isSelected())
+                        if(tb5.isSelected() && tb4.isEnabled())
                          tb4ActionPerformed(evt);
     }//GEN-LAST:event_btnAnteriorActionPerformed
 
