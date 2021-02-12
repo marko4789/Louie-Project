@@ -33,7 +33,7 @@ public class frmTrivia extends javax.swing.JFrame {
    
     ButtonGroup grupo2 = new ButtonGroup();
     ButtonGroup grupo = new ButtonGroup();
-    int puntaje = 0;
+    Integer puntaje = 0;
    
    int materia;
    String titulo;
@@ -495,6 +495,7 @@ public class frmTrivia extends javax.swing.JFrame {
         btnSiguiente.setEnabled(false);
         btnAnterior.setEnabled(false);
         btnCalificar.setEnabled(false);
+        Conexion conexion = new Conexion();
                 
         if(puntaje >= 6){
             JOptionPane.showMessageDialog(this, "El puntaje obtenido fue de:"+ puntaje, "¡Felicidades has pasado la prueba!", JOptionPane.INFORMATION_MESSAGE);
@@ -503,7 +504,10 @@ public class frmTrivia extends javax.swing.JFrame {
         else
             JOptionPane.showMessageDialog(this, "El puntaje obtenido fue de:"+ puntaje, "Sigue estudiando, todavía hay cosas por aprender.", JOptionPane.INFORMATION_MESSAGE);
         
-               
+        if(!conexion.actualizarPuntajeTrivia(id_usuario, materia, puntaje.toString())){
+            JOptionPane.showMessageDialog(this, "Vualve a intentarlo", "Error", JOptionPane.ERROR_MESSAGE);
+            btnCalificar.setEnabled(true);
+        }
         
     }//GEN-LAST:event_btnCalificarActionPerformed
 

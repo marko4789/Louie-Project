@@ -135,4 +135,27 @@ public class Conexion {
         }
     }
     
+    public boolean actualizarPuntajeTrivia(int id_usuario, int id_materia, String puntaje){
+        ResultSet resultados = null;
+        int id_puntaje;
+                
+        try {
+            resultados = stmt.executeQuery("SELECT id_puntajes FROM tabla_puntajes WHERE id_usuario = "+id_usuario+";");
+            resultados.next();
+            id_puntaje = resultados.getInt("id_puntajes");
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+        String consulta = "UPDATE `puntaje_trivia` SET `puntaje`= "+puntaje+" WHERE `id_puntajes` = "+id_puntaje+" AND `id_materia`= "+id_materia+";";
+        System.out.println(consulta);
+        try {
+            stmt.executeUpdate(consulta);
+            return true;
+        } catch (SQLException ex) {
+            return false;
+        }
+    }
+    
 }
