@@ -490,7 +490,8 @@ public class frmTrivia extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRespondidaActionPerformed
 
     private void btnCalificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalificarActionPerformed
-        
+
+        btnRespondida.setEnabled(false);
         btnSiguiente.setEnabled(false);
         btnAnterior.setEnabled(false);
         btnCalificar.setEnabled(false);
