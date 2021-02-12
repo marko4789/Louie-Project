@@ -144,7 +144,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         cmbTipo_A = new javax.swing.JComboBox<>();
         txtNombreUsuario_A = new javax.swing.JTextField();
         txtContrasena_A = new javax.swing.JPasswordField();
-        txtBusquedaUsuarios_A = new javax.swing.JTextField();
+        txtBusquedaAlumnos_A = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         dgvInformacionAlumno_U = new javax.swing.JTable();
@@ -737,10 +737,10 @@ public class frmAlumnos extends javax.swing.JFrame {
             }
         });
 
-        txtBusquedaUsuarios_A.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
-        txtBusquedaUsuarios_A.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtBusquedaAlumnos_A.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+        txtBusquedaAlumnos_A.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBusquedaUsuarios_AKeyTyped(evt);
+                txtBusquedaAlumnos_AKeyTyped(evt);
             }
         });
 
@@ -801,7 +801,7 @@ public class frmAlumnos extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addComponent(jLabel29)
                         .addGap(18, 18, 18)
-                        .addComponent(txtBusquedaUsuarios_A, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBusquedaAlumnos_A, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                         .addComponent(jLabel30)
                         .addGap(96, 96, 96)))
@@ -827,7 +827,7 @@ public class frmAlumnos extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addGap(3, 3, 3)
                             .addComponent(jLabel29))
-                        .addComponent(txtBusquedaUsuarios_A, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtBusquedaAlumnos_A, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -1469,6 +1469,11 @@ public class frmAlumnos extends javax.swing.JFrame {
     }//GEN-LAST:event_rdbActivoAlumnosActionPerformed
 
     private void txtBusqueda_AKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusqueda_AKeyTyped
+        Character caracter = evt.getKeyChar();
+
+        if(caracter.toString().matches("[^A-za-z 0-9á-ñÑ]|_") || (caracter == '\b')){
+            evt.consume();
+        }
         llenarTablaAlumnos_A();
     }//GEN-LAST:event_txtBusqueda_AKeyTyped
 
@@ -1620,7 +1625,7 @@ public class frmAlumnos extends javax.swing.JFrame {
     private void txtNombreUsuario_AKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreUsuario_AKeyTyped
         Character caracter = evt.getKeyChar();
 
-        if(caracter.toString().matches("[^\\wñ]") || (caracter == '\b')){
+        if(caracter.toString().matches("[^\\wñÑ]") || (caracter == '\b')){
             evt.consume();
         }
     }//GEN-LAST:event_txtNombreUsuario_AKeyTyped
@@ -1633,9 +1638,14 @@ public class frmAlumnos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtContrasena_AKeyTyped
 
-    private void txtBusquedaUsuarios_AKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaUsuarios_AKeyTyped
+    private void txtBusquedaAlumnos_AKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaAlumnos_AKeyTyped
+        Character caracter = evt.getKeyChar();
+
+        if(caracter.toString().matches("[^A-za-z 0-9á-ñÑ]|_") || (caracter == '\b')){
+            evt.consume();
+        }
         llenarTablaAlumnos_U();
-    }//GEN-LAST:event_txtBusquedaUsuarios_AKeyTyped
+    }//GEN-LAST:event_txtBusquedaAlumnos_AKeyTyped
 
     private void dgvInformacionAlumno_UMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dgvInformacionAlumno_UMouseClicked
         // TODO add your handling code here:
@@ -1706,6 +1716,11 @@ public class frmAlumnos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarUsuarios_AActionPerformed
 
     private void txtBusquedaUsuariosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaUsuariosKeyTyped
+        Character caracter = evt.getKeyChar();
+
+        if(caracter.toString().matches("[^\\wñÑ]") || (caracter == '\b')){
+            evt.consume();
+        }
         llenarTablaUsuarios();
     }//GEN-LAST:event_txtBusquedaUsuariosKeyTyped
 
@@ -1824,6 +1839,11 @@ public class frmAlumnos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtBusquedaAlumnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaAlumnoKeyTyped
+        Character caracter = evt.getKeyChar();
+
+        if(caracter.toString().matches("[^A-za-z 0-9á-ñÑ]|_") || (caracter == '\b')){
+            evt.consume();
+        }
         llenarTablaAlumnos_Puntaje();
     }//GEN-LAST:event_txtBusquedaAlumnoKeyTyped
 
@@ -1855,7 +1875,7 @@ public class frmAlumnos extends javax.swing.JFrame {
         txtNombreUsuario_A.setText("");
         txtContrasena_A.setText("");
         cmbTipo_A.setSelectedIndex(0);
-        txtBusquedaUsuarios_A.setText("");
+        txtBusquedaAlumnos_A.setText("");
         
     }
     
@@ -1922,7 +1942,7 @@ public class frmAlumnos extends javax.swing.JFrame {
     }
     
     public void llenarTablaAlumnos_U(){
-        String buscar = "CONCAT(salon, nombre, apellido_paterno, apellido_materno)like '%" + txtBusquedaUsuarios_A.getText() + "%' AND status = 'Activo'";
+        String buscar = "CONCAT(salon, nombre, apellido_paterno, apellido_materno)like '%" + txtBusquedaAlumnos_A.getText() + "%' AND status = 'Activo'";
 
         ResultSet resultados = conexion.consultarTabla("tabla_alumnos", buscar);
 
@@ -2224,8 +2244,8 @@ public class frmAlumnos extends javax.swing.JFrame {
     private javax.swing.JTextField txtApellidoMaterno;
     private javax.swing.JTextField txtApellidoPaterno;
     private javax.swing.JTextField txtBusquedaAlumno;
+    private javax.swing.JTextField txtBusquedaAlumnos_A;
     private javax.swing.JTextField txtBusquedaUsuarios;
-    private javax.swing.JTextField txtBusquedaUsuarios_A;
     private javax.swing.JTextField txtBusqueda_A;
     private javax.swing.JPasswordField txtContrasena_A;
     private javax.swing.JPasswordField txtContrasena_C;
