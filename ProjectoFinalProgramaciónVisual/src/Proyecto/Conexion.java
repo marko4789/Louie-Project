@@ -126,7 +126,7 @@ public class Conexion {
         }
         
         String consulta = "UPDATE `puntaje_memorama` SET `puntaje`= "+puntaje+" WHERE `id_puntajes` = "+id_puntaje+" AND `id_materia`= "+id_materia+";";
-        System.out.println(consulta);
+        
         try {
             stmt.executeUpdate(consulta);
             return true;
@@ -149,7 +149,7 @@ public class Conexion {
         }
         
         String consulta = "UPDATE `puntaje_trivia` SET `puntaje`= "+puntaje+" WHERE `id_puntajes` = "+id_puntaje+" AND `id_materia`= "+id_materia+";";
-        System.out.println(consulta);
+        
         try {
             stmt.executeUpdate(consulta);
             return true;

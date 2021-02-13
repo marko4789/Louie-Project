@@ -51,7 +51,7 @@ CREATE TABLE `tabla_alumnos` (
 
 /*Data for the table `tabla_alumnos` */
 
-insert  into `tabla_alumnos`(`id_alumno`,`nombre`,`apellido_paterno`,`apellido_materno`,`edad`,`salon`,`status`) values (1,'Marco','Ocampos','Ortega',20,'3-2','Activo'),(2,'Mónica Lizbeth','Ruiz','Martínez',20,'3-2','Activo'),(3,'Juan','Tirado','Ortega',9,'4A','Activo'),(4,'Emilio','Tirado','González',9,'4A','Activo'),(5,'Mariano ','Fuentes','Del Río',10,'4B','Activo'),(6,'Dayana','Pérez','Espinoza',9,'3A','Activo');
+insert  into `tabla_alumnos`(`id_alumno`,`nombre`,`apellido_paterno`,`apellido_materno`,`edad`,`salon`,`status`) values (1,'Marco','Ocampos','Ortega',20,'3-2','Activo'),(2,'Mónica Lizbeth','Ruiz','Martínez',20,'3-2','Activo');
 
 
 
@@ -73,7 +73,7 @@ CREATE TABLE `tabla_usuarios` (
 
 /*Data for the table `tabla_usuarios` */
 
-insert  into `tabla_usuarios`(`id_usuario`,`nombre`,`contraseña`,`status`,`tipo`,`id_alumno`) values (1,'marko','contraseña','Activo','Administrador',1),(2,'moni','si','Activo','Administrador',2),(3,'juanito','no','Activo','Alumno',3),(4,'Marianito77','nose','Activo','Alumno',5),(5,'Vegetta777','minecraft','Inactivo','Alumno',4),(17,'EmilioTirado','soyEmilio','Activo','Alumno',4);
+insert  into `tabla_usuarios`(`id_usuario`,`nombre`,`contraseña`,`status`,`tipo`,`id_alumno`) values (1,'marko','jkl','Activo','Alumno',1),(2,'mony','123','Activo','Administrador',2);
 
 
 
@@ -91,7 +91,7 @@ CREATE TABLE `tabla_puntajes` (
 
 /*Data for the table `tabla_puntajes` */
 
-insert  into `tabla_puntajes`(`id_puntajes`,`id_usuario`) values (1,1),(5,17);
+insert  into `tabla_puntajes`(`id_puntajes`,`id_usuario`) values (1,1),(2,2);
 
 
 
@@ -113,6 +113,7 @@ CREATE TABLE `puntaje_memorama` (
 
 /*Data for the table `puntaje_memorama` */
 
+insert  into `puntaje_memorama`(`id_puntaje_memorama`,`puntaje`, `id_materia`, `id_puntajes`) values (1,0,1,1),(2,0,2,1),(3,0,3,1),(4,0,4,1),(5,0,1,2),(6,0,2,2),(7,0,3,2),(8,0,4,2);
 
 
 /*Table structure for table `puntaje_trivia` */
@@ -133,7 +134,7 @@ CREATE TABLE `puntaje_trivia` (
 
 /*Data for the table `puntaje_trivia` */
 
-insert  into `puntaje_trivia`(`id_puntaje_trivia`,`puntaje`,`id_materia`,`id_puntajes`) values (8,0,1,1),(9,0,2,1),(10,0,3,1),(11,0,4,1),(16,0,1,5),(17,0,2,5),(18,0,3,5),(19,0,4,5);
+insert  into `puntaje_trivia`(`id_puntaje_trivia`,`puntaje`,`id_materia`,`id_puntajes`) values (1,0,1,1),(2,0,2,1),(3,0,3,1),(4,0,4,1),(5,0,1,2),(6,0,2,2),(7,0,3,2),(8,0,4,2);
 
 
 
